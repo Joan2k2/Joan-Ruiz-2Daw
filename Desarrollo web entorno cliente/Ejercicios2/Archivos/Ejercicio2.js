@@ -1,0 +1,1 @@
+document.getElementsByClassName("header")[0].style.backgroundImage = "url('https://images3.alphacoders.com/110/thumb-1920-1107655.jpg')";

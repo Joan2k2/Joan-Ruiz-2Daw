@@ -1,0 +1,1 @@
+document.getElementsByTagName("img")[0].src="https://media.tenor.com/JW-Z1F2OEjIAAAAC/thicc-slap.gif"
