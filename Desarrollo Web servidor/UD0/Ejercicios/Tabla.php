@@ -4,7 +4,7 @@ class tabla{
 
 private $fila;
 private $columna;
-private $modificación = ["columna"=>2,"fila"=>1,"contenido"=>"perico"];
+private $modificacion =["Columna"=>2,"Fila"=>1,"Contenido"=>"perico"];
 
 
 public function __construct($fila,$columna)
@@ -14,8 +14,34 @@ public function __construct($fila,$columna)
 
 }
 
-public function crearTabla($fila,$columna)
+
+
+public function crearTabla()
 {
+    print("<table border=3px>");
+    for ($i=0; $i <$this->columna; $i++) { 
+        print("<tr>");
+
+        for ($j=0; $j <$this->fila ; $j++) { 
+            
+
+            
+                
+                if($this->modificacion["Columna"]==$j && $this->modificacion["Fila"]==$i){
+                    print("<td style=background:#FFF300>{$this->modificacion['Contenido']}</td>");
+
+                }else{
+                    print("<td>hola</td>");
+                }
+            
+            
+
+
+            
+        }
+        print("</tr>");
+    }
+    print("</table>");
    
 }
 

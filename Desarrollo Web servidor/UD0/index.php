@@ -12,6 +12,7 @@ use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
             include("./Ejercicios/Empleado.php");
             include("./Ejercicios/Menu.php");
             include("./Ejercicios/CabeceraPagina.php");
+            include("./Ejercicios/Tabla.php");
             include("./Circulo.php");
             
             /*$maria = new Persona("Maria",20);
@@ -46,9 +47,13 @@ use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
 
             //Ejercicio3
 
-            $cab = new CabeceraPagina("ACTIVIDADES","center","red","blue");
-            $cab->montarCabezado();
+            /* $cab = new CabeceraPagina("ACTIVIDADES","center","red","blue");
+            $cab->montarCabezado(); */
 
+            //Ejercicio 5-7-8
+
+            $tabla=new Tabla(3,4);
+            $tabla->crearTabla();
 
             ?>
         </h2>
