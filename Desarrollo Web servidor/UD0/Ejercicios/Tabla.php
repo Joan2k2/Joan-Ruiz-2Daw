@@ -33,7 +33,7 @@
         print("</table>");
     }
 }*/
-
+//Ejercicio 7 y 8
 class tabla {
     private $fila;
     private $columna;

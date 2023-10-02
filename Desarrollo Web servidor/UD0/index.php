@@ -5,15 +5,17 @@
 
 use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
 
-            /*include("./persona.php");
-            include("./Estudiante.php");
-            include("./Figura.php");
-            include("./Forma.php");
+            //include("./persona.php");
+            //include("./Estudiante.php");
+            //include("./Figura.php");
+            //include("./Forma.php");
+            include("./Ejercicios/Persona.php");
             include("./Ejercicios/Empleado.php");
-            include("./Ejercicios/Menu.php");
-            include("./Ejercicios/CabeceraPagina.php");*/
-            include("./Ejercicios/Tabla.php");
+            //include("./Ejercicios/Menu.php");
+            //include("./Ejercicios/CabeceraPagina.php");
+            //include("./Ejercicios/Tabla.php");
             // include("./Circulo.php");
+            
             
             /*$maria = new Persona("Maria",20);
             $robertoEstudiante = new Estudiante("Roberto",20,"Mariconchis");
@@ -34,7 +36,7 @@ use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
             //-------------------------------
 
             //Ejercicio 1
-           /* $empleado = new Empleado("Roberto", 5000);
+           /*$empleado = new Empleado("Roberto","");
             print($empleado->impuestos());*/
 
 
@@ -52,8 +54,13 @@ use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
 
             //Ejercicio 5-7-8
 
-            $tabla=new Tabla(3,4);
-            $tabla->crearTabla();
+            /*$tabla=new Tabla(3,4);
+            $tabla->crearTabla();*/
+
+            //Ejercicio 10-11-12
+            $empleado2=new Empleado2("Roberto",89,300);
+            print($empleado2->imprimirDatos());
+            print($empleado2->imprimirSueldo());
 
             ?>
         </h2>
