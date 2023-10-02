@@ -5,15 +5,15 @@
 
 use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
 
-            include("./persona.php");
+            /*include("./persona.php");
             include("./Estudiante.php");
-            //include("./Figura.php");
+            include("./Figura.php");
             include("./Forma.php");
             include("./Ejercicios/Empleado.php");
             include("./Ejercicios/Menu.php");
-            include("./Ejercicios/CabeceraPagina.php");
+            include("./Ejercicios/CabeceraPagina.php");*/
             include("./Ejercicios/Tabla.php");
-            include("./Circulo.php");
+            // include("./Circulo.php");
             
             /*$maria = new Persona("Maria",20);
             $robertoEstudiante = new Estudiante("Roberto",20,"Mariconchis");
