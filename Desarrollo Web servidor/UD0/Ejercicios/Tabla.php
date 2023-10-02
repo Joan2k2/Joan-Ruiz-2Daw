@@ -37,7 +37,7 @@
 class tabla {
     private $fila;
     private $columna;
-    private $modificacion = ["Columna" => 2, "Fila" => 1, "celda" => $celda];
+    private $modificacion = ["Columna" => 2, "Fila" => 1];
 
 
     public function __construct($fila, $columna)
@@ -57,7 +57,7 @@ class tabla {
             for ($j = 0; $j < $this->fila; $j++) {
 
                 if ($this->modificacion["Columna"] == $j && $this->modificacion["Fila"] == $i) {
-                    print("<td style=background:#FFF300>{$this->modificacion['celda']}</td>");
+                    print("<td style=background:{$celda->getColorFondo()};color:{$celda->getColorFuente()}>{$celda->getTexto()}</td>");
                 } else {
                     print("<td>hola</td>");
                 }
