@@ -9,6 +9,9 @@ use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
             //include("./Estudiante.php");
             //include("./Figura.php");
             //include("./Forma.php");
+            include("./Ejercicios/Cuadrado.php");
+            include("./Ejercicios/Trabajador.php");
+            include("./Ejercicios/Gerente.php");
             include("./Ejercicios/Persona.php");
             include("./Ejercicios/Empleado.php");
             //include("./Ejercicios/Menu.php");
@@ -57,10 +60,38 @@ use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
             /*$tabla=new Tabla(3,4);
             $tabla->crearTabla();*/
 
-            //Ejercicio 10-11-12
-            $empleado2=new Empleado2("Roberto",89,300);
+            //Ejercicio 10-11-12-13
+            
+           /* $empleado2=new Empleado2("Roberto",89,300);
             print($empleado2->imprimirDatos());
-            print($empleado2->imprimirSueldo());
+            print($empleado2->imprimirSueldo());*/
+
+            //Ejercicio 14
+            /*$persona=new Persona2("Roberto",2);
+            print($persona->imprimirDatosPersona2());*/
+
+            //Ejercicio15
+           /* $empleadoTrabajador= new EmpleadoTrabajador("Roberto",3,150);
+            print($empleadoTrabajador->calcularSueldo());
+            print("<br>");
+            $gerente= new Gerente("Davit",2000000);
+            print($gerente->calcularSueldo());*/
+
+            //Ejercicio16
+            /* $empleado2=new Empleado2("Roberto",89,300);
+            print($empleado2->imprimirDatos());
+            print($empleado2->imprimirSueldo());*/
+            /*$persona=new Persona2("Roberto",2);
+            print($persona->imprimirDatosPersona2());*/
+
+            //Ejercicio17
+            $cuadrado = new Cuadrado(20);
+                echo "Perimetro: ".$cuadrado->calcularPerimetro();
+                echo "<br>";
+                echo "Superfice: ". $cuadrado->calcularSuperficie();
+                echo "<br>";
+                echo "<br>";
+
 
             ?>
         </h2>
