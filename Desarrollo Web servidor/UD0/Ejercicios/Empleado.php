@@ -1,5 +1,5 @@
 <?php
-
+//Clase empleado donde verifico que si el sueldo está vacio lo establezca a mil y comprueba si es superior a 3000
 class Empleado
 {
 
@@ -36,7 +36,7 @@ class Empleado
         }
     }
 }
-
+//Empleado que extiende de persona asi pudiendo mostrar nombre edad y sueldo del empleado
 class Empleado2 extends Persona
 {
 
@@ -68,7 +68,7 @@ class Empleado2 extends Persona
 
 
 }
-
+//Empleado que extiende de persona asi pudiendo mostrar nombre edad y sueldo del empleado además de poder mostrar el sueldo 
 class Empleado3 extends Persona2
 {
 
@@ -100,7 +100,7 @@ class Empleado3 extends Persona2
 
 
 }
-//hereda de trabajador
+//hereda de trabajador donde calcula el sueldo según las horas trabajadas y lo que pagan por hora
 class EmpleadoTrabajador extends Trabajador{
 
     //Propiedades

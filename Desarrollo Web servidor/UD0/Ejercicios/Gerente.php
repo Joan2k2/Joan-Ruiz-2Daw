@@ -1,5 +1,5 @@
 <?php
-
+//hereda de trabajador y muestra el nombre y el sueldo del gerente
 class Gerente extends Trabajador{
 
     public function __construct($nombre,$sueldo){
@@ -9,7 +9,7 @@ class Gerente extends Trabajador{
 
 function calcularSueldo(){
 
-print("{$this->getNombre()} tu sueldo abonado es de {$this->getSueldo()}");
+print("{$this->getNombre()} tu sueldo es de {$this->getSueldo()}");
 
 
 }

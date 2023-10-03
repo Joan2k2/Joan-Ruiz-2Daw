@@ -1,6 +1,6 @@
 <?php
 
-
+//Permite crear una cabecera personalizada
 class CabeceraPagina{
 
     private $titulo;

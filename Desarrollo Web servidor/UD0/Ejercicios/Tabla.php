@@ -1,5 +1,5 @@
 <?php
-
+//creamos una tabla donde se modifica el contenido exacto de una celda
 /*class tabla
 {
 
@@ -34,6 +34,7 @@
     }
 }*/
 //Ejercicio 7 y 8
+//creamos una tabla donde se modifica el contenido exacto de una celda pero la celda es una clase aparte
 class tabla {
     private $fila;
     private $columna;
