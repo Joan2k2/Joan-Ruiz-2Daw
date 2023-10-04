@@ -1,5 +1,5 @@
 <?php
-
+//crea el equivalente al menu de una web
 class Menu{
 
 private $operacion1;

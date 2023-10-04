@@ -1,5 +1,5 @@
 <?php
-
+//clase para calcular el area y preimetro de un cuadrado
 class Cuadrado{
     private $lado;
 

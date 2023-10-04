@@ -1,5 +1,5 @@
 <?php
-
+//clase para crear un trabajador con nombre y sueldo con función para mostrar ambos datos
 abstract class Trabajador{
 
     private $nombre,$sueldo;

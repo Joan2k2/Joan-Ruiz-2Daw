@@ -9,16 +9,16 @@ use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
             include("./Estudiante.php");
             include("./Figura.php");
             include("./Forma.php");
-            include("./Calculadora.php");
-            include("./ClaseDestructor.php");
-            include("./Cuadrado.php");
-            include("./Trabajador.php");
-            include("./Gerente.php");
-            include("./Persona.php");
-            include("./Empleado.php");
-            include("./Menu.php");
-            include("./CabeceraPagina.php");
-            include("./Tabla.php");
+            include("./Ejercicios/Calculadora.php");
+            include("./Ejercicios/ClaseDestructor.php");
+            include("./Ejercicios/Cuadrado.php");
+            include("./Ejercicios/Trabajador.php");
+            include("./Ejercicios/Gerente.php");
+            include("./Ejercicios/Persona.php");
+            include("./Ejercicios/Empleado.php");
+            include("./Ejercicios/Menu.php");
+            include("./Ejercicios/CabeceraPagina.php");
+            include("./Ejercicios/Tabla.php");
             include("./Circulo.php");
             
             
