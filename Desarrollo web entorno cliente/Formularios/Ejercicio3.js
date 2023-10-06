@@ -10,13 +10,13 @@ document.getElementsByTagName("form")[2].addEventListener("submit", (event) => {
     var selectedIndex = select.selectedIndex;
     var contenido = document.getElementsByTagName("option")[selectedIndex].value;
 
-    if (nickname != "" && film != "" && year != "" && director != "" && contenido != "") {
+    if (nickname != "" && film != "" && year != "" && director != "" && contenido != "" && verificarHumanidad()!=false) {
         if (noContieneNumeros(year) ) {
             if (Array.from(year).length != 4) {
                 alert("Pon un año valido");
                 document.getElementById("year").value = "";
             } else {
-                document.getElementsByTagName("p")[2].innerHTML="Nardoh";
+                document.getElementsByTagName("p")[2].innerHTML="El nickname: " + nickname + " de la peli: "+ film+ " del año "+year+ " cuyo director es "+director+"ha sido calificada "+obtenerCalificacion()+" pero suele mirar "+ calcularPelis() + " y se ha verificado que no es un robot"+"<br>" + "Esta es su reseña: "+ recibirOpinion();
                 
 
             }
@@ -26,7 +26,7 @@ document.getElementsByTagName("form")[2].addEventListener("submit", (event) => {
         }
 
     } else {
-        alert("No dejes ningún campo vacío");
+        alert("No dejes ningún campo vacío o sin seleccionar");
 
     }
 
@@ -57,30 +57,25 @@ function obtenerCalificacion() {
     var contenidoEnTexto;
 
     switch (contenido) {
-        case "":
-            alert("Seleciona un contenido")
-
-            break;
-
-        case 4:
+        case "4":
             return contenidoEnTexto = "Aburrida"
             break;
-        case 5:
+        case "5":
             return contenidoEnTexto = "Ni fu ni fa"
             break;
-        case 6:
+        case "6":
             return contenidoEnTexto = "Pasable"
             break;
-        case 7:
+        case "7":
             return contenidoEnTexto = "No está mal"
             break;
-        case 8:
+        case "8":
             return contenidoEnTexto = "Buena"
             break;
-        case 9:
+        case "9":
             return contenidoEnTexto = "La recomiendo"
             break;
-        case 10:
+        case "10":
             return contenidoEnTexto = "Mi peli preferida"
             break;
 
@@ -91,15 +86,15 @@ function obtenerCalificacion() {
 function calcularPelis() {
     if (document.getElementById("frequency-low").checked === true) {
         cantPelis = "";
-        return cantPelis = "Ves entre una pelicula o ninguna";
+        return cantPelis = "entre una pelicula o ninguna";
         console.log("Moises la shupa");
     } else if (document.getElementById("frequency-normal").checked === true) {
         cantPelis = "";
-        return cantPelis = "Ves entre dos o tres peliculas ";
+        return cantPelis = "entre dos o tres peliculas ";
         console.log("Moises la shupa2");
     } else {
         cantPelis = "";
-        return cantPelis = "Ves entre cuatro o más peliculas";
+        return cantPelis = "entre cuatro o más peliculas";
         console.log("Moises la shupa3");
     }
 
