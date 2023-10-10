@@ -1,5 +1,8 @@
 <?php
 
+//El código rompía el principio de "Responsabilidad Única" debido a que en una misma clase están involucradas dos o más capas
+//de la arquitectura
+
 class Car
 {
     private $id;
@@ -69,10 +72,10 @@ class CarManager
 
     
 
-    public function getBestCar()
+    public function getBestCar($cars)
     {
         $bestCar = null;
-        foreach ($this->carsDb as $car) {
+        foreach ($cars as $car) {
             if ($bestCar == null || $car->getModel() > $bestCar->getModel()) {
                 $bestCar = $car;
             }

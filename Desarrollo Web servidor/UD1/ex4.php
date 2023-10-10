@@ -1,9 +1,10 @@
 <?php
-
+//El código rompía el principio de "Sustitución de Liskov" debido a que la clase cuadrado heredaba de rectangulo 
+//cuando hay funcines y variables que no iba a gastar
 class Rectangle
 {
-    protected $width;
-    protected $height;
+    private $width;
+    private $height;
 
     public function getWidth()
     {
@@ -31,17 +32,19 @@ class Rectangle
     }
 }
 
-class Square extends Rectangle
+class Square 
 {
-    public function setWidth($width)
+    private $width;
+
+    public function __construct($width)
     {
-        $this->width = $width;
-        $this->height = $width;
+        $this->width=$width;
+    }
+    public function getArea()
+    {
+        return $this->width * 2;
     }
 
-    public function setHeight($height)
-    {
-        $this->height = $height;
-        $this->width = $height;
-    }
+    
 }
+?>

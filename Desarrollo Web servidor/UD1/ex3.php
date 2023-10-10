@@ -1,5 +1,8 @@
 <?php
 
+//El código rompía el principio de "Open/Closed" debido a que se tenía que modificar las clases para escalar
+//al haber una clase de calcular area en vez de un método en cada figura porque és diferente
+
 abstract class Shape
 {
     protected ShapeType $shapeType;
@@ -30,6 +33,10 @@ class Circle extends Shape
     {
         return $this->radius;
     }
+    public function calculateArea()
+    {
+        return pi() * $this->getRadius() * $this->getRadius();
+    }
 }
 
 class Square extends Shape
@@ -46,30 +53,9 @@ class Square extends Shape
     {
         return $this->side;
     }
-}
-
-class AreaCalculator
-{
-    public function calculateArea(array $shapes)
+    public function calculateArea()
     {
-        $area = 0;
-        foreach ($shapes as $shape) {
-            if ($shape->getType() == ShapeType::SQUARE) {
-                $area += $this->calculateSquareArea($shape);
-            } else if ($shape->getType() == ShapeType::CIRCLE) {
-                $area += $this->calculateCircleArea($shape);
-            }
-        }
-        echo "total area = " . $area;
-    }
-
-    public function calculateSquareArea(Square $square)
-    {
-        return $square->getSide() * $square->getSide();
-    }
-
-    public function calculateCircleArea(Circle $circle)
-    {
-        return pi() * $circle->getRadius() * $circle->getRadius();
+        return $this->getSide() * $this->getSide();
     }
 }
+

@@ -1,18 +1,28 @@
 <?php
-
+//El código rompía el principio de "Responsabilidad Única" debido a que habian funcioines que no deberían heredar todas las funciones
 interface Door
 {
     public function lock();
     public function unlock();
     public function open();
     public function close();
+    
+    
+}
+
+interface timeOutCallbackClass{
     public function timeOutCallback();
+
+}
+
+interface proximityCallbackClass{
     public function proximityCallback();
+
 }
 
 class Sensor
 {
-    public function register(Door $door)
+    public function register(proximityCallbackClass $door)
     {
         while (true) {
             if ($this->isPersonClose()) {
@@ -28,10 +38,10 @@ class Sensor
     }
 }
 
-class SensingDoor implements Door
+class SensorDoor implements Door,proximityCallbackClass
 {
-    private $locked;
-    private $opened;
+    protected $locked;
+    protected $opened;
 
     function __construct(Sensor $sensor)
     {
@@ -62,7 +72,7 @@ class SensingDoor implements Door
 
     public function timeOutCallback()
     {
-        throw new Exception("Not Implemented");
+        $this->locked = false;
     }
 
     public function proximityCallback()
@@ -71,16 +81,16 @@ class SensingDoor implements Door
     }
 }
 
-class Timer
+class Timer 
 {
-    public function register($timeOut, Door $door)
+    public function register($timeOut, timeOutCallbackClass $door)
     {
         sleep($timeOut);
         $door->timeOutCallback();
     }
 }
 
-class TimedDoor implements Door
+class TimedDoor implements Door,timeOutCallbackClass
 {
     const TIME_OUT = 10;
     private $locked;

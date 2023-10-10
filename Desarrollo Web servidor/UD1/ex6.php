@@ -1,12 +1,16 @@
 <?php
 
-interface Worker
-{
-    public function work();
+//El código rompía el principio de "Responsabilidad Única" debido a que habian funcioines que no deberían heredar todas las funciones como robot y comer
 
+interface Eater
+{
     public function eat();
 }
 
+interface Worker
+{
+    public function work();
+}
 class Factory
 {
     private $workers = [];
@@ -16,10 +20,10 @@ class Factory
         $this->workers = $workers;
     }
 
-    public function manage()
+    public function manage($metodo)
     {
         foreach ($this->workers as $worker) {
-            $worker->work();
+            $metodo($worker);
         }
     }
 
@@ -43,7 +47,7 @@ class MessHall
 
 }
 
-class Human implements Worker
+class Human implements Worker,Eater
 {
     public function work()
     {
@@ -63,8 +67,5 @@ class Robot implements Worker
         return "Robot works";
     }
 
-    public function eat()
-    {
-        throw new Exception("Robots can't eat");
-    }
+
 }

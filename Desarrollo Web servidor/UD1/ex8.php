@@ -1,27 +1,28 @@
 <?php
+//En este código viola el principio solid Segregación de Interfaces al crear variables  getters y setters que no se gastan
 class Lamp
 {
-    private int $color;
-
+    //private  $color;
+    private  $isOn;
     public function turnOn()
     {
-        echo "Lamp turned on";
+        $this->isOn = true;
     }
 
     public function turnOff()
     {
-        echo "Lamp turned off";
+        $this->isOn = false;
     }
 
-    public function getColor()
+    /*public function getColor()
     {
         return $this->color;
-    }
+    }*/
 
-    public function setColor($color)
+    /*public function setColor($color)
     {
         $this->color = $color;
-    }
+    }*/
 }
 
 class Button

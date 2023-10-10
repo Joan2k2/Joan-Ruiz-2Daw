@@ -1,5 +1,9 @@
 <?php
 
+//El código rompía el principio de "Responsabilidad Única" debido a que en una misma clase están involucradas dos o más capas
+//de la arquitectura debido a que realizaba varias funciones dentro desde un mismo método que era mostrar la informacion 
+//y en otra la recoges repartiendo la responsabilidad
+
 class Employee
 {
     const LEAVES_ALLOWED = 27;
