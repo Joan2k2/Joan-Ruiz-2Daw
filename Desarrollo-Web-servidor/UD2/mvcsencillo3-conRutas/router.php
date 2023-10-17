@@ -13,7 +13,7 @@ echo ' ';
 // Obtener la ruta actual desde la URL
 //arreglar la ruta, no coge el valor de la ruta, siempre va al valor false
 // todo es por la imagen del contenedor
-$route = isset($_Post['route']) ? $_GET['route'] : 'add';
+$route = isset($_GET['route']) ? $_GET['route'] : 'add';
 echo '1 ';
 echo $route;
 echo '2';

@@ -1,5 +1,6 @@
 <?php
 class TodoView {
+    //list
     public function showTodos($todos) {
         echo "<h1>Lista de Tareas</h1>";
         echo "<ul>";
@@ -9,7 +10,7 @@ class TodoView {
         }
         echo "</ul>";
     }
-
+    //add
     public function showAddForm() {
         echo "<h2>Agregar Nueva Tarea</h2>";
         echo "<form method='post' action='index.php?route=add'>";
