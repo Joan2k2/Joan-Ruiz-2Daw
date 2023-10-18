@@ -1,6 +1,6 @@
 let posicion = 0;
 let h1s = document.getElementsByTagName('h1');
-let idBoton=false;
+let idBoton = false;
 let bebidas =
     console.log(h1s);
 let td = document.getElementsByTagName('td')[2];
@@ -9,13 +9,15 @@ let contents = [
     { title: 'Infusiones', path: 'url(src/infusiones/1.jpg)' },
     { title: 'Alcohol', path: 'url(src/alcohol/1.jpg)' }];
 let title = document.getElementsByTagName('h1')[0];
+
+
 function mostrarBebidas() {
 
 
-let contents = [
-    { title: 'Cafe', path: 'url(src/cafe/1.jpg)' },
-    { title: 'Infusiones', path: 'url(src/infusiones/1.jpg)' },
-    { title: 'Alcohol', path: 'url(src/alcohol/1.jpg)' }];
+    let contents = [
+        { title: 'Cafe', path: 'url(src/cafe/1.jpg)' },
+        { title: 'Infusiones', path: 'url(src/infusiones/1.jpg)' },
+        { title: 'Alcohol', path: 'url(src/alcohol/1.jpg)' }];
 
 
     for (let i = 0; i < contents.length; i++) {
@@ -32,7 +34,29 @@ let contents = [
         td.appendChild(h1);
 
     }
-    title.innerHTML = "Bebidas"
+    title.innerHTML = "Bebidas";
+    document.getElementsByTagName("h1")[1].addEventListener("click", () => {
+        deleteCategories();
+        cretePhotosBebidas(1);
+    
+    
+    
+    });
+    document.getElementsByTagName("h1")[2].addEventListener("click", () => {
+        deleteCategories();
+        cretePhotosBebidas(2);
+    
+    
+    
+    });
+    
+    document.getElementsByTagName("h1")[3].addEventListener("click", () => {
+        deleteCategories();
+        cretePhotosBebidas(3);
+    
+    
+    
+    });
 }
 
 function mostrarPostres() {
@@ -58,7 +82,21 @@ function mostrarPostres() {
         td.appendChild(h1);
 
     }
-    title.innerHTML = "Postres"
+    title.innerHTML = "Postres";
+    document.getElementsByTagName("h1")[1].addEventListener("click", () => {
+        deleteCategories();
+        cretePhotosBebidas(5);
+    
+    
+    
+    });
+    document.getElementsByTagName("h1")[2].addEventListener("click", () => {
+        deleteCategories();
+        cretePhotosBebidas(6);
+    
+    
+    
+    });
 }
 function mostrarEntrantes() {
 
@@ -81,7 +119,14 @@ function mostrarEntrantes() {
         h1.textContent = contents[i].title;
         td.appendChild(h1);
     }
-    title.innerHTML = "Entrantes"
+    title.innerHTML = "Entrantes";
+    document.getElementsByTagName("h1")[1].addEventListener("click", () => {
+        deleteCategories();
+        cretePhotosBebidas(4);
+        
+    
+    
+    });
 }
 let funciones = [mostrarBebidas, mostrarEntrantes, mostrarPostres];
 
@@ -89,20 +134,21 @@ let funciones = [mostrarBebidas, mostrarEntrantes, mostrarPostres];
 //al darle 2 veces a suguiente y luego una a atras me lleva a bebidas en vez de a entrantes" SOLUCIONAR
 mostrarBebidas();
 document.getElementById("anterior").addEventListener("click", () => {
+    
     console.log("Entra con la posicion " + posicion);
-    if(posicion===2 && idBoton===false){
+    if (posicion === 2 && idBoton === false) {
         posicion++;
     }
-    if(posicion===1 ){
+    if (posicion === 1) {
         posicion++;
     }
-    
-    
+
+
     posicion--;
     console.log("Sale con la posicion " + posicion);
     deleteCategories();
 
-    if (posicion <= 0 ) {
+    if (posicion <= 0) {
         posicion = funciones.length;
 
         funciones[posicion - 1]();
@@ -112,17 +158,18 @@ document.getElementById("anterior").addEventListener("click", () => {
         //     posicion++;
         // }
         funciones[posicion - 1]();
-        if(posicion-1 === 0){
-            posicion=0;
+        if (posicion - 1 === 0) {
+            posicion = 0;
         }
     }
-    idBoton=true;
+    idBoton = true;
     console.log(idBoton);
-
+    deletePhotos();
 });
 
 document.getElementById("siguiente").addEventListener("click", () => {
     console.log("Entra con la posicion " + posicion);
+    
     posicion++;
     deleteCategories();
     console.log("Sale con la posicion " + posicion);
@@ -134,17 +181,12 @@ document.getElementById("siguiente").addEventListener("click", () => {
     } else {
         funciones[posicion]();
     }
-idBoton=false;
-
+    idBoton = false;
+    deletePhotos();
 });
 
-document.getElementsByTagName("h1")[1].addEventListener("click", () => {
-    deleteCategories();
-    cretePhotos(1);
 
 
-
-})
 function deleteCategories() {
     let a = h1s.length;
     a--;
@@ -153,13 +195,23 @@ function deleteCategories() {
     }
     console.log(h1s);
 }
-function cretePhotos(index) {
-    let drinks = ['cafe', 'infusiones', 'alcohol'];
+function deletePhotos() {
+    let imgs = document.getElementsByTagName('img');
+    
+    let b = imgs.length;
+    console.log("cantidad");
+    for (let i = 0; i < b; i++) {
+        imgs[1].remove();
+    }
+}
+
+function cretePhotosBebidas(index) {
+    let cosas = ['cafe', 'infusiones', 'alcohol','entrantes','tartas','fruta'];
     for (let i = 1; i < 6; i++) {
         let img = document.createElement('img');
         img.style.width = '20%';
-        img.src = `./src/${drinks[index - 1]}/${i}.jpg`;
+        img.src = `./src/${cosas[index - 1]}/${i}.jpg`;
         td.appendChild(img);
-        img.addEventListener('click', () => addPhoto(drinks[index - 1], i));
+        img.addEventListener('click', () => addPhoto(cosas[index - 1], i));
     }
 }
