@@ -16,7 +16,8 @@ let serie1 =
 
             "Ichirō Nagai"
 
-        ]
+        ],
+        clase : "one",
     }
 ;
 
@@ -40,7 +41,8 @@ let serie2 =
 
             "Nao Tōyama"
 
-        ]
+        ],
+        clase : "two", 
     }
 ;
 let serie3 = 
@@ -62,7 +64,8 @@ let serie3 =
 
             "Miki Narahashi"
 
-        ]
+        ],
+        clase : "three"
     }
 ;
 let series = [serie1, serie2, serie3];
@@ -82,7 +85,8 @@ let pelicula1 =
             "Kaneto Shiozawa",
             "Shinya Ôtaki"
 
-        ]
+        ],
+        clase : "one",
     }
 ;
 
@@ -97,7 +101,8 @@ let pelicula2 =
         ],
         casting: [
             "ELIJAH WOOD", "SEAN ASTIN", "IAN MCKELLEN"
-        ]
+        ],
+        clase : "two",
     }
 ;
 
@@ -120,7 +125,8 @@ let pelicula3 =
 
             "Ronnie del Carmen"
 
-        ]
+        ],
+        clase : "three",
     }
 ;
 
@@ -132,21 +138,24 @@ let posicion2 = 0;
 
 function cargarSeries() {
     cargar = false;
-     
+    clase= document.getElementsByTagName("div")[4].className;
     document.getElementsByTagName("h1")[1].innerHTML = series[posicion1].nombre;
     document.getElementsByTagName("h3")[0].innerHTML = series[posicion1].casting[posicion2];
     document.getElementsByTagName("h2")[0].innerHTML = series[posicion1].personajes[posicion2];
     document.getElementsByTagName("img")[0].src = series[posicion1].imagen;
+    document.getElementsByTagName("div")[4].classList.remove(clase);
+    document.getElementsByTagName("div")[4].classList.add(series[posicion1].clase);
 
 }
 function cargarPeliculas() {
     cargar = true;
-     
+    clase= document.getElementsByTagName("div")[4].className;
     document.getElementsByTagName("h1")[1].innerHTML = peliculas[posicion1].nombre;
     document.getElementsByTagName("h3")[0].innerHTML = peliculas[posicion1].casting[posicion2];
     document.getElementsByTagName("h2")[0].innerHTML = peliculas[posicion1].personajes[posicion2];
     document.getElementsByTagName("img")[0].src = peliculas[posicion1].imagen;
-
+    document.getElementsByTagName("div")[4].classList.remove(clase);
+    document.getElementsByTagName("div")[4].classList.add(peliculas[posicion1].clase);
 }
 
 function actorAlante() {
