@@ -1,5 +1,6 @@
 let posicion = 0;
 let h1s = document.getElementsByTagName('h1');
+let idBoton=false;
 let bebidas =
     console.log(h1s);
 let td = document.getElementsByTagName('td')[2];
@@ -88,33 +89,43 @@ let funciones = [mostrarBebidas, mostrarEntrantes, mostrarPostres];
 //al darle 2 veces a suguiente y luego una a atras me lleva a bebidas en vez de a entrantes" SOLUCIONAR
 mostrarBebidas();
 document.getElementById("anterior").addEventListener("click", () => {
-    
-    if(posicion===1){
+    console.log("Entra con la posicion " + posicion);
+    if(posicion===2 && idBoton===false){
+        posicion++;
+    }
+    if(posicion===1 ){
         posicion++;
     }
     
+    
     posicion--;
+    console.log("Sale con la posicion " + posicion);
     deleteCategories();
 
-    if (posicion <= 0) {
+    if (posicion <= 0 ) {
         posicion = funciones.length;
 
         funciones[posicion - 1]();
         console.log(posicion);
     } else {
+        // if(idBoton===false){
+        //     posicion++;
+        // }
         funciones[posicion - 1]();
         if(posicion-1 === 0){
             posicion=0;
         }
     }
-
+    idBoton=true;
+    console.log(idBoton);
 
 });
 
 document.getElementById("siguiente").addEventListener("click", () => {
+    console.log("Entra con la posicion " + posicion);
     posicion++;
     deleteCategories();
-
+    console.log("Sale con la posicion " + posicion);
     if (posicion >= funciones.length) {
         posicion = 0;
 
@@ -123,7 +134,7 @@ document.getElementById("siguiente").addEventListener("click", () => {
     } else {
         funciones[posicion]();
     }
-
+idBoton=false;
 
 });
 
