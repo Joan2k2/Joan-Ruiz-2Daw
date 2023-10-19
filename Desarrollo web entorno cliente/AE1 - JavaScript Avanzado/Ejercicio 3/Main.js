@@ -255,3 +255,9 @@ function mostrarFotos() {
         imgs[i].hidden = false;
     }
 }
+//dar al título 
+document.getElementsByTagName("h1")[0].addEventListener("click",()=>{
+    deleteCategories();
+    funciones[posicion]();
+
+})
