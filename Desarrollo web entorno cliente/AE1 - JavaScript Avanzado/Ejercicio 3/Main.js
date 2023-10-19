@@ -201,9 +201,10 @@ function deletePhotos() {
     let b = imgs.length;
     console.log("cantidad");
     for (let i = 0; i < b; i++) {
-        imgs[1].remove();
+        imgs[0].remove();
     }
 }
+
 
 function cretePhotosBebidas(index) {
     let cosas = ['cafe', 'infusiones', 'alcohol','entrantes','tartas','fruta'];
@@ -258,6 +259,13 @@ function mostrarFotos() {
 //dar al título 
 document.getElementsByTagName("h1")[0].addEventListener("click",()=>{
     deleteCategories();
-    funciones[posicion]();
+    deletePhotos();
+    if(posicion===3){
+        funciones[posicion-1]();
+
+    }else{
+        funciones[posicion]();
+    }
+    
 
 })
