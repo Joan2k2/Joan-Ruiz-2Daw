@@ -215,3 +215,43 @@ function cretePhotosBebidas(index) {
         img.addEventListener('click', () => addPhoto(cosas[index - 1], i));
     }
 }
+
+function addPhoto(category, index){
+    let images = document.getElementsByTagName('img');
+    ocultarFotos();
+    let img = document.createElement('img');
+    img.src = `./src/${category}/${index}.jpg`;
+    td.appendChild(img);
+    document.getElementsByTagName("img")[images.length-1].addEventListener("click",()=>{
+        images[images.length-1].remove();
+        mostrarFotos();
+    })
+};
+
+function checkImages(){
+    let images = document.getElementsByTagName('img');
+    if(images.length > 6) {
+        images[6].remove();
+        
+    }
+}
+
+function ocultarFotos() {
+    let imgs = document.getElementsByTagName('img');
+    
+    let b = imgs.length;
+    console.log("cantidad");
+    for (let i = 0; i < b; i++) {
+        imgs[i].hidden = true;
+    }
+}
+
+function mostrarFotos() {
+    let imgs = document.getElementsByTagName('img');
+    
+    let b = imgs.length;
+    console.log("cantidad");
+    for (let i = 0; i < b; i++) {
+        imgs[i].hidden = false;
+    }
+}
