@@ -1,6 +1,7 @@
 <?php
+
 //creamos controlador que vincule clases
-class ControladorSaludar{
+class ControladorRefran {
 
     private $model;
     private $view;

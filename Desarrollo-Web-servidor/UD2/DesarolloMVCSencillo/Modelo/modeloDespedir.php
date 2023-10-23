@@ -1,8 +1,8 @@
 <?php
 
-class ModeloSaludar{
+class ModeloDespedir{
     private $hora;
-
+//constructor
     public function __construct() {
         date_default_timezone_set('Europe/Madrid');
         $horaLocal = date('H:i:s');
