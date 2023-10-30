@@ -15,6 +15,7 @@ $password = $config["contrasena"];
 $hostname = $config["host"];
 $puerto = $config["puerto"];
 $type = $config["tipo_base_datos"];
+
 verificarConexion($hostname, $username, $password, $database);
 }
 
@@ -29,3 +30,4 @@ if ($mysqli->connect_error) {
 }
 }
 
+?>
