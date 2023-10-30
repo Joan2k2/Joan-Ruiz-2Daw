@@ -7,27 +7,28 @@ $config = json_decode($jsonString, true);
 
 if ($config === null) {
     die("Error al decodificar el JSON.");
-}else{
-// Ahora almacenamos los valores asociados al json
-$databaseName = $config["nombre_base_datos"];
-$username = $config["usuario"];
-$password = $config["contrasena"];
-$hostname = $config["host"];
-$puerto = $config["puerto"];
-$type = $config["tipo_base_datos"];
-
-verificarConexion($hostname, $username, $password, $database);
+} else {
+    // Ahora almacenamos los valores asociados al JSON en variables globales
+    $GLOBALS['databaseName'] = $config["nombre_base_datos"];
+    $GLOBALS['username'] = $config["usuario"];
+    $GLOBALS['password'] = $config["contrasena"];
+    $GLOBALS['hostname'] = $config["host"];
+    $GLOBALS['puerto'] = $config["puerto"];
+    $GLOBALS['type'] = $config["tipo_base_datos"];
 }
 
-function verificarConexion($hostname, $username, $password, $database){
+function verificarConexion()
+{
+    // Accede a las variables globales en lugar de pasarlas como parámetros
+    $mysqli = new mysqli($GLOBALS['hostname'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['databaseName']);
 
-// Crear una conexión a la base de datos
-$mysqli = new mysqli($hostname, $username, $password, $database);
-
-// Verificar si la conexión se realizó con éxito
-if ($mysqli->connect_error) {
-    die("Error de conexión: " . $mysqli->connect_error);
-}
+    // Verificar si la conexión se realizó con éxito
+    if ($mysqli->connect_error) {
+        return false;
+        die("Error de conexión: " . $mysqli->connect_error);
+    }else{
+        return true;
+    }
 }
 
 ?>
