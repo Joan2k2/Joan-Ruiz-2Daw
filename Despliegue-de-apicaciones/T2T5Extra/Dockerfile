@@ -1,8 +1,8 @@
-FROM ubuntu
+FROM ubuntu:latest
 RUN apt-get update
 RUN apt-get install -y tar
 COPY C:\Users\daw2\Documents\Joan-Ruiz-2Daw\Despliegue-de-apicaciones\T2T5Extra\*.tar /archivos_tar/
-RUN for file in .\archivos_tar\*.tar; do tar -xvf "$file"; done
+RUN for file in /archivos_tar/*.tar; do tar -xvf "$file"; done
 EXPOSE 80
     
 
