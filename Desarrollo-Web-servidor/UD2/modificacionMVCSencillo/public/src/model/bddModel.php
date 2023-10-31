@@ -3,18 +3,15 @@ class ModeloDB {
     private $mysqli;
 
     public function __construct() {
-        $this->mysqli = new mysqli($GLOBALS['hostname'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['databaseName']);
-
-        if ($this->mysqli->connect_error) {
-            die("Error de conexión: " . $this->mysqli->connect_error);
-        }
+        // $dbutil=new dbUtil();
+        // $dbutil->verificarConexion();
     }
 
     function obtenerTodosLosDatos() {
         $datos = array(); // Un arreglo para almacenar los datos recuperados
     
-        // Consulta SQL para seleccionar todos los registros de una tabla (reemplaza 'mi_tabla' por el nombre de tu tabla)
-        $query = "SELECT * FROM mi_tabla";
+        // Consulta SQL para seleccionar todos los registros de una tabla 
+        $query = "SELECT * FROM tareas";
     
         $result = $this->mysqli->query($query);
     
@@ -30,10 +27,10 @@ class ModeloDB {
     }
 
     function obtenerDatosId($id) {
-        $datos = array(); // Un arreglo para almacenar los datos recuperados
+        $datos = array(); // Un array para almacenar los datos recuperados
     
-        // Consulta SQL para seleccionar todos los registros de una tabla (reemplaza 'mi_tabla' por el nombre de tu tabla)
-        $query = "SELECT * FROM mi_tabla WHERE id = {$id}";
+        // Consulta SQL para seleccionar todos los registros de una tabla 
+        $query = "SELECT * FROM tareas WHERE id = {$id}";
     
         $result = $this->mysqli->query($query);
     
@@ -47,8 +44,9 @@ class ModeloDB {
     
         return $datos;
     }
-}
- 
 
+    
+ 
+}
 
 ?>
