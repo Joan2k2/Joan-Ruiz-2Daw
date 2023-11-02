@@ -33,6 +33,7 @@ switch ($route) {
         break;*/
     default:
      $mostrarTodaLista=$modelo->obtenerTodosLosDatos();
+     print_r($mostrarTodaLista);
      $vista->mostrarDatos($mostrarTodaLista);
      
     

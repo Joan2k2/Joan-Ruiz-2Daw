@@ -14,24 +14,31 @@ class BddModel {
     }
 
     function obtenerTodosLosDatos() {
+        $dbutil=new dbUtil();
+        $con = $dbutil->verificarConexion();
         $datos = array(); // Un arreglo para almacenar los datos recuperados
     
         // Consulta SQL para seleccionar todos los registros de una tabla 
         $query = "SELECT * FROM tareas";
     
-        $result = $this->mysql->query($query);
-    
+        $result = $con->query($query);
+        
         if ($result) {
-            while ($row = $result->fetch_assoc()) {
-                // Agregar cada fila de datos al arreglo
-                $datos[] = $row;
+            if($result->num_rows > 0){
+                $arrayNuev=array();
+                while ($row = $result->fetch_assoc()) {
+                    // Agregar cada fila de datos al arreglo
+                    echo print_r($row, true);
+                    $arrayNuev[]=$row;
+                }
+                return $arrayNuev;
             }
-            $result->free(); // Liberar el resultado
+          
+        }else{
+            echo"Errrrrror";
         }
-        foreach ($datos as $contenido) {
-            echo"{$contenido}";
-        }
-        return $datos;
+
+        
     }
 
     function obtenerDatosId($id) {
@@ -40,17 +47,18 @@ class BddModel {
         // Consulta SQL para seleccionar todos los registros de una tabla 
         $query = "SELECT * FROM tareas WHERE id = {$id}";
     
-        $result = $this->mysql  ->query($query);
-    
-        if ($result) {
+        $result = $this->mysql->query($query);
+        $arrayNuev=array();
+        if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                // Agregar cada fila de datos al arreglo
-                $datos[] = $row;
+                 // Agregar cada fila de datos al arreglo
+                 echo print_r($row, true);
+                 $arrayNuev[]=$row;
             }
-            $result->free(); // Liberar el resultado
+            return $arrayNuev;
         }
     
-        return $datos;
+        
     }
 
     
