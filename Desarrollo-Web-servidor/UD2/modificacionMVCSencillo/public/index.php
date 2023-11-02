@@ -5,5 +5,12 @@
 #http://localhost/ud2/mvcsencillo3/index.php?route=add
 #http://localhost/ud2/mvcsencillo3/index.php?route=list
 
+
+
 header("Location: router.php?".$_SERVER['QUERY_STRING']);
+
+
+
+// Llamar a la función verificarConexion
+
 ?>

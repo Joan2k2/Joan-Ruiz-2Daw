@@ -1,10 +1,16 @@
 <?php
-class ModeloDB {
-    private $mysqli;
+error_reporting(E_ALL);
+ini_set("display_errors",1);
+
+require_once("../public/dbUtil.php");
+class BddModel {
+    
+    private $mysql;
 
     public function __construct() {
-        // $dbutil=new dbUtil();
-        // $dbutil->verificarConexion();
+        
+         $dbutil=new dbUtil();
+         $this->mysql=$dbutil->verificarConexion();
     }
 
     function obtenerTodosLosDatos() {
@@ -13,7 +19,7 @@ class ModeloDB {
         // Consulta SQL para seleccionar todos los registros de una tabla 
         $query = "SELECT * FROM tareas";
     
-        $result = $this->mysqli->query($query);
+        $result = $this->mysql->query($query);
     
         if ($result) {
             while ($row = $result->fetch_assoc()) {
@@ -22,7 +28,9 @@ class ModeloDB {
             }
             $result->free(); // Liberar el resultado
         }
-    
+        foreach ($datos as $contenido) {
+            echo"{$contenido}";
+        }
         return $datos;
     }
 
@@ -32,7 +40,7 @@ class ModeloDB {
         // Consulta SQL para seleccionar todos los registros de una tabla 
         $query = "SELECT * FROM tareas WHERE id = {$id}";
     
-        $result = $this->mysqli->query($query);
+        $result = $this->mysql  ->query($query);
     
         if ($result) {
             while ($row = $result->fetch_assoc()) {

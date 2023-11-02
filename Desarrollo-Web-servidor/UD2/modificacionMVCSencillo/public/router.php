@@ -1,24 +1,25 @@
 <?php
-require_once './dbUtil.php';
+require_once ("./src/model/bddModel.php");
+require_once ("./src/view/bddView.php");
 
-
+error_reporting(E_ALL);
+ini_set("display_errors",1);
 // Inicializamos el modelo, controladores y vista
+ $modelo= new BddModel();
+ $vista= new BddView();
 
-echo '0 ';
-echo $_GET['route'];
-echo ' ';
 // Obtener la ruta actual desde la URL
 $route = isset($_GET['route']) ? $_GET['route'] : 'default';
 
 //Según lo que lee de la ruta te envia a una parte del switch 
 switch ($route) {
-    case 'saludar':
-        $saludo=$modelSaludar->getHora();
-        $viewSaludar->saludar($saludo);
+    /*case 'list':
+        $mostrarTodaLista=$modelo->obtenerTodosLosDatos();
+        $vista->mostrarDatos($mostrarTodaLista);
         echo('PITO');
 
-        break;
-    case 'despedir':
+        break;*/
+    /*case 'despedir':
         $despedida=$modelDespedir->getHora();
         $viewDespedir->despedirse($despedida);
         echo('PITa');
@@ -29,8 +30,10 @@ switch ($route) {
         $refran=$modelRefran->getRefranes();
         $viewRefran->verRefran($refran);
         echo('PITe');
-        break;
+        break;*/
     default:
-    $saludo=$modelSaludar->getHora();
-    $viewSaludar->saludar($saludo);
+     $mostrarTodaLista=$modelo->obtenerTodosLosDatos();
+     $vista->mostrarDatos($mostrarTodaLista);
+     
+    
 }

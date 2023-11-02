@@ -1,46 +1,53 @@
 <?php
+error_reporting(E_ALL);
+ini_set("display_errors",1);
+
 class dbUtil{
-   private $jsonString = file_get_contents('config.json');
+   private $jsonString;
+   private $databaseName;
+   private    $username;
+   private    $password;
+   private    $hostname;
+   private    $puerto;
+   private    $type;
 
 // Convierte el JSON a un array asociativo
 function __construct(){
-
+    $this->jsonString = file_get_contents("./config.json");
     $config = json_decode($this->jsonString, true);
 
     if ($config === null) {
         die("Error al decodificar el JSON.");
     } else {
         // Ahora almacenamos los valores asociados al JSON en variables globales
-        $databaseName = $config["nombre_base_datos"];
-        $username = $config["usuario"];
-        $password = $config["contrasena"];
-        $hostname = $config["host"];
-        $puerto = $config["puerto"];
-        $type = $config["tipo_base_datos"];
+        $this->databaseName = $config["nombre_base_datos"];
+        $this->username = $config["usuario"];
+        $this->password = $config["contrasena"];
+        $this->hostname = $config["host"];
+        $this->puerto = $config["puerto"];
+        // $this->type = $config["tipo_base_datos"];
+        
         
     }
 }
 
 
-function verificarConexion($hostname, $username, $password, $databaseName)
+function verificarConexion()
 {
     // Accede a las variables globales en lugar de pasarlas como parámetros
-    $mysqli = new mysqli($hostname, $username, $password, $databaseName);
+    $mysqli = new mysqli($this->hostname, $this->username, $this->password, $this->databaseName);
 
     // Verificar si la conexión se realizó con éxito
     if ($mysqli->connect_error) {
         //return false;
         die("Error de conexión: " . $mysqli->connect_error);
     }else{
-        //return true;
+        return $mysqli;
     }
 }
 
 
 }
-
-$dbU = new dbUtil();
-
-// Llamar a la función verificarConexion
-$dbU->verificarConexion("172.20.0.3", "root", "root", "todolist");
+$dbu =new dbUtil();
+$dbu->verificarConexion();
 ?>
