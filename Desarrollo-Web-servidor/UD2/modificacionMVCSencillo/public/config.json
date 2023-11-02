@@ -1,7 +1,7 @@
 {
-    "nombre_base_datos": "mysqlbdd",
+    "nombre_base_datos": "todolist",
     "usuario": "root",
     "contrasena": "root",
-    "host": "172.19.0.2",
+    "host": "172.18.0.3",
     "puerto": "3306"
   }

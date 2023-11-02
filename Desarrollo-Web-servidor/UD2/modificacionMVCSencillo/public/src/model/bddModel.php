@@ -16,7 +16,7 @@ class BddModel {
     function obtenerTodosLosDatos() {
         $dbutil=new dbUtil();
         $con = $dbutil->verificarConexion();
-        $datos = array(); // Un arreglo para almacenar los datos recuperados
+        
     
         // Consulta SQL para seleccionar todos los registros de una tabla 
         $query = "SELECT * FROM tareas";
@@ -28,7 +28,7 @@ class BddModel {
                 $arrayNuev=array();
                 while ($row = $result->fetch_assoc()) {
                     // Agregar cada fila de datos al arreglo
-                    echo print_r($row, true);
+                    
                     $arrayNuev[]=$row;
                 }
                 return $arrayNuev;
@@ -42,20 +42,28 @@ class BddModel {
     }
 
     function obtenerDatosId($id) {
-        $datos = array(); // Un array para almacenar los datos recuperados
+        $dbutil=new dbUtil();
+        $con = $dbutil->verificarConexion();
+        
     
         // Consulta SQL para seleccionar todos los registros de una tabla 
-        $query = "SELECT * FROM tareas WHERE id = {$id}";
+        $query = "SELECT * FROM tareas WHERE id={$id}";
     
-        $result = $this->mysql->query($query);
-        $arrayNuev=array();
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                 // Agregar cada fila de datos al arreglo
-                 echo print_r($row, true);
-                 $arrayNuev[]=$row;
+        $result = $con->query($query);
+        
+        if ($result) {
+            if($result->num_rows > 0){
+                $arrayNuev=array();
+                while ($row = $result->fetch_assoc()) {
+                    // Agregar cada fila de datos al arreglo
+                    
+                    $arrayNuev[]=$row;
+                }
+                return $arrayNuev;
             }
-            return $arrayNuev;
+          
+        }else{
+            echo"Errrrrror";
         }
     
         
