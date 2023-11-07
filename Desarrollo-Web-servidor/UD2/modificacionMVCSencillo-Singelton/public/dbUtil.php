@@ -1,20 +1,20 @@
-[Ayer 10:35] ROBERTO MARTINEZ AVENDAÑO
 <?php
  
-class DataBase{
- 
+class dbUtil{
+    
     private static $instance = null;
     private $connection;
  
     private function __construct() {
         // Recogemos los datos del archivo config
-        $database = file_get_contents("../config/config.json");
+        $database = file_get_contents("./config.json");
         $config = json_decode($database, true);
         $host = $config["host"];
-        $username = $config["username"];
-        $password = $config["password"];
+        $username = $config["usuario"];
+        $password = $config["contrasena"];
         $dbname = $config["nombre_base_datos"];
  
+        echo($host." ".$username." ".$password." ".$dbname);
         // Abrimos la conexión
         $this->connection = new mysqli($host, $username, $password, $dbname);
  

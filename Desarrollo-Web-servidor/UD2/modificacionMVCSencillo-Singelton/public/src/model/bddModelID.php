@@ -2,21 +2,11 @@
 error_reporting(E_ALL);
 ini_set("display_errors",1);
 
-require_once("../public/dbUtil.php");
-class BddModel {
-    
-    private $mysql;
+class BddModelID {
 
-    public function __construct() {
-        
-         $dbutil=new dbUtil();
-         $this->mysql=$dbutil->verificarConexion();
-    }
-
-
-    function obtenerDatosId($id) {
-        $dbutil=new dbUtil();
-        $con = $dbutil->verificarConexion();
+    public function obtenerDatosId($id) {
+        $model = dbUtil::getInstance(); // Usar el Singleton para obtener la instancia
+            $con = $model->getConnection(); // Obtener la conexión
         
     
         // Consulta SQL para seleccionar todos los registros de una tabla 
@@ -38,6 +28,7 @@ class BddModel {
         }else{
             echo"Errrrrror";
         }
+        $con->close();
     
         
     }
