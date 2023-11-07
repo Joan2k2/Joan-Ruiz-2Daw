@@ -7,7 +7,7 @@ function openModel(imagen,personajeName) {
   let modalContenido= document.querySelector(".modal-content");
   modalContenido.style.backgroundImage=imagen;
   modalContenido.style.backgroundSize="cover";
-  modalContenido.style.backgroundSize = 'contain';
+
   modalContenido.style.backgroundRepeat = 'no-repeat';
   document.getElementsByTagName("h1")[1].innerHTML=personajeName;
 }
@@ -30,29 +30,30 @@ function mostrarPersonajes() {
     .then((data) => {
       // Aquí puedes trabajar con los datos de la respuesta
       let personajes = data.results;
-      let a = document.getElementsByClassName("card")[0];
-      a.remove();
-      for (let index = 0; index < cantMostrar; index++) {
-        crearcartas();
-        
+let cartas = document.getElementsByClassName("card");
 
-        let imagen = document.getElementsByClassName("item-0")[index];
-        imagen.style.backgroundImage = "url(" + personajes[index].image + ")";
-        let a="url(" + personajes[index].image + ")";
-        let nombre=personajes[index].name;
-        document.getElementsByClassName("item-1")[index].innerHTML =
-          personajes[index].gender;
-        document.getElementsByClassName("item-2")[index].innerHTML =
-          personajes[index].species;
-        document.getElementsByClassName("item-3")[index].innerHTML =
-          personajes[index].name;
-        document.getElementsByClassName("item-4")[index].innerHTML =
-          personajes[index].status;
-          document.querySelectorAll("#trigger")[index].addEventListener("click",()=>{
+// Eliminar el primer elemento (si existe) de la lista de cartas
+if (cartas.length > 0) {
+  cartas[0].remove();
+}
 
-            openModel(a,nombre);
-          });
-      }
+personajes.slice(0, cantMostrar).forEach((personaje, index) => {
+  crearcartas();
+
+  let imagen = document.getElementsByClassName("item-0")[index];
+  imagen.style.backgroundImage = "url(" + personaje.image + ")";
+  let a = "url(" + personaje.image + ")";
+  let nombre = personaje.name;
+  document.getElementsByClassName("item-1")[index].innerHTML = personaje.gender;
+  document.getElementsByClassName("item-2")[index].innerHTML = personaje.species;
+  document.getElementsByClassName("item-3")[index].innerHTML = personaje.name;
+  document.getElementsByClassName("item-4")[index].innerHTML = personaje.status;
+
+  document.querySelectorAll("#trigger")[index].addEventListener("click", () => {
+    openModel(a, nombre);
+  });
+});
+
       console.log(personajes);
     })
     .catch((error) => {
