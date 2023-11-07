@@ -1,4 +1,4 @@
-let cantMostrar = 3;
+let cantMostrar = 3 ;
 mostrarPersonajes(cantMostrar);
 
 function openModel(imagen,personajeName) {
@@ -10,6 +10,11 @@ function openModel(imagen,personajeName) {
 
   modalContenido.style.backgroundRepeat = 'no-repeat';
   document.getElementsByTagName("h1")[1].innerHTML=personajeName;
+} 
+
+function closeModal(){
+  let miModal = document.querySelector(".modal")
+  miModal.classList.remove("show-modal");
 }
 
 function mostrarPersonajes() {
@@ -51,6 +56,10 @@ personajes.slice(0, cantMostrar).forEach((personaje, index) => {
 
   document.querySelectorAll("#trigger")[index].addEventListener("click", () => {
     openModel(a, nombre);
+  });
+
+  document.querySelector(".close-button").addEventListener("click", () => {
+    closeModal();
   });
 });
 
