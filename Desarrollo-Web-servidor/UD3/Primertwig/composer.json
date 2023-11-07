@@ -1,0 +1,7 @@
+{
+    "name": "joan/app",
+    "description": "mi primera plantilla en twig",
+    "require": {
+        "twig/twig": "^3.7"
+    }
+}
