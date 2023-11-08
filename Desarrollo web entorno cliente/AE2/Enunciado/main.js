@@ -1,26 +1,83 @@
 let cantMostrar = 3;
 let numpag = 1;
+let pepe;
 mostrarPersonajes();
 
 
-document.querySelector("#render-more").addEventListener("click", async () => {
-  let cantpersonajes =await mostrarPersonajes(cantMostrar);
-  console.log(cantpersonajes);
-  //cantMostrar = cantpersonajes.length;
-  //console.log(cantMostrar);
+document.getElementsByTagName("button")[0].addEventListener("click", () => {
+
+  mostrarPersonajes()
+  console.log("cagrga mas");
+  console.log(pepe);
+  cantMostrar = pepe.length;
   borrarCartas();
   mostrarPersonajes();
-  document.getElementById("render-more").remove();
-  if (cantpersonajes[cantpersonajes.length - 1].id === 20) {
+  document.getElementsByTagName("button")[0].remove();
+
+
+  if (pepe[pepe.length - 1].id === 20) {
+
     crearSiguiente();
-  }else if(cantpersonajes[cantpersonajes.length - 1].id === 826){
-    document.getElementById("render-more").remove();
+
+    document.getElementsByTagName("button")[0].addEventListener("click", () => {
+      cantMostrar = 3;
+      numpag++;
+      mostrarPersonajes();
+
+      document.getElementsByTagName("button")[0].remove();
+      crearMostrarMas();
+      document.getElementsByTagName("button")[0].addEventListener("click", () => {
+        cantMostrar = pepe.length;
+        borrarCartas();
+        mostrarPersonajes();
+        document.getElementsByTagName("button")[0].remove();
+        crearAtras();
+        crearSiguiente();
+      });
+    });
+
+
+  } else if (pepe[pepe.length - 1].id === 826) {
+
+    document.getElementsByTagName("button")[0].remove();
     crearAtras();
+
+  } else {
+
+    document.getElementsByTagName("button")[0].remove();
+    crearAtras();
+    crearSiguiente();
+
+    document.getElementsByTagName("button")[0].addEventListener("click", () => {
+
+      cantMostrar = 3;
+      numpag = 1;
+      borrarCartas();
+      mostrarPersonajes();
+
+      document.getElementsByTagName("button")[0].remove();
+      document.getElementsByTagName("button")[1].remove();
+      crearAtras();
+      crearSiguiente();
+    });
+
+    document.getElementsByTagName("button")[1].addEventListener("click", () => {
+
+      cantMostrar = 3;
+      numpag++;
+      borrarCartas();
+      mostrarPersonajes();
+
+      document.getElementsByTagName("button")[0].remove();
+      document.getElementsByTagName("button")[1].remove();
+      crearAtras();
+      crearSiguiente();
+    });
   }
 
-
-
 });
+
+
 
 function openModel(imagen, personajeName) {
   let miModal = document.querySelector(".modal")
@@ -54,9 +111,9 @@ function mostrarPersonajes() {
       // Parsear la respuesta JSON
       return response.json();
     })
-    .then(async (data) => {
+    .then((data) => {
       // Aquí puedes trabajar con los datos de la respuesta
-      
+
       let personajes = data.results;
       borrarCartas();
 
@@ -81,8 +138,9 @@ function mostrarPersonajes() {
         });
       });
 
-      console.log(personajes);
-      return await personajes;
+      //console.log(data.results);
+      pepe = personajes;
+      //return personajes;
     })
     .catch((error) => {
       // Manejar cualquier error que ocurra durante la solicitud
@@ -177,7 +235,7 @@ function crearAtras() {
   // Crear el elemento div con el atributo id
   let divcont = document.querySelector(".content");
   let div = document.querySelector("#render-more");
-  
+
 
   // Crear el elemento de botón y establecer su texto
   let button = document.createElement("button");
@@ -191,15 +249,14 @@ function crearAtras() {
 
 }
 function crearMostrarMas() {
-
   // Crear el elemento div con el atributo id
   let divcont = document.querySelector(".content");
-  let div = document.createElement("div");
-  div.setAttribute("id", "render-more");
+  let div = document.querySelector("#render-more");
+
 
   // Crear el elemento de botón y establecer su texto
   let button = document.createElement("button");
-  button.textContent = "MOSTRAR MÁS";
+  button.textContent = "MOSTRAR MAS";
 
   // Agregar el botón como hijo del div
   div.appendChild(button);
