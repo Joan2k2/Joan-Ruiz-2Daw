@@ -2,11 +2,12 @@ let cantMostrar = 3;
 let numpag = 1;
 mostrarPersonajes();
 
-document.querySelector("#render-more").addEventListener("click", () => {
-  let cantpersonajes = mostrarPersonajes(cantMostrar);
+
+document.querySelector("#render-more").addEventListener("click", async () => {
+  let cantpersonajes =await mostrarPersonajes(cantMostrar);
   console.log(cantpersonajes);
-  cantMostrar = cantpersonajes.length;
-  console.log(cantMostrar);
+  //cantMostrar = cantpersonajes.length;
+  //console.log(cantMostrar);
   borrarCartas();
   mostrarPersonajes();
   document.getElementById("render-more").remove();
@@ -53,10 +54,10 @@ function mostrarPersonajes() {
       // Parsear la respuesta JSON
       return response.json();
     })
-    .then((data) => {
+    .then(async (data) => {
       // Aquí puedes trabajar con los datos de la respuesta
+      
       let personajes = data.results;
-
       borrarCartas();
 
       personajes.slice(0, cantMostrar).forEach((personaje, index) => {
@@ -81,7 +82,7 @@ function mostrarPersonajes() {
       });
 
       console.log(personajes);
-      return personajes;
+      return await personajes;
     })
     .catch((error) => {
       // Manejar cualquier error que ocurra durante la solicitud
@@ -159,8 +160,7 @@ function borrarCartas() {
 function crearSiguiente() {
   // Crear el elemento div con el atributo id
   let divcont = document.querySelector(".content");
-  let div = document.createElement("div");
-  div.setAttribute("id", "render-more");
+  let div = document.querySelector("#render-more");
 
   // Crear el elemento de botón y establecer su texto
   let button = document.createElement("button");
@@ -176,8 +176,8 @@ function crearSiguiente() {
 function crearAtras() {
   // Crear el elemento div con el atributo id
   let divcont = document.querySelector(".content");
-  let div = document.createElement("div");
-  div.setAttribute("id", "render-more");
+  let div = document.querySelector("#render-more");
+  
 
   // Crear el elemento de botón y establecer su texto
   let button = document.createElement("button");
