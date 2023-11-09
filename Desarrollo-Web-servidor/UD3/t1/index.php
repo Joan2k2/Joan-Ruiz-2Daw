@@ -26,6 +26,6 @@ class clase1
     "modulo" => ["DWES", "PROG"],
     "claseEjemplo" => new clase1()
 ]); 
-echo $twig->render('template.html.twig', []);
+//echo $twig->render('template.html.twig', []);
 //echo $twig->render('template2.html.twig', []);
 //echo $twig->render('template3.html.twig', []);

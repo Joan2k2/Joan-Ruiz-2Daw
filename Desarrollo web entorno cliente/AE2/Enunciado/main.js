@@ -1,81 +1,197 @@
 let cantMostrar = 3;
 let numpag = 1;
-let pepe;
+let pepe=[];
+let botonesMostrar=1;
 mostrarPersonajes();
+crearAtras();
+crearSiguiente();
+setTimeout(() => {
+  if (pepe[pepe.length - 1].id === 20) {
+    console.log("tumama");
+    botonesMostrar=1;
+    } else if (pepe[pepe.length - 1].id === 826) {
+      console.log("tumama2");
+      botonesMostrar=2;
+    }else{
+      console.log("tumama3");
+      botonesMostrar=3;
+    }
+}, 1000);
 
-
+//mostrarmas
 document.getElementsByTagName("button")[0].addEventListener("click", () => {
 
-  mostrarPersonajes()
-  console.log("cagrga mas");
-  console.log(pepe);
-  cantMostrar = pepe.length;
-  borrarCartas();
-  mostrarPersonajes();
-  document.getElementsByTagName("button")[0].remove();
-
-
   if (pepe[pepe.length - 1].id === 20) {
+    console.log("tumama");
+    botonesMostrar=1;
+    } else if (pepe[pepe.length - 1].id === 826) {
+      console.log("tumama2");
+      botonesMostrar=2;
+    }else{
+      console.log("tumama3");
+      botonesMostrar=3;
+    }
 
-    crearSiguiente();
-
-    document.getElementsByTagName("button")[0].addEventListener("click", () => {
-      cantMostrar = 3;
-      numpag++;
-      mostrarPersonajes();
-
-      document.getElementsByTagName("button")[0].remove();
-      crearMostrarMas();
-      document.getElementsByTagName("button")[0].addEventListener("click", () => {
-        cantMostrar = pepe.length;
-        borrarCartas();
-        mostrarPersonajes();
-        document.getElementsByTagName("button")[0].remove();
-        crearAtras();
-        crearSiguiente();
-      });
-    });
-
-
-  } else if (pepe[pepe.length - 1].id === 826) {
-
-    document.getElementsByTagName("button")[0].remove();
-    crearAtras();
-
-  } else {
-
-    document.getElementsByTagName("button")[0].remove();
-    crearAtras();
-    crearSiguiente();
-
-    document.getElementsByTagName("button")[0].addEventListener("click", () => {
-
-      cantMostrar = 3;
-      numpag = 1;
-      borrarCartas();
-      mostrarPersonajes();
-
-      document.getElementsByTagName("button")[0].remove();
-      document.getElementsByTagName("button")[1].remove();
-      crearAtras();
-      crearSiguiente();
-    });
-
-    document.getElementsByTagName("button")[1].addEventListener("click", () => {
-
-      cantMostrar = 3;
-      numpag++;
-      borrarCartas();
-      mostrarPersonajes();
-
-      document.getElementsByTagName("button")[0].remove();
-      document.getElementsByTagName("button")[1].remove();
-      crearAtras();
-      crearSiguiente();
-    });
-  }
+    //mostrarPersonajes();
+    console.log("cagrga mas");
+    console.log(pepe);
+    cantMostrar = pepe.length;
+    borrarCartas();
+    mostrarPersonajes();
+    if(botonesMostrar===1){
+      document.getElementsByTagName("button")[0].style.display="none";
+      document.getElementsByTagName("button")[2].style.display="inline";
+    }else if(botonesMostrar===3){
+      document.getElementsByTagName("button")[0].style.display="none";
+      document.getElementsByTagName("button")[1].style.display="inline";
+      document.getElementsByTagName("button")[2].style.display="inline";
+    }else{
+      document.getElementsByTagName("button")[0].style.display="none";
+      document.getElementsByTagName("button")[1].style.display="inline";
+    }
 
 });
+//atras
+document.getElementsByTagName("button")[1].addEventListener("click", () => {
+  botonesMostrar=0;
+  if(botonesMostrar===0){
+    document.getElementsByTagName("button")[0].style.display="inline";
+    document.getElementsByTagName("button")[1].style.display="none";
+    document.getElementsByTagName("button")[2].style.display="none";
+  }else{
+    if (pepe[pepe.length - 1].id === 20) {
+      console.log("tumama");
+      botonesMostrar=1;
+      } else if (pepe[pepe.length - 1].id === 826) {
+        console.log("tumama2");
+        botonesMostrar=2;
+      }else{
+        console.log("tumama3");
+        botonesMostrar=3;
+      }
+  }
+  cantMostrar = 3;
+      numpag = 1;
+      //botonesMostrar=1;
+      borrarCartas();
+      mostrarPersonajes();
+  
+
+});
+//siguiente
+document.getElementsByTagName("button")[2].addEventListener("click", () => {
+  botonesMostrar=0;
+if(botonesMostrar===0){
+  document.getElementsByTagName("button")[0].style.display="inline";
+  document.getElementsByTagName("button")[1].style.display="none";
+  document.getElementsByTagName("button")[2].style.display="none";
+}else{
+  if (pepe[pepe.length - 1].id === 20) {
+    console.log("tumama");
+    botonesMostrar=1;
+    } else if (pepe[pepe.length - 1].id === 826) {
+      console.log("tumama2");
+      botonesMostrar=2;
+    }else{
+      console.log("tumama3");
+      botonesMostrar=3;
+    }
+}
+  
+
+  //mostrarPersonajes();
+  cantMostrar = 3;
+        numpag++;
+        borrarCartas();
+        mostrarPersonajes();
+
+        if(botonesMostrar===1){
+          document.getElementsByTagName("button")[0].style.display="none";
+          document.getElementsByTagName("button")[2].style.display="inline";
+        }else if(botonesMostrar===3){
+          document.getElementsByTagName("button")[0].style.display="none";
+          document.getElementsByTagName("button")[1].style.display="inline";
+          document.getElementsByTagName("button")[2].style.display="inline";
+        }else if(botonesMostrar===2){
+          document.getElementsByTagName("button")[0].style.display="none";
+          document.getElementsByTagName("button")[1].style.display="inline";
+        }
+  
+
+});
+
+// document.getElementsByTagName("button")[0].addEventListener("click", () => {
+
+//   mostrarPersonajes()
+//   console.log("cagrga mas");
+//   console.log(pepe);
+//   cantMostrar = pepe.length;
+//   borrarCartas();
+//   mostrarPersonajes();
+//   document.getElementsByTagName("button")[0].remove();
+
+
+//   if (pepe[pepe.length - 1].id === 20) {
+
+//     crearSiguiente();
+
+//     document.getElementsByTagName("button")[0].addEventListener("click", () => {
+//       cantMostrar = 3;
+//       numpag++;
+//       mostrarPersonajes();
+
+//       document.getElementsByTagName("button")[0].remove();
+//       crearMostrarMas();
+//       document.getElementsByTagName("button")[0].addEventListener("click", () => {
+//         cantMostrar = pepe.length;
+//         borrarCartas();
+//         mostrarPersonajes();
+//         document.getElementsByTagName("button")[0].remove();
+//         crearAtras();
+//         crearSiguiente();
+//       });
+//     });
+
+
+//   } else if (pepe[pepe.length - 1].id === 826) {
+
+//     document.getElementsByTagName("button")[0].remove();
+//     crearAtras();
+
+//   } else {
+
+//     document.getElementsByTagName("button")[0].remove();
+//     crearAtras();
+//     crearSiguiente();
+
+//     document.getElementsByTagName("button")[0].addEventListener("click", () => {
+
+//       cantMostrar = 3;
+//       numpag = 1;
+//       borrarCartas();
+//       mostrarPersonajes();
+
+//       document.getElementsByTagName("button")[0].remove();
+//       document.getElementsByTagName("button")[1].remove();
+//       crearAtras();
+//       crearSiguiente();
+//     });
+
+//     document.getElementsByTagName("button")[1].addEventListener("click", () => {
+
+//       cantMostrar = 3;
+//       numpag++;
+//       borrarCartas();
+//       mostrarPersonajes();
+
+//       document.getElementsByTagName("button")[0].remove();
+//       document.getElementsByTagName("button")[1].remove();
+//       crearAtras();
+//       crearSiguiente();
+//     });
+//   }
+
+// });
 
 
 
@@ -113,7 +229,7 @@ function mostrarPersonajes() {
     })
     .then((data) => {
       // Aquí puedes trabajar con los datos de la respuesta
-
+      document.querySelector("#number-page").innerHTML=numpag;
       let personajes = data.results;
       borrarCartas();
 
@@ -223,6 +339,7 @@ function crearSiguiente() {
   // Crear el elemento de botón y establecer su texto
   let button = document.createElement("button");
   button.textContent = "SIGUIENTES";
+  button.style.display="none";
 
   // Agregar el botón como hijo del div
   div.appendChild(button);
@@ -240,7 +357,7 @@ function crearAtras() {
   // Crear el elemento de botón y establecer su texto
   let button = document.createElement("button");
   button.textContent = "ANTERIORES";
-
+  button.style.display="none";
   // Agregar el botón como hijo del div
   div.appendChild(button);
 

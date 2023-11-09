@@ -27,7 +27,7 @@ class dbUtil{
         // Verifica si ya hay una instancia existente
         if (self::$instance === null) {
             // Si no existe una instancia, crea una nueva
-            self::$instance = new DataBase();
+            self::$instance = new self();
         }
         // Devuelve la instancia existente o recién creada
         return self::$instance;
