@@ -5,6 +5,7 @@ let botonesMostrar=1;
 mostrarPersonajes();
 crearAtras();
 crearSiguiente();
+crearVolver();
 setTimeout(() => {
   if (pepe[pepe.length - 1].id === 20) {
     console.log("tumama");
@@ -292,6 +293,23 @@ function crearAtras() {
   // Crear el elemento de botón y establecer su texto
   let button = document.createElement("button");
   button.textContent = "ANTERIORES";
+  button.style.display="none";
+  // Agregar el botón como hijo del div
+  div.appendChild(button);
+
+  // Agregar el div al cuerpo del documento (o a otro elemento deseado)
+  divcont.appendChild(div);
+
+}
+function crearVolver() {
+  // Crear el elemento div con el atributo id
+  let divcont = document.querySelector(".content");
+  let div = document.querySelector("#render-more");
+
+
+  // Crear el elemento de botón y establecer su texto
+  let button = document.createElement("button");
+  button.textContent = "VOLVER";
   button.style.display="none";
   // Agregar el botón como hijo del div
   div.appendChild(button);
