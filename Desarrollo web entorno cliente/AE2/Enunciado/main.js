@@ -120,81 +120,6 @@ if(botonesMostrar===0){
 
 });
 
-// document.getElementsByTagName("button")[0].addEventListener("click", () => {
-
-//   mostrarPersonajes()
-//   console.log("cagrga mas");
-//   console.log(pepe);
-//   cantMostrar = pepe.length;
-//   borrarCartas();
-//   mostrarPersonajes();
-//   document.getElementsByTagName("button")[0].remove();
-
-
-//   if (pepe[pepe.length - 1].id === 20) {
-
-//     crearSiguiente();
-
-//     document.getElementsByTagName("button")[0].addEventListener("click", () => {
-//       cantMostrar = 3;
-//       numpag++;
-//       mostrarPersonajes();
-
-//       document.getElementsByTagName("button")[0].remove();
-//       crearMostrarMas();
-//       document.getElementsByTagName("button")[0].addEventListener("click", () => {
-//         cantMostrar = pepe.length;
-//         borrarCartas();
-//         mostrarPersonajes();
-//         document.getElementsByTagName("button")[0].remove();
-//         crearAtras();
-//         crearSiguiente();
-//       });
-//     });
-
-
-//   } else if (pepe[pepe.length - 1].id === 826) {
-
-//     document.getElementsByTagName("button")[0].remove();
-//     crearAtras();
-
-//   } else {
-
-//     document.getElementsByTagName("button")[0].remove();
-//     crearAtras();
-//     crearSiguiente();
-
-//     document.getElementsByTagName("button")[0].addEventListener("click", () => {
-
-//       cantMostrar = 3;
-//       numpag = 1;
-//       borrarCartas();
-//       mostrarPersonajes();
-
-//       document.getElementsByTagName("button")[0].remove();
-//       document.getElementsByTagName("button")[1].remove();
-//       crearAtras();
-//       crearSiguiente();
-//     });
-
-//     document.getElementsByTagName("button")[1].addEventListener("click", () => {
-
-//       cantMostrar = 3;
-//       numpag++;
-//       borrarCartas();
-//       mostrarPersonajes();
-
-//       document.getElementsByTagName("button")[0].remove();
-//       document.getElementsByTagName("button")[1].remove();
-//       crearAtras();
-//       crearSiguiente();
-//     });
-//   }
-
-// });
-
-
-
 function openModel(imagen, personajeName) {
   let miModal = document.querySelector(".modal")
   miModal.classList.add("show-modal");
@@ -242,8 +167,18 @@ function mostrarPersonajes() {
         let nombre = personaje.name;
         document.getElementsByClassName("item-1")[index].innerHTML = personaje.gender;
         document.getElementsByClassName("item-2")[index].innerHTML = personaje.species;
-        document.getElementsByClassName("item-3")[index].innerHTML = personaje.name;
         document.getElementsByClassName("item-4")[index].innerHTML = personaje.status;
+        if(cantMostrar>=4){
+          if(index>=3){
+            animarNombre(personaje.name,index);
+          }else{
+            document.getElementsByClassName("item-3")[index].innerHTML=personaje.name;
+          }
+        }else{
+          animarNombre(personaje.name,index);
+        }
+        //animarNombre(personaje.name,index);
+        
 
         document.querySelectorAll("#trigger")[index].addEventListener("click", () => {
           openModel(a, nombre);
@@ -381,3 +316,37 @@ function crearMostrarMas() {
   // Agregar el div al cuerpo del documento (o a otro elemento deseado)
   divcont.appendChild(div);
 }
+
+function animarNombre(nombre,index) {
+  let contenedor=document.getElementsByClassName("item-3")[index];
+  let i = 0;
+    let posiletra = 0;
+    let letra = "";
+
+    const intervalo = setInterval(function () {
+        if (i < 5 && posiletra < nombre.length) {
+            // Muestra letras aleatorias para los primeros 5 ciclos
+            let letraAleatoria = generarLetraAleatoria();
+            contenedor.textContent = letra + letraAleatoria;
+        } else if (posiletra < nombre.length) {
+            // Muestra la letra real después de los primeros 5 ciclos
+            i = 0;
+            letra += nombre[posiletra];
+            contenedor.textContent = letra;
+            posiletra++;
+        } else {
+            // Si ya se mostraron todas las letras del nombre, detén la animación
+            clearInterval(intervalo);
+        }
+
+        i++;
+
+    }, 100); // Ajusta el intervalo según tus preferencias
+}
+
+function generarLetraAleatoria() {
+    const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    const longitud = caracteres.length;
+    return caracteres.charAt(Math.floor(Math.random() * longitud));
+}
+
