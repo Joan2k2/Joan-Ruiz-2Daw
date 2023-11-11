@@ -1,125 +1,137 @@
-let cantMostrar = 3;
+let showCant = 3;
 let numpag = 1;
-let pepe=[];
-let botonesMostrar=1;
-mostrarPersonajes();
-crearAtras();
-crearSiguiente();
-crearVolver();
+let arrayIdentificator = [];
+let showButtons = 1;
+showCharacters();
+createBack();
+createNext();
+createGoBack();
 setTimeout(() => {
-  if (pepe[pepe.length - 1].id === 20) {
-    console.log("tumama");
-    botonesMostrar=1;
-    } else if (pepe[pepe.length - 1].id === 826) {
-      console.log("tumama2");
-      botonesMostrar=2;
-    }else{
-      console.log("tumama3");
-      botonesMostrar=3;
-    }
+  if (arrayIdentificator[arrayIdentificator.length - 1].id === 20) {
+
+    showButtons = 1;
+  } else if (arrayIdentificator[arrayIdentificator.length - 1].id === 826) {
+
+    showButtons = 2;
+  } else {
+
+    showButtons = 3;
+  }
 }, 1000);
 
 //mostrarmas
 document.getElementsByTagName("button")[0].addEventListener("click", () => {
 
-  if (pepe[pepe.length - 1].id === 20) {
-    console.log("tumama");
-    botonesMostrar=1;
-    } else if (pepe[pepe.length - 1].id === 826) {
-      console.log("tumama2");
-      botonesMostrar=2;
-    }else{
-      console.log("tumama3");
-      botonesMostrar=3;
-    }
+  if (arrayIdentificator[arrayIdentificator.length - 1].id === 20) {
+    showButtons = 1;
+  } else if (arrayIdentificator[arrayIdentificator.length - 1].id === 826) {
+    showButtons = 2;
+  } else {
+    showButtons = 3;
+  }
 
-    //mostrarPersonajes();
-    console.log("cagrga mas");
-    console.log(pepe);
-    cantMostrar = pepe.length;
-    borrarCartas();
-    mostrarPersonajes();
-    if(botonesMostrar===1){
-      document.getElementsByTagName("button")[0].style.display="none";
-      document.getElementsByTagName("button")[2].style.display="inline";
-    }else if(botonesMostrar===3){
-      document.getElementsByTagName("button")[0].style.display="none";
-      document.getElementsByTagName("button")[1].style.display="inline";
-      document.getElementsByTagName("button")[2].style.display="inline";
-    }else{
-      document.getElementsByTagName("button")[0].style.display="none";
-      document.getElementsByTagName("button")[1].style.display="inline";
-    }
+  //showCharacters();
+    showCant = arrayIdentificator.length;
+  deleteCards();
+  showCharacters();
+  if (showButtons === 1) {
+    document.getElementsByTagName("button")[0].style.display = "none";
+    document.getElementsByTagName("button")[2].style.display = "inline";
+  } else if (showButtons === 3) {
+    document.getElementsByTagName("button")[0].style.display = "none";
+    document.getElementsByTagName("button")[1].style.display = "inline";
+    document.getElementsByTagName("button")[2].style.display = "inline";
+  } else {
+    document.getElementsByTagName("button")[0].style.display = "none";
+    document.getElementsByTagName("button")[1].style.display = "inline";
+  }
 
 });
 //atras
 document.getElementsByTagName("button")[1].addEventListener("click", () => {
-  botonesMostrar=0;
-  if(botonesMostrar===0){
-    document.getElementsByTagName("button")[0].style.display="inline";
-    document.getElementsByTagName("button")[1].style.display="none";
-    document.getElementsByTagName("button")[2].style.display="none";
-  }else{
-    if (pepe[pepe.length - 1].id === 20) {
-      console.log("tumama");
-      botonesMostrar=1;
-      } else if (pepe[pepe.length - 1].id === 826) {
-        console.log("tumama2");
-        botonesMostrar=2;
-      }else{
-        console.log("tumama3");
-        botonesMostrar=3;
-      }
+  showButtons = 0;
+  if (showButtons === 0) {
+    document.getElementsByTagName("button")[0].style.display = "inline";
+    document.getElementsByTagName("button")[1].style.display = "none";
+    document.getElementsByTagName("button")[2].style.display = "none";
+  } else {
+    if (arrayIdentificator[arrayIdentificator.length - 1].id === 20) {
+      showButtons = 1;
+    } else if (arrayIdentificator[arrayIdentificator.length - 1].id === 826) {
+      showButtons = 2;
+    } else {
+      showButtons = 3;
+    }
   }
-  cantMostrar = 3;
-      numpag = 1;
-      //botonesMostrar=1;
-      borrarCartas();
-      mostrarPersonajes();
-  
+  showCant = 3;
+  numpag = 1;
+  //showButtons=1;
+  deleteCards();
+  showCharacters();
+
 
 });
 //siguiente
 document.getElementsByTagName("button")[2].addEventListener("click", () => {
-  botonesMostrar=0;
-if(botonesMostrar===0){
-  document.getElementsByTagName("button")[0].style.display="inline";
-  document.getElementsByTagName("button")[1].style.display="none";
-  document.getElementsByTagName("button")[2].style.display="none";
-}else{
-  if (pepe[pepe.length - 1].id === 20) {
-    console.log("tumama");
-    botonesMostrar=1;
-    } else if (pepe[pepe.length - 1].id === 826) {
-      console.log("tumama2");
-      botonesMostrar=2;
-    }else{
-      console.log("tumama3");
-      botonesMostrar=3;
+  showButtons = 0;
+  if (showButtons === 0) {
+    document.getElementsByTagName("button")[0].style.display = "inline";
+    document.getElementsByTagName("button")[1].style.display = "none";
+    document.getElementsByTagName("button")[2].style.display = "none";
+  } else {
+    if (arrayIdentificator[arrayIdentificator.length - 1].id === 20) {
+      showButtons = 1;
+    } else if (arrayIdentificator[arrayIdentificator.length - 1].id === 826) {
+      showButtons = 2;
+    } else {
+      showButtons = 3;
     }
-}
-  
+  }
 
-  //mostrarPersonajes();
-  cantMostrar = 3;
-        numpag++;
-        borrarCartas();
-        mostrarPersonajes();
 
-        if(botonesMostrar===1){
-          document.getElementsByTagName("button")[0].style.display="none";
-          document.getElementsByTagName("button")[2].style.display="inline";
-        }else if(botonesMostrar===3){
-          document.getElementsByTagName("button")[0].style.display="none";
-          document.getElementsByTagName("button")[1].style.display="inline";
-          document.getElementsByTagName("button")[2].style.display="inline";
-        }else if(botonesMostrar===2){
-          document.getElementsByTagName("button")[0].style.display="none";
-          document.getElementsByTagName("button")[1].style.display="inline";
-        }
-  
+  //showCharacters();
+  showCant = 3;
+  numpag++;
+  deleteCards();
+  showCharacters();
+
+  if (showButtons === 1) {
+    document.getElementsByTagName("button")[0].style.display = "none";
+    document.getElementsByTagName("button")[2].style.display = "inline";
+  } else if (showButtons === 3) {
+    document.getElementsByTagName("button")[0].style.display = "none";
+    document.getElementsByTagName("button")[1].style.display = "inline";
+    document.getElementsByTagName("button")[2].style.display = "inline";
+  } else if (showButtons === 2) {
+    document.getElementsByTagName("button")[0].style.display = "none";
+    document.getElementsByTagName("button")[1].style.display = "inline";
+  }
+
 
 });
+document.getElementsByTagName("button")[3].addEventListener("click", () => {
+
+  showCant = 3;
+  numpag = 1;
+  //showButtons=1;
+  deleteCards();
+  showCharacters();
+    document.getElementsByTagName("button")[0].style.display = "inline";
+    document.getElementsByTagName("button")[1].style.display = "none";
+    document.getElementsByTagName("button")[2].style.display = "none";
+    document.getElementsByTagName("button")[3].style.display = "none";
+
+});
+document.getElementsByTagName("h1")[0].addEventListener("click",()=>{
+ showFavouriteCharacters();
+    document.querySelector("#number-page").innerHTML = "Favoritos";
+    document.getElementsByTagName("button")[0].style.display = "none";
+    document.getElementsByTagName("button")[1].style.display = "none";
+    document.getElementsByTagName("button")[2].style.display = "none";
+    document.getElementsByTagName("button")[3].style.display = "inline";
+
+});
+
 
 function openModel(imagen, personajeName) {
   let miModal = document.querySelector(".modal")
@@ -137,7 +149,7 @@ function closeModal() {
   miModal.classList.remove("show-modal");
 }
 
-function mostrarPersonajes() {
+function showCharacters() {
   // URL de la API a la que deseas acceder
   let url = "https://rickandmortyapi.com/api/character/?page=" + numpag;
 
@@ -155,12 +167,12 @@ function mostrarPersonajes() {
     })
     .then((data) => {
       // Aquí puedes trabajar con los datos de la respuesta
-      document.querySelector("#number-page").innerHTML=numpag;
+      document.querySelector("#number-page").innerHTML = numpag;
       let personajes = data.results;
-      borrarCartas();
+      deleteCards();
 
-      personajes.slice(0, cantMostrar).forEach((personaje, index) => {
-        crearcartas();
+      personajes.slice(0, showCant).forEach((personaje, index) => {
+        createCards();
 
         let imagen = document.getElementsByClassName("item-0")[index];
         imagen.style.backgroundImage = "url(" + personaje.image + ")";
@@ -169,17 +181,29 @@ function mostrarPersonajes() {
         document.getElementsByClassName("item-1")[index].innerHTML = personaje.gender;
         document.getElementsByClassName("item-2")[index].innerHTML = personaje.species;
         document.getElementsByClassName("item-4")[index].innerHTML = personaje.status;
-        if(cantMostrar>=4){
-          if(index>=3){
-            animarNombre(personaje.name,index);
-          }else{
-            document.getElementsByClassName("item-3")[index].innerHTML=personaje.name;
+        if (showCant >= 4) {
+          if (index >= 3) {
+            animateName(personaje.name, index);
+          } else {
+            document.getElementsByClassName("item-3")[index].innerHTML = personaje.name;
           }
-        }else{
-          animarNombre(personaje.name,index);
+        } else {
+          animateName(personaje.name, index);
         }
-        //animarNombre(personaje.name,index);
-        
+        //guardar en el local storage
+        document.getElementsByClassName("item-3")[index].addEventListener("click", () => {
+          let datosGuardados = JSON.parse(localStorage.getItem('personajes')) || [];
+          let name = personaje.name;
+          let gender = personaje.gender;
+          let species = personaje.species;
+          let status = personaje.status;
+          let image=personaje.image;
+          datosGuardados.push({ name, gender, species, status,image});
+          localStorage.setItem('personajes', JSON.stringify(datosGuardados));
+
+        });
+
+
 
         document.querySelectorAll("#trigger")[index].addEventListener("click", () => {
           openModel(a, nombre);
@@ -190,17 +214,15 @@ function mostrarPersonajes() {
         });
       });
 
-      //console.log(data.results);
-      pepe = personajes;
-      //return personajes;
+      arrayIdentificator = personajes;
     })
     .catch((error) => {
       // Manejar cualquier error que ocurra durante la solicitud
-      console.error("Error:", error);
+    console.log("Error", error);
     });
 
 }
-function crearcartas() {
+function createCards() {
   // Crear el elemento div con la clase "grid-container"
   var gridContainerDiv = document.getElementsByClassName("grid-container")[0];
 
@@ -258,7 +280,7 @@ function crearcartas() {
   gridContainerDiv.appendChild(cardDiv);
 }
 
-function borrarCartas() {
+function deleteCards() {
   let cartas = document.getElementsByClassName("card");
 
   // Eliminar todos los elementos con la clase "card"
@@ -267,7 +289,7 @@ function borrarCartas() {
   }
 
 }
-function crearSiguiente() {
+function createNext() {
   // Crear el elemento div con el atributo id
   let divcont = document.querySelector(".content");
   let div = document.querySelector("#render-more");
@@ -275,7 +297,7 @@ function crearSiguiente() {
   // Crear el elemento de botón y establecer su texto
   let button = document.createElement("button");
   button.textContent = "SIGUIENTES";
-  button.style.display="none";
+  button.style.display = "none";
 
   // Agregar el botón como hijo del div
   div.appendChild(button);
@@ -284,7 +306,7 @@ function crearSiguiente() {
   divcont.appendChild(div);
 
 }
-function crearAtras() {
+function createBack() {
   // Crear el elemento div con el atributo id
   let divcont = document.querySelector(".content");
   let div = document.querySelector("#render-more");
@@ -293,7 +315,7 @@ function crearAtras() {
   // Crear el elemento de botón y establecer su texto
   let button = document.createElement("button");
   button.textContent = "ANTERIORES";
-  button.style.display="none";
+  button.style.display = "none";
   // Agregar el botón como hijo del div
   div.appendChild(button);
 
@@ -301,7 +323,7 @@ function crearAtras() {
   divcont.appendChild(div);
 
 }
-function crearVolver() {
+function createGoBack() {
   // Crear el elemento div con el atributo id
   let divcont = document.querySelector(".content");
   let div = document.querySelector("#render-more");
@@ -310,7 +332,7 @@ function crearVolver() {
   // Crear el elemento de botón y establecer su texto
   let button = document.createElement("button");
   button.textContent = "VOLVER";
-  button.style.display="none";
+  button.style.display = "none";
   // Agregar el botón como hijo del div
   div.appendChild(button);
 
@@ -318,7 +340,7 @@ function crearVolver() {
   divcont.appendChild(div);
 
 }
-function crearMostrarMas() {
+function createShowMore() {
   // Crear el elemento div con el atributo id
   let divcont = document.querySelector(".content");
   let div = document.querySelector("#render-more");
@@ -335,36 +357,84 @@ function crearMostrarMas() {
   divcont.appendChild(div);
 }
 
-function animarNombre(nombre,index) {
-  let contenedor=document.getElementsByClassName("item-3")[index];
+function animateName(nombre, index) {
+  let contenedor = document.getElementsByClassName("item-3")[index];
   let i = 0;
-    let posiletra = 0;
-    let letra = "";
+  let posiletra = 0;
+  let letra = "";
 
-    const intervalo = setInterval(function () {
-        if (i < 5 && posiletra < nombre.length) {
-            // Muestra letras aleatorias para los primeros 5 ciclos
-            let letraAleatoria = generarLetraAleatoria();
-            contenedor.textContent = letra + letraAleatoria;
-        } else if (posiletra < nombre.length) {
-            // Muestra la letra real después de los primeros 5 ciclos
-            i = 0;
-            letra += nombre[posiletra];
-            contenedor.textContent = letra;
-            posiletra++;
-        } else {
-            // Si ya se mostraron todas las letras del nombre, detén la animación
-            clearInterval(intervalo);
-        }
+  const intervalo = setInterval(function () {
+    if (i < 5 && posiletra < nombre.length) {
+      // Muestra letras aleatorias para los primeros 5 ciclos
+      let letraAleatoria = generateRandomLetter();
+      contenedor.textContent = letra + letraAleatoria;
+    } else if (posiletra < nombre.length) {
+      // Muestra la letra real después de los primeros 5 ciclos
+      i = 0;
+      letra += nombre[posiletra];
+      contenedor.textContent = letra;
+      posiletra++;
+    } else {
+      // Si ya se mostraron todas las letras del nombre, detén la animación
+      clearInterval(intervalo);
+    }
 
-        i++;
+    i++;
 
-    }, 100); // Ajusta el intervalo según tus preferencias
+  }, 30); // Ajusta el intervalo según tus preferencias
 }
 
-function generarLetraAleatoria() {
-    const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    const longitud = caracteres.length;
-    return caracteres.charAt(Math.floor(Math.random() * longitud));
+function generateRandomLetter() {
+  const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const longitud = caracteres.length;
+  return caracteres.charAt(Math.floor(Math.random() * longitud));
+}
+function showFavouriteCharacters() {
+  // Obtener los datos almacenados en localStorage
+  deleteCards();
+  let datosGuardados = JSON.parse(localStorage.getItem('personajes')) || [];
+
+  // Verificar si hay datos guardados
+  if (datosGuardados.length > 0) {
+    // Recorrer los datos utilizando forEach
+    datosGuardados.forEach((personaje, index) => {
+      // Acceder a cada propiedad del personaje
+      createCards();
+
+      let imagen = document.getElementsByClassName("item-0")[index];
+      imagen.style.backgroundImage = "url(" + personaje.image + ")";
+
+      let a = "url(" + personaje.image + ")";
+
+      let nombre = personaje.name;
+      document.getElementsByClassName("item-1")[index].innerHTML = personaje.gender;
+      document.getElementsByClassName("item-2")[index].innerHTML = personaje.species;
+      document.getElementsByClassName("item-4")[index].innerHTML = personaje.status;
+      if (showCant >= 4) {
+        if (index >= 3) {
+          animateName(personaje.name, index);
+        } else {
+          animateName(personaje.name, index);
+        }
+      } else {
+        animateName(personaje.name, index);
+      }
+     
+      document.querySelectorAll("#trigger")[index].addEventListener("click", () => {
+        openModel(a, nombre);
+      });
+
+      document.querySelector(".close-button").addEventListener("click", () => {
+        closeModal();
+      });
+  
+
+
+
+    });
+  } else {
+     
+  }
+
 }
 

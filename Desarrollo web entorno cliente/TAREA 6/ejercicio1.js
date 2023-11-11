@@ -24,7 +24,7 @@ function guardarDatos() {
     let apellido1 = document.getElementsByTagName("input")[1].value;
     let apellido2 = document.getElementsByTagName("input")[2].value;
     let dni = document.getElementsByTagName("input")[3].value;
-
+console.log(nombre);
     if (noContieneNumeros(nombre) && noContieneNumeros(apellido1) && noContieneNumeros(apellido2)) {
         if (dni.length === 9) {
             // Recuperar los datos actuales del Local Storage (si existen)
