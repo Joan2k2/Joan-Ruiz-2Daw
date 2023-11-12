@@ -133,15 +133,15 @@ document.getElementsByTagName("h1")[0].addEventListener("click",()=>{
 });
 
 
-function openModel(imagen, personajeName) {
+function openModel(image, charactName) {
   let miModal = document.querySelector(".modal")
   miModal.classList.add("show-modal");
   let modalContenido = document.querySelector(".modal-content");
-  modalContenido.style.backgroundImage = imagen;
+  modalContenido.style.backgroundImage = image;
   modalContenido.style.backgroundSize = "cover";
   modalContenido.style.backgroundPosition = "center"
   modalContenido.style.backgroundRepeat = 'no-repeat';
-  document.getElementsByTagName("h1")[1].innerHTML = personajeName;
+  document.getElementsByTagName("h1")[1].innerHTML = charactName;
 }
 
 function closeModal() {
@@ -168,45 +168,45 @@ function showCharacters() {
     .then((data) => {
       // Aquí puedes trabajar con los datos de la respuesta
       document.querySelector("#number-page").innerHTML = numpag;
-      let personajes = data.results;
+      let characters = data.results;
       deleteCards();
 
-      personajes.slice(0, showCant).forEach((personaje, index) => {
+      characters.slice(0, showCant).forEach((charact, index) => {
         createCards();
 
-        let imagen = document.getElementsByClassName("item-0")[index];
-        imagen.style.backgroundImage = "url(" + personaje.image + ")";
-        let a = "url(" + personaje.image + ")";
-        let nombre = personaje.name;
-        document.getElementsByClassName("item-1")[index].innerHTML = personaje.gender;
-        document.getElementsByClassName("item-2")[index].innerHTML = personaje.species;
-        document.getElementsByClassName("item-4")[index].innerHTML = personaje.status;
+        let image = document.getElementsByClassName("item-0")[index];
+        image.style.backgroundImage = "url(" + charact.image + ")";
+        let a = "url(" + charact.image + ")";
+        let name1 = charact.name;
+        document.getElementsByClassName("item-1")[index].innerHTML = charact.gender;
+        document.getElementsByClassName("item-2")[index].innerHTML = charact.species;
+        document.getElementsByClassName("item-4")[index].innerHTML = charact.status;
         if (showCant >= 4) {
           if (index >= 3) {
-            animateName(personaje.name, index);
+            animateName(charact.name, index);
           } else {
-            document.getElementsByClassName("item-3")[index].innerHTML = personaje.name;
+            document.getElementsByClassName("item-3")[index].innerHTML = charact.name;
           }
         } else {
-          animateName(personaje.name, index);
+          animateName(charact.name, index);
         }
         //guardar en el local storage
         document.getElementsByClassName("item-3")[index].addEventListener("click", () => {
-          let datosGuardados = JSON.parse(localStorage.getItem('personajes')) || [];
-          let name = personaje.name;
-          let gender = personaje.gender;
-          let species = personaje.species;
-          let status = personaje.status;
-          let image=personaje.image;
-          datosGuardados.push({ name, gender, species, status,image});
-          localStorage.setItem('personajes', JSON.stringify(datosGuardados));
+          let dataSaved = JSON.parse(localStorage.getItem('characters')) || [];
+          let name = charact.name;
+          let gender = charact.gender;
+          let species = charact.species;
+          let status = charact.status;
+          let image=charact.image;
+          dataSaved.push({ name, gender, species, status,image});
+          localStorage.setItem('characters', JSON.stringify(dataSaved));
 
         });
 
 
 
         document.querySelectorAll("#trigger")[index].addEventListener("click", () => {
-          openModel(a, nombre);
+          openModel(a, name1);
         });
 
         document.querySelector(".close-button").addEventListener("click", () => {
@@ -214,7 +214,7 @@ function showCharacters() {
         });
       });
 
-      arrayIdentificator = personajes;
+      arrayIdentificator = characters;
     })
     .catch((error) => {
       // Manejar cualquier error que ocurra durante la solicitud
@@ -357,25 +357,25 @@ function createShowMore() {
   divcont.appendChild(div);
 }
 
-function animateName(nombre, index) {
+function animateName(name1, index) {
   let contenedor = document.getElementsByClassName("item-3")[index];
   let i = 0;
   let posiletra = 0;
   let letra = "";
 
   const intervalo = setInterval(function () {
-    if (i < 5 && posiletra < nombre.length) {
+    if (i < 5 && posiletra < name1.length) {
       // Muestra letras aleatorias para los primeros 5 ciclos
       let letraAleatoria = generateRandomLetter();
       contenedor.textContent = letra + letraAleatoria;
-    } else if (posiletra < nombre.length) {
+    } else if (posiletra < name1.length) {
       // Muestra la letra real después de los primeros 5 ciclos
       i = 0;
-      letra += nombre[posiletra];
+      letra += name1[posiletra];
       contenedor.textContent = letra;
       posiletra++;
     } else {
-      // Si ya se mostraron todas las letras del nombre, detén la animación
+      // Si ya se mostraron todas las letras del name1, detén la animación
       clearInterval(intervalo);
     }
 
@@ -392,36 +392,36 @@ function generateRandomLetter() {
 function showFavouriteCharacters() {
   // Obtener los datos almacenados en localStorage
   deleteCards();
-  let datosGuardados = JSON.parse(localStorage.getItem('personajes')) || [];
+  let dataSaved = JSON.parse(localStorage.getItem('characters')) || [];
 
   // Verificar si hay datos guardados
-  if (datosGuardados.length > 0) {
+  if (dataSaved.length > 0) {
     // Recorrer los datos utilizando forEach
-    datosGuardados.forEach((personaje, index) => {
-      // Acceder a cada propiedad del personaje
+    dataSaved.forEach((charact, index) => {
+      // Acceder a cada propiedad del charact
       createCards();
 
-      let imagen = document.getElementsByClassName("item-0")[index];
-      imagen.style.backgroundImage = "url(" + personaje.image + ")";
+      let image = document.getElementsByClassName("item-0")[index];
+      image.style.backgroundImage = "url(" + charact.image + ")";
 
-      let a = "url(" + personaje.image + ")";
+      let a = "url(" + charact.image + ")";
 
-      let nombre = personaje.name;
-      document.getElementsByClassName("item-1")[index].innerHTML = personaje.gender;
-      document.getElementsByClassName("item-2")[index].innerHTML = personaje.species;
-      document.getElementsByClassName("item-4")[index].innerHTML = personaje.status;
+      let name1 = charact.name;
+      document.getElementsByClassName("item-1")[index].innerHTML = charact.gender;
+      document.getElementsByClassName("item-2")[index].innerHTML = charact.species;
+      document.getElementsByClassName("item-4")[index].innerHTML = charact.status;
       if (showCant >= 4) {
         if (index >= 3) {
-          animateName(personaje.name, index);
+          animateName(charact.name, index);
         } else {
-          animateName(personaje.name, index);
+          animateName(charact.name, index);
         }
       } else {
-        animateName(personaje.name, index);
+        animateName(charact.name, index);
       }
      
       document.querySelectorAll("#trigger")[index].addEventListener("click", () => {
-        openModel(a, nombre);
+        openModel(a, name1);
       });
 
       document.querySelector(".close-button").addEventListener("click", () => {
