@@ -1,0 +1,12 @@
+{
+    "name": "joan/app",
+    "require": {
+        "twig/twig": "^3.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Joan\\App\\": "src/",
+            "Joan\\App\\modelo\\":"src/modelo"
+        }
+    }
+}
