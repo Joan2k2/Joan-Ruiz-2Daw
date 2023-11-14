@@ -1,4 +1,3 @@
-CREATE DATABASE IF NOT EXISTS bddjoanevaluable;
 USE bddjoanevaluable;
 
 CREATE TABLE IF NOT EXISTS usuarios (
