@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Core;
-
+error_reporting(E_ALL);
+ini_set("display_errors",1);
 use App\Core\Interfaces\IDataBase;
 
 class DataBase implements IDataBase
@@ -19,7 +20,7 @@ class DataBase implements IDataBase
         $username = $this->dbConfig["user"];
         $password = $this->dbConfig["password"];
         $dbName = $this->dbConfig["dbname"];
-
+        print"ser ". $servername ." usr ". $username ." pss ". $password ." dbn ". $dbName ." ";
         // Create connection
         $this->conn = new \mysqli($servername, $username, $password, $dbName);
     }

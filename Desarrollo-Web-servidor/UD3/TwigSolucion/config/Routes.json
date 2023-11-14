@@ -5,7 +5,7 @@
     },
     "/lista": {
         "controller": "ListController",
-        "action": "listadoTarea"
+        "action": "listadoTarea"    
     },
     "/detalle": {
         "controller": "DetailController",

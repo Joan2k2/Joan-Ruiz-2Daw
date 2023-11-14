@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Models;
-
+error_reporting(E_ALL);
+ini_set("display_errors",1);
 use App\Core\Interfaces\IDataBase;
 
 class Tareas
@@ -18,7 +19,7 @@ class Tareas
 
     public function findById($id){
         $sql = "SELECT * FROM tareas WHERE id=$id";
-        return array_shift($this->database->executeSQL($sql));
+        return $this->database->executeSQL($sql);
     }
 
 }

@@ -1,6 +1,6 @@
 {
-    "server": "localhost",
+    "server": "172.18.0.3",
     "user": "root",
-    "password": "",
+    "password": "root",
     "dbname": "todolist"
 }
