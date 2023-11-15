@@ -1,0 +1,23 @@
+h1{
+    border-bottom: solid;
+    border-width: 2px;
+    border-color: #00f;
+}
+
+h2{
+    border: solid;
+    border-width: 2px;
+    border-color: #AAA;
+}
+
+#lista1{
+    border-top: dotted;
+    border-bottom: dotted;
+    border-width: 4px;
+    border-color: #F00;
+}
+#lista2{
+    border: dashed;
+    border-width: 2px;
+    border-color: #0F0;
+}

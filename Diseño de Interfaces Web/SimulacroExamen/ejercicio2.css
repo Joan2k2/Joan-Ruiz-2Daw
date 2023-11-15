@@ -1,0 +1,39 @@
+body{
+
+    background-color:#CFC;
+}
+
+.titulos{
+    color: #060;
+}
+p{
+    color: #00F;
+    font-family: Georgia, Cambria, serif;
+    font-size: 16px;
+}
+.resaltado{
+
+    font-weight: bold;
+    font-size: 20px;
+
+}
+li{
+    color: #00F;
+}
+
+.resaltarNegro{
+    color: #FFF;
+    background-color: #000;
+    font-style: italic;
+}
+h1{
+color: #F00;
+font-family: Verdana,Calibri,sans-serif;
+font-size: 32px;
+}
+
+h2{
+    color: #A00;
+    font-family: Verdana,Calibri,sans-serif;
+    font-size: 24px;
+    }
