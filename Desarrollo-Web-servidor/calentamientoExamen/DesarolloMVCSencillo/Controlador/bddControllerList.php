@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 class BddControllerList{
-
+//controlador de la lista
 private $modelo;
 private $view;
 
