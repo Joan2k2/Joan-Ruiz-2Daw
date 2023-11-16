@@ -61,7 +61,8 @@ switch ($route) {
 
         $controllerLista->mostrarLista();
     
-        break;    
+        break;  
+            
     default:
     $vistaInicial->muestraIniio();
 }

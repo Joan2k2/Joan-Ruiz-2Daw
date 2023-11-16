@@ -20,6 +20,7 @@ class VistaInicial{
               <option value="http://localhost/calentamientoExamen/DesarolloMVCSencillo/router.php?route=despedir">despedir</option>
               <option value="http://localhost/calentamientoExamen/DesarolloMVCSencillo/router.php?route=refran">refran</option>
               <option value="http://localhost/calentamientoExamen/DesarolloMVCSencillo/router.php?route=list">lista</option>
+              <option value="http://localhost/calentamientoExamen/neogym-html/index.php">template</option>
               </select>
               </form>
         </form>
