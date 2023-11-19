@@ -1,0 +1,12 @@
+Activar Compose:
+- docker-compose up -d
+
+Generar Vendor:
+- docker run --rm --interactive --tty --volume .:/app composer init
+
+Añadir Twig:
+Would you like to define your dependencies (require) interactively [yes]? 
+Search for a package: twig/twig 
+
+Actualizar Autoloader
+- docker run --rm --interactive --tty --volume .:/app composer dump-autoload

@@ -4,6 +4,7 @@ ini_set("display_errors", 1);
 require_once(__DIR__ ."../../dbUtil.php");
 class BddModeloTodos{
 
+    //devuelve un array con los campos de la tabla y su valor(titulo: pepito)
     public function obtenerTodosLosDatos() {
             $model = dbUtil::getInstance(); // Usar el Singleton para obtener la instancia
             

@@ -38,6 +38,7 @@ $vistaInicial=new VistaInicial();
 // Obtener la ruta actual desde la URL
 //arreglar la ruta, no coge el valor de la ruta, siempre va al valor false
 // todo es por la imagen del contenedor
+//transforma la palabra route en una variable que se le asigna un valor por eso haces en el navegador ?route=list ahí route vale list
 $route = isset($_GET['route']) ? $_GET['route'] : 'default';
 
 //Según lo que lee de la ruta te envia a una parte del switch 

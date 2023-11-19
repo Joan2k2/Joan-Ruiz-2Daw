@@ -1,0 +1,52 @@
+Buscar imagenes
+- docker search [imagen]
+
+Descargar imagen
+- docker pull [imagen]
+
+Comprobar contenedores (comando)
+- docker ps (solo contenedores activos)
+- docker ps -a (todos los contenedores)
+
+Crear contenedor (basico)
+- docker run [imagen]
+
+Crear contenedor interactivo (basico)
+- docker run -it [imagen]
+
+Crear contenedor interactivo (avanzado)
+- docker run -it -d --name [nombre contenedor] -p [puerto]  [imagen]
+
+Crear contenedor compartiendo volumenes
+- docker run -d -v [ubicacion local]:[ubicacion maquina] --name [nombre contenedor] -p [puerto]
+
+Entrar en un contenedor activo
+- docker attach [id contenedor]
+
+Arrancar contenedor inactivo
+- docker start [id contenedor]
+
+Comprimir imagenes docker
+- docker save -o [archivo.tar] [nombres de las imagenes a comprimir]
+
+Cargar imagenes comprimidas
+- docker load -i [archivo.tar]
+
+Borrar imagenes y contenedores
+- docker rm [contenedor]
+- docker rmi [imagen]
+
+Abre la terminal de un contenedor que se ejecuta en segundo plano o un contenedor que se ha creado sin terminal
+-docker exec -it mi_[contenedor] /bin/bash
+
+Copia un archivo en local y lo deja en la ruta especificada del contenedor
+docker cp [archivo_local] [contenedor]:[ruta_en_el_contenedor]
+
+Para un contenedor
+docker kill [contenedor]
+
+Creamos un contenedor mysql introducciondo la contraseña del usuario root ejecutandolo en segundo plano y creando un volumen de mysql llamado db
+docker run --name [nombre del contenedor a crear] -e MYSQL_ROOT_PASSWORD=[contraseña root] -d -v db:/var/lib/mysql mysql
+
+
+  

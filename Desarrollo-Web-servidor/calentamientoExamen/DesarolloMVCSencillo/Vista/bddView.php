@@ -20,7 +20,7 @@ class BddView{
           echo '</tr>';
   
      
-  
+           //el titulo, descripcion etc son los nombres que estan en el array que coinciden con los de la bdd 
           foreach ($array as $tarea) {
   
               echo '<tr>';
