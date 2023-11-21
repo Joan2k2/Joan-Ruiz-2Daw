@@ -1,0 +1,46 @@
+p{
+
+    font-size: 16px;
+    line-height: 1.5;
+}
+main h1{
+
+    color: #336699;
+}
+
+h1+h2{
+    color: gray;
+}
+
+h2+p{
+    background-color: #DAF7A6;
+    width: fit-content  ;
+}
+a{
+    color: #CC3300;
+    text-decoration: solid;
+
+}
+p>a{
+    color: purple;
+}
+
+#lista li{
+    list-style-type:square
+}
+.destacado li{
+    font-weight: bold;
+}
+
+button{
+    background-color: #FF9900;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+button:hover{
+    color: white;
+    background-color: #CC3300;
+}
