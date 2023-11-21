@@ -48,5 +48,7 @@ docker kill [contenedor]
 Creamos un contenedor mysql introducciondo la contraseña del usuario root ejecutandolo en segundo plano y creando un volumen de mysql llamado db
 docker run --name [nombre del contenedor a crear] -e MYSQL_ROOT_PASSWORD=[contraseña root] -d -v db:/var/lib/mysql mysql
 
+Arrancamos un contenedor de forma interactiva
+docker run -it --name [contenedor] [iamgen] /bin/bash
 
   

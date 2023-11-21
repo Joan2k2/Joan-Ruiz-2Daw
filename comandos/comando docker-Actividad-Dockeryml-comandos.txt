@@ -1,0 +1,25 @@
+# Iniciar un contenedor de MySQL
+docker run -p 3306:3306 --name db -e MYSQL_ROOT_PASSWORD=root -d mysql
+
+#accedes al contenedor de mysql    
+docker exec -it [id del contenedor] mysql --user=root --password=root
+
+#creacion de base de datos
+mysql> create database `midb`;
+mysql> use midb;
+mysql> create table `persona`(`id` int(11) not null, `nombre` varchar(20) not null);
+mysql> insert into persona values (1,'joan');
+
+# Iniciar un contenedor de PhpMyAdmin vinculado al contenedor de MySQL
+docker run -d -p 8000:80 --name phpmyadmin --link [contenedor mysql]:[la bdd que he creado] phpmyadmin
+
+# Iniciar un contenedor de Apache con soporte para PHP vinculado al contenedor de MySQL
+docker run -d -p 80:80 -v .:/var/www/html --name apache --link db:midb php:8-apache
+
+
+# Ingresar a un contenedor apache y realizar configuraciones
+docker exec -it [nombre del contenedor] bash
+apt-get update
+apt-get install -y libmysqli-dev
+docker-php-ext-install mysqli
+service apache2 restart
