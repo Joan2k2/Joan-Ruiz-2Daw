@@ -61,6 +61,7 @@ switch ($route) {
     case 'list':
 
         $controllerLista->mostrarLista();
+        $controllerLista->borrar();
     
         break;  
             

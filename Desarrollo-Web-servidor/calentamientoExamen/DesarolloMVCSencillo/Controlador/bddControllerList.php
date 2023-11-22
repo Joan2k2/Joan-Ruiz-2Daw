@@ -19,6 +19,10 @@ public function mostrarLista(){
     
 }
 
+public function borrar(){
+    $this->modelo->borrarDatos("pepe");
+}
+
 }
 
 ?>
