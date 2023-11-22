@@ -1,0 +1,11 @@
+{
+    "name": "daw2-dwes/mvc-ap2",
+    "require": {
+        "twig/twig": "^3.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": "src/"
+        }
+    }
+}

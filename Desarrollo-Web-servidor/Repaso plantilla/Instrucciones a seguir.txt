@@ -1,0 +1,8 @@
+1-Copio la plantilla y la pongo en carpeta nueva
+2-Cojo archivos carpeta twig y se los meto al de la plantilla
+3-Ejecuto comando de update
+4-Segun lo que tengo que hacer me paso el dbutil y hago el mvc
+5-hago lo de la vista y le paso lo del array en caso de más de un valor si es solo uno echo $twig->render("index.html.twig",["nombre"=>$nombre, "apellido"=>$apellido]);
+6-creo la carpeta templates y meto los html 
+7-en el index creo el for de plantillas
+9-cambio las rutas para que todas funcionen
