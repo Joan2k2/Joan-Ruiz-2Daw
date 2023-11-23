@@ -1,0 +1,6 @@
+{
+    "nombre_base_datos": "empresa",
+    "usuario": "root",
+    "contrasena": "root",
+    "host": "mysql"
+  }
