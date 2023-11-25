@@ -1,0 +1,83 @@
+body {
+    background-image: url('fondo.jpg'); /* Reemplaza 'fondo.jpg' con la ruta de tu imagen de fondo */
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+}
+
+nav {
+    float: left;
+    width: 20%;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+nav a {
+    display: block;
+    padding: 10px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: #333;
+}
+
+nav a:hover {
+    background-color: #ddd;
+}
+
+section {
+    float: left;
+    width: 70%;
+    padding: 20px;
+}
+
+article {
+    float: left;
+    width: 30%;
+    margin: 0 2% 20px 0;
+}
+
+article img {
+    width: 100%;
+    height: auto;
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+article img:hover {
+    opacity: 0.8;
+}
+
+#formulario {
+    background-color: #fff;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+p {
+    text-align: justify;
+    text-align-last: center;
+    word-wrap: break-word;
+    hyphens: auto;
+    text-indent: 20px;
+}
+
+.inline-div {
+    display: inline;
+}
+
+.block-links {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.scrollable-div {
+    overflow: scroll;
+    height: 100px; /* ajusta la altura según sea necesario */
+}
