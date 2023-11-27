@@ -20,7 +20,6 @@
                 <a href="./tallas.html">Guia de tallas</a>
                 <a href="./aboutUs.html">¿Quienes somos?</a>
             </div>
-
             <div class="iconos-derecha">
                 <img src="./imagenes/carrito.png" alt="icono carrito">
                 <img src="./imagenes/usuario.png" alt="icono usuario">
@@ -32,12 +31,34 @@
 
     <main>
         <div class="carousel">
-            <img src="1.png" alt="Carrusel">
+            <img style="width: 400px; height: 400px" src="./imagenes/calcetines1.jpg" alt="Carrusel">
         </div>
         <!-- Abajo del todo antes del footer y centrado te lleva a tienda -->
-        <div>Compra ahira</div>
+        <div>Compra ahora</div>
     </main>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const carousel = document.querySelector('.carousel');
 
+        // Lista de imágenes para el carrusel
+        const images = ['./imagenes/calcetines1.jpg', './imagenes/calcetines2.jpg','./imagenes/calcetines3.jpg',];
+
+        let currentIndex = 0;
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const imageUrl = images[currentIndex];
+            carousel.innerHTML = `<img src="${imageUrl}" alt="Carrusel" style="width: 400px; height: 400px;">`;
+        }
+
+        // Cambia la imagen cada 3 segundos (3000 milisegundos)
+        setInterval(nextSlide, 3000);
+    });
+</script>
     <footer>
         <article class="footer-content">
             <div class="contact-info">
