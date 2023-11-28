@@ -1,148 +1,142 @@
 body {
-    background-image: url('fondo.jpg');
-    background-attachment: fixed;
-    background-size: cover;
-    margin: 0;
-    height: 100%;
-    font-family: Arial, sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+  background-image: url("fondo.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  margin: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
-html{
-    margin: 0;
-    height: 100%
+html {
+  margin: 0;
+  height: 100%;
 }
 
 header {
-    background-color: #042B2C;
-    padding: 10px;
-    text-align: center;
-    
+  background-color: #042b2c;
+  padding: 10px;
+  text-align: center;
 }
 
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    
-    padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px;
 }
 
 .logo {
-    width: 200px;
-    height: 70px;
-    margin-right: 0; /* Eliminamos el margen derecho del logo */
+  width: 200px;
+  height: 70px;
+  margin-right: 0; /* Eliminamos el margen derecho del logo */
 }
 
 .menu {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .menu a {
-    padding: 10px;
-    text-decoration: none;
-    color: #DBA52E;
-    margin: 0 5px; /* Reducimos el margen entre los elementos del menú */
-    border-radius: 5px;
+  padding: 10px;
+  text-decoration: none;
+  color: #dba52e;
+  margin: 0 5px; /* Reducimos el margen entre los elementos del menú */
+  border-radius: 5px;
 }
 
-
 .menu a:hover {
-    background-color: #ddddddd5;
-    
+  background-color: #ddddddd5;
 }
 
 .iconos-derecha img {
-    width: 30px;
-    margin-right: 10px;
+  width: 30px;
+  margin-right: 10px;
 }
 
-
-
-
 footer {
-    background-color: #333333;
-    color: #E0E0E0;
-    padding: 10px;
-    font-size: 14px;
+  background-color: #333333;
+  color: #e0e0e0;
+  padding: 10px;
+  font-size: 14px;
 }
 
 .footer-content {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
-.contact-info, .social-media {
-    width: 48%;
-    display: inline;
+.contact-info,
+.social-media {
+  width: 48%;
+  display: inline;
 }
 
-.contact-info h2, .social-media h2 {
-    border-bottom: 2px solid #fff;
-    padding-bottom: 5px;
-    max-width: 45%;
+.contact-info h2,
+.social-media h2 {
+  border-bottom: 2px solid #fff;
+  padding-bottom: 5px;
+  max-width: 45%;
 }
-
 
 .copyright {
-    text-align: center;
-    margin-top: 5px;
-    font-size: 14px;
+  text-align: center;
+  margin-top: 5px;
+  font-size: 14px;
 }
 
-
-img:hover{
-    opacity: 60%;
-    
+img:hover {
+  opacity: 60%;
 }
 
 a:link {
-    color: #DBA52E;
-    text-decoration: solid;
-  }
-  
-  /* visited link */
-  a:visited {
-    color: #DBA52E;
-  }
-  
-  /* mouse over link */
-  a:hover {
-    color: #a76d96;
-    text-decoration: underline;
-  }
-  
-  /* selected link */
-  a:active {
-    color: #cdfeaa;
-    background-color: #265301;
-  }
-  a:focus {
-    text-decoration: underline;
-    background-color: #E0E0E0;
-  }
-  @font-face {
-    font-family: 'Lato-Light';
-    src: url('fuentes/Lato-Light.woff') format('woff');
-    /* Otros estilos si es necesario, como font-weight o font-style */
+  color: #dba52e;
+  text-decoration: solid;
+}
+
+/* visited link */
+a:visited {
+  color: #dba52e;
+}
+
+/* mouse over link */
+a:hover {
+  color: #a76d96;
+  text-decoration: underline;
+}
+
+/* selected link */
+a:active {
+  color: #cdfeaa;
+  background-color: #265301;
+}
+a:focus {
+  text-decoration: underline;
+  background-color: #e0e0e0;
+}
+@font-face {
+  font-family: "Lato-Light";
+  src: url("fuentes/Lato-Light.woff") format("woff");
+  /* Otros estilos si es necesario, como font-weight o font-style */
 }
 
 @font-face {
-    font-family: 'toms-handwritten-new';
-    src: url('fuentes/toms-handwritten-new.woff') format('woff');
-    /* Otros estilos si es necesario, como font-weight o font-style */
+  font-family: "toms-handwritten-new";
+  src: url("fuentes/toms-handwritten-new.woff") format("woff");
+  /* Otros estilos si es necesario, como font-weight o font-style */
 }
-h2,p{
-    font-family: "Lato-light";
+h2,
+p {
+  font-family: "Lato-light";
 }
-.menu a{
-    font-family: 'toms-handwritten-new';
-    font-size: 30px;
+.menu a {
+  font-family: "toms-handwritten-new";
+  font-size: 30px;
 }
-.social-media a{
-    font-family: 'toms-handwritten-new';
-    font-size: 20px;
+.social-media a {
+  font-family: "toms-handwritten-new";
+  font-size: 20px;
 }
