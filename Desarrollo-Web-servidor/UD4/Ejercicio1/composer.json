@@ -1,0 +1,13 @@
+{
+    "name": "joan/app",
+    "require": {
+        "twig/twig": "^3.8",
+        "doctrine/orm": "2.13",
+        "symfony/cache": "^5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Joan\\App\\": "src/"
+        }
+    }
+}
