@@ -1,1 +1,3 @@
 Docker run --rm --interactive --tty --volume .:/app composer update
+
+Docker run --rm --interactive --tty --volume .:/app composer install (para copiar vendor y composer ejemplo jorge decejemplo)

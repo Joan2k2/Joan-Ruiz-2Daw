@@ -9,7 +9,6 @@ use App\Core\RouteCollection;
 use App\Core\EntityManager;
 
 /* $obj = new EntityManager(); */
-
 $routes = new RouteCollection();
 $request = new Request();
 $dispatcher = new Dispatcher($routes, $request);
