@@ -1,0 +1,24 @@
+main {
+  display: flex;
+  flex: 1;
+  width: 900px;
+  height: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  }
+
+ app-menu {
+    flex: 1;
+    max-width: 25%;
+    background-color: #f0f0f0; /* Añade un color de fondo opcional al menú */
+  }
+  app-article {
+    flex: 3;
+    max-width: 75%;
+    padding: 10px;
+    background-color: #e0e0e0;
+    position: relative; /* Establece el contexto de posición relativa para el artículo */
+    overflow: hidden; /* Evita que la imagen se desborde del contenedor */
+    border-radius: 8px; /* Agrega esquinas redondeadas opcionalmente */
+  }
+    

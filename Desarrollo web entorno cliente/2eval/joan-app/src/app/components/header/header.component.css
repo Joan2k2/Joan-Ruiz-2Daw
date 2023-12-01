@@ -2,7 +2,7 @@ header{
     width: 1000px;
     font-size: 30px;
     margin: auto;
-    background-color: grey;
+    background-color: cornflowerblue;
     padding: 20px;
     display: flex;
     flex-direction: row-reverse;
