@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+{% block content %}
+<table>
+    <tr>
+        <th>ID</th>
+        <th>NOMBRE</th>
+        <th>F. NACIMIENTO</th>
+    </tr>
+    {% for row in resultados %}
+    <tr>
+        <td>{{row.getId}}</td>
+        <td>{{row.getTitulo}}</td>
+        <td>{{row.getFecha_creacion | date("d/m/Y")}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock content %}

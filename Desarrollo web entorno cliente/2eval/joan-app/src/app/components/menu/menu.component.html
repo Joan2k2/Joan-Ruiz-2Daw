@@ -1,11 +1,14 @@
 <menu>
 
  
-    <h1>Edificio</h1>
-    <p><a href="textos/otra_pagina.html">Hemisferic</a></p>
-    <p><a href="textos/otra_pagina.html">Museo de las Ciencias</a></p>
-    <p><a href="textos/otra_pagina.html">Oceanografic</a></p>
-    <p><a href="textos/otra_pagina.html">Palau de les Arts</a></p>
-    <p><a href="textos/otra_pagina.html">Umbracle</a></p>
+    <h1 (click)="onClick(<div class ="menu"></h1>)">Edificio</h1>
+    <div [class.menu]="isMenuVisible">
+        <p><a href="textos/otra_pagina.html">Hemisferic</a></p>
+        <p><a href="textos/otra_pagina.html">Museo de las Ciencias</a></p>
+        <p><a href="textos/otra_pagina.html">Oceanografic</a></p>
+        <p><a href="textos/otra_pagina.html">Palau de les Arts</a></p>
+        <p><a href="textos/otra_pagina.html">Umbracle</a></p>
+    </div>
+    
 
 </menu>

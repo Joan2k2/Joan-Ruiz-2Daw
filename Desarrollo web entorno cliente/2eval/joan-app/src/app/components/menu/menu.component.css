@@ -1,0 +1,8 @@
+.menu {
+    display: block; /* Muestra el menú cuando la clase 'menu' está presente */
+  }
+  
+  .menu.hidden {
+    display: none; /* Oculta el menú cuando la clase 'hidden' está presente */
+  }
+  
