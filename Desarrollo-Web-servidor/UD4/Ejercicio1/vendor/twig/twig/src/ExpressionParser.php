@@ -17,7 +17,6 @@ use Twig\Node\Expression\AbstractExpression;
 use Twig\Node\Expression\ArrayExpression;
 use Twig\Node\Expression\ArrowFunctionExpression;
 use Twig\Node\Expression\AssignNameExpression;
-use Twig\Node\Expression\Binary\AbstractBinary;
 use Twig\Node\Expression\Binary\ConcatBinary;
 use Twig\Node\Expression\BlockReferenceExpression;
 use Twig\Node\Expression\ConditionalExpression;
@@ -27,7 +26,6 @@ use Twig\Node\Expression\MethodCallExpression;
 use Twig\Node\Expression\NameExpression;
 use Twig\Node\Expression\ParentExpression;
 use Twig\Node\Expression\TestExpression;
-use Twig\Node\Expression\Unary\AbstractUnary;
 use Twig\Node\Expression\Unary\NegUnary;
 use Twig\Node\Expression\Unary\NotUnary;
 use Twig\Node\Expression\Unary\PosUnary;
@@ -42,6 +40,8 @@ use Twig\Node\Node;
  * @see https://en.wikipedia.org/wiki/Operator-precedence_parser
  *
  * @author Fabien Potencier <fabien@symfony.com>
+ *
+ * @internal
  */
 class ExpressionParser
 {
@@ -50,9 +50,7 @@ class ExpressionParser
 
     private $parser;
     private $env;
-    /** @var array<string, array{precedence: int, class: class-string<AbstractUnary>}> */
     private $unaryOperators;
-    /** @var array<string, array{precedence: int, class: class-string<AbstractBinary>, associativity: self::OPERATOR_*}> */
     private $binaryOperators;
 
     public function __construct(Parser $parser, Environment $env)
@@ -82,7 +80,7 @@ class ExpressionParser
             } elseif (isset($op['callable'])) {
                 $expr = $op['callable']($this->parser, $expr);
             } else {
-                $expr1 = $this->parseExpression(self::OPERATOR_LEFT === $op['associativity'] ? $op['precedence'] + 1 : $op['precedence'], true);
+                $expr1 = $this->parseExpression(self::OPERATOR_LEFT === $op['associativity'] ? $op['precedence'] + 1 : $op['precedence']);
                 $class = $op['class'];
                 $expr = new $class($expr, $expr1, $token->getLine());
             }
@@ -334,14 +332,7 @@ class ExpressionParser
             }
             $first = false;
 
-            if ($stream->test(/* Token::SPREAD_TYPE */ 13)) {
-                $stream->next();
-                $expr = $this->parseExpression();
-                $expr->setAttribute('spread', true);
-                $node->addElement($expr);
-            } else {
-                $node->addElement($this->parseExpression());
-            }
+            $node->addElement($this->parseExpression());
         }
         $stream->expect(/* Token::PUNCTUATION_TYPE */ 9, ']', 'An opened array is not properly closed');
 
@@ -365,14 +356,6 @@ class ExpressionParser
                 }
             }
             $first = false;
-
-            if ($stream->test(/* Token::SPREAD_TYPE */ 13)) {
-                $stream->next();
-                $value = $this->parseExpression();
-                $value->setAttribute('spread', true);
-                $node->addElement($value);
-                continue;
-            }
 
             // a hash key can be:
             //
@@ -502,7 +485,7 @@ class ExpressionParser
                     }
                 }
             } else {
-                throw new SyntaxError(sprintf('Expected name or number, got value "%s" of type %s.', $token->getValue(), Token::typeToEnglish($token->getType())), $lineno, $stream->getSourceContext());
+                throw new SyntaxError('Expected name or number.', $lineno, $stream->getSourceContext());
             }
 
             if ($node instanceof NameExpression && null !== $this->parser->getImportedSymbol('template', $node->getAttribute('name'))) {

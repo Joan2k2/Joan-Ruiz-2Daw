@@ -17,7 +17,6 @@ class Request implements IRequest
         $rawRouteElements = explode("/", $rawRoute);
         $this->route = "/" . $rawRouteElements[5];
         $this->params = array_slice($rawRouteElements, 6);
-        
     }
 
     /**

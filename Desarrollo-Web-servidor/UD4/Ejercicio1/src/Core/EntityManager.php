@@ -3,8 +3,7 @@
 namespace App\Core;
 
 use Doctrine\ORM\Tools\Setup;
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+
 class EntityManager
 {
     private $em;
@@ -12,10 +11,10 @@ class EntityManager
 
     public function __construct()
     {
-        $this->dbConfig= json_decode(file_get_contents(__DIR__ . "/../../config/dbConfig.json"), true);
+        $this->dbConfig = json_decode(file_get_contents(__DIR__ . "/../../config/dbConfig.json"), true);
 
 
-        $paths = [__DIR__.'/../Entity'];
+        $paths = [__DIR__ . '/../Entity'];
         $isDevMode = true;
 
         $dbParams = [
@@ -29,7 +28,7 @@ class EntityManager
         $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode, null, null, false);
         $this->em = \Doctrine\ORM\EntityManager::create($dbParams, $config);
     }
-
+    //devuelve el em
     public function get()
     {
         return $this->em;

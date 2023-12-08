@@ -1,9 +1,5 @@
 {
-    "/":{
-        "controller": "ListController",
-        "action": "listado"
-
-    },"/lista": {
+    "/lista": {
         "controller": "ListController",
         "action": "listado"
     },

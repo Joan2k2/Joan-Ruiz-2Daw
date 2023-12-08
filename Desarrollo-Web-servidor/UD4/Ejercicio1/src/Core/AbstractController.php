@@ -13,7 +13,6 @@ abstract class AbstractController
     {
         $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../../templates');
         $this->twig = new \Twig\Environment($loader);
-
     }
 
     public function render($template, $params)

@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Entity;
+
 use App\Repository\UsersRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Users
 {
     /**
-     * @ORM\Id
+     * @ORM\id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue
      */
@@ -19,24 +21,36 @@ class Users
     /** @ORM\Column(type="string", length="16") */
     private $titulo;
 
-    /** @ORM\Column(type="datetime") */
+    /** @ORM\Column(type="date") */
     private $fecha_creacion;
+    /** @ORM\Column(type="string", length="16") */
+    private $descripcion;
+    /** @ORM\Column(type="date") */
+    private $fecha_vencimiento;
 
-
-    /**
-     * Get the value of id
-     */ 
-    public function getId()
+    public function getid()
     {
         return $this->id;
     }
+    /**
+     * Get the value of userId
+     */
+    public function gettitulo()
+    {
+        return $this->titulo;
+    }
 
     /**
-     * Set the value of id
-     *
-     * @return  self
-     */ 
-    public function setId($id)
+     * Get the value of userName
+     */
+    public function getfecha()
+    {
+        return $this->fecha_creacion;
+    }
+    /**
+     * Get the value of id
+     */
+    public function setid($id)
     {
         $this->id = $id;
 
@@ -44,19 +58,11 @@ class Users
     }
 
     /**
-     * Get the value of titulo
-     */ 
-    public function getTitulo()
-    {
-        return $this->titulo;
-    }
-
-    /**
-     * Set the value of titulo
+     * Set the value of userName
      *
      * @return  self
-     */ 
-    public function setTitulo($titulo)
+     */
+    public function settitulo($titulo)
     {
         $this->titulo = $titulo;
 
@@ -64,21 +70,40 @@ class Users
     }
 
     /**
-     * Get the value of fecha_creacion
-     */ 
-    public function getFecha_creacion()
-    {
-        return $this->fecha_creacion;
-    }
-
-    /**
      * Set the value of fecha_creacion
      *
      * @return  self
-     */ 
-    public function setFecha_creacion($fecha_creacion)
+     */
+    public function setfecha($fecha_creacion)
     {
         $this->fecha_creacion = $fecha_creacion;
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * Set the value of descripcion
+     *
+     * @return  self
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Set the value of fecha_vencimiento
+     *
+     * @return  self
+     */
+    public function setFecha_vencimiento($fecha_vencimiento)
+    {
+        $this->fecha_vencimiento = $fecha_vencimiento;
 
         return $this;
     }

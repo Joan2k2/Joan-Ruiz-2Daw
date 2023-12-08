@@ -4,7 +4,7 @@
         "action": "listado"
 
     },"/lista": {
-        "controller": "ListController",
+        "controller": "TareaRepository",
         "action": "listado"
     },
     "/add":{

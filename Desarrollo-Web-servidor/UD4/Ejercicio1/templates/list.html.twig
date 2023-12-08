@@ -1,16 +1,19 @@
 {% extends "base.html.twig" %}
 {% block content %}
+
 <table>
+    <p><a href="/UD4/ejercicio1/public/index.php/add">{I}</a></p>
     <tr>
-        <th>ID</th>
-        <th>NOMBRE</th>
-        <th>F. NACIMIENTO</th>
+        <th>Nombre</th>
+        <th>Fecha de Creacion</th>
     </tr>
     {% for row in resultados %}
     <tr>
-        <td>{{row.getUserId}}</td>
-        <td>{{row.getUserName}}</td>
-        <td>{{row.getUserBirthDate | date("d/m/Y")}}</td>
+        <td>{{row.gettitulo}}</td>
+        <td>{{row.getfecha | date("d/m/Y")}}</td>
+        <td><a href="/UD4/ejercicio1/public/index.php/delete/{{row.getid}}">{X}</a></td>
+        <td><a href="/UD4/ejercicio1/public/index.php/update/{{row.getid}}">{U}</a></td>
+
     </tr>
     {% endfor %}
 </table>

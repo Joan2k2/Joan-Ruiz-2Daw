@@ -46,7 +46,7 @@ class Compiler
     /**
      * @return $this
      */
-    public function reset(int $indentation = 0)
+    public function compile(Node $node, int $indentation = 0)
     {
         $this->lastLine = null;
         $this->source = '';
@@ -57,15 +57,6 @@ class Compiler
         $this->indentation = $indentation;
         $this->varNameSalt = 0;
 
-        return $this;
-    }
-
-    /**
-     * @return $this
-     */
-    public function compile(Node $node, int $indentation = 0)
-    {
-        $this->reset($indentation);
         $node->compile($this);
 
         return $this;
@@ -218,6 +209,6 @@ class Compiler
 
     public function getVarName(): string
     {
-        return sprintf('__internal_compile_%d', $this->varNameSalt++);
+        return sprintf('__internal_%s', hash('sha256', __METHOD__.$this->varNameSalt++));
     }
 }

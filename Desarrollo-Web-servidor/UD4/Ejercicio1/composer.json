@@ -1,8 +1,8 @@
 {
-    "name": "joan/app",
+    "name": "daw2-dwes/mvc-doctrine",
     "autoload": {
         "psr-4": {
-            "Joan\\App\\": "src/"
+            "App\\" : "src/"
         }
     },
     "require": {
@@ -10,5 +10,4 @@
         "doctrine/orm": "^2.13",
         "symfony/cache": "^5.3"
     }
-   
 }

@@ -25,8 +25,6 @@ use Twig\Extension\OptimizerExtension;
 use Twig\Loader\ArrayLoader;
 use Twig\Loader\ChainLoader;
 use Twig\Loader\LoaderInterface;
-use Twig\Node\Expression\Binary\AbstractBinary;
-use Twig\Node\Expression\Unary\AbstractUnary;
 use Twig\Node\ModuleNode;
 use Twig\Node\Node;
 use Twig\NodeVisitor\NodeVisitorInterface;
@@ -40,11 +38,11 @@ use Twig\TokenParser\TokenParserInterface;
  */
 class Environment
 {
-    public const VERSION = '3.7.1';
-    public const VERSION_ID = 30701;
+    public const VERSION = '3.3.3';
+    public const VERSION_ID = 30303;
     public const MAJOR_VERSION = 3;
-    public const MINOR_VERSION = 7;
-    public const RELEASE_VERSION = 1;
+    public const MINOR_VERSION = 3;
+    public const RELEASE_VERSION = 3;
     public const EXTRA_VERSION = '';
 
     private $charset;
@@ -55,7 +53,6 @@ class Environment
     private $lexer;
     private $parser;
     private $compiler;
-    /** @var array<string, mixed> */
     private $globals = [];
     private $resolvedGlobals;
     private $loadedTemplates;
@@ -231,7 +228,7 @@ class Environment
     {
         if (\is_string($cache)) {
             $this->originalCache = $cache;
-            $this->cache = new FilesystemCache($cache, $this->autoReload ? FilesystemCache::FORCE_BYTECODE_INVALIDATION : 0);
+            $this->cache = new FilesystemCache($cache);
         } elseif (false === $cache) {
             $this->originalCache = $cache;
             $this->cache = new NullCache();
@@ -263,7 +260,7 @@ class Environment
     {
         $key = $this->getLoader()->getCacheKey($name).$this->optionsHash;
 
-        return $this->templateClassPrefix.hash(\PHP_VERSION_ID < 80100 ? 'sha256' : 'xxh128', $key).(null === $index ? '' : '___'.$index);
+        return $this->templateClassPrefix.hash('sha256', $key).(null === $index ? '' : '___'.$index);
     }
 
     /**
@@ -385,7 +382,7 @@ class Environment
      */
     public function createTemplate(string $template, string $name = null): TemplateWrapper
     {
-        $hash = hash(\PHP_VERSION_ID < 80100 ? 'sha256' : 'xxh128', $template, false);
+        $hash = hash('sha256', $template, false);
         if (null !== $name) {
             $name = sprintf('%s (string template %s)', $name, $hash);
         } else {
@@ -436,20 +433,11 @@ class Environment
             return $this->load($names);
         }
 
-        $count = \count($names);
         foreach ($names as $name) {
-            if ($name instanceof Template) {
-                return $name;
+            try {
+                return $this->load($name);
+            } catch (LoaderError $e) {
             }
-            if ($name instanceof TemplateWrapper) {
-                return $name;
-            }
-
-            if (1 !== $count && !$this->getLoader()->exists($name)) {
-                continue;
-            }
-
-            return $this->load($name);
         }
 
         throw new LoaderError(sprintf('Unable to find one of the following templates: "%s".', implode('", "', $names)));
@@ -560,13 +548,6 @@ class Environment
         $this->runtimeLoaders[] = $loader;
     }
 
-    /**
-     * @template TExtension of ExtensionInterface
-     *
-     * @param class-string<TExtension> $class
-     *
-     * @return TExtension
-     */
     public function getExtension(string $class): ExtensionInterface
     {
         return $this->extensionSet->getExtension($class);
@@ -575,11 +556,9 @@ class Environment
     /**
      * Returns the runtime implementation of a Twig element (filter/function/tag/test).
      *
-     * @template TRuntime of object
+     * @param string $class A runtime class name
      *
-     * @param class-string<TRuntime> $class A runtime class name
-     *
-     * @return TRuntime The runtime implementation
+     * @return object The runtime implementation
      *
      * @throws RuntimeError When the template cannot be found
      */
@@ -778,8 +757,6 @@ class Environment
 
     /**
      * @internal
-     *
-     * @return array<string, mixed>
      */
     public function getGlobals(): array
     {
@@ -809,8 +786,6 @@ class Environment
 
     /**
      * @internal
-     *
-     * @return array<string, array{precedence: int, class: class-string<AbstractUnary>}>
      */
     public function getUnaryOperators(): array
     {
@@ -819,8 +794,6 @@ class Environment
 
     /**
      * @internal
-     *
-     * @return array<string, array{precedence: int, class: class-string<AbstractBinary>, associativity: ExpressionParser::OPERATOR_*}>
      */
     public function getBinaryOperators(): array
     {
