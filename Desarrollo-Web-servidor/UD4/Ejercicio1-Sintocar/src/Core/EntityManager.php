@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Core;
-
+error_reporting(E_ALL);
+ini_set("display_errors",1);
 use Doctrine\ORM\Tools\Setup;
 
 class EntityManager
@@ -29,7 +30,7 @@ class EntityManager
         $this->em = \Doctrine\ORM\EntityManager::create($dbParams, $config);
     }
 
-    public function get()
+        public function get()
     {
         return $this->em;
     }
