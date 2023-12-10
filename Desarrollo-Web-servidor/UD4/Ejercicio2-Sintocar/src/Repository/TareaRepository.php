@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Repository;
-
+error_reporting(E_ALL);
+ini_set("display_errors",1);
 use App\Core\AbstractController;
 use App\Entity\Tarea;
 use App\Core\EntityManager;
