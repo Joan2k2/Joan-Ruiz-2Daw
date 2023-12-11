@@ -1,6 +1,7 @@
 {% extends "base.html.twig" %}
 {% block content %}
 <table>
+<p><a href="/UD4/Ejercicio2-Sintocar/templates/insertar.html">{I}</a></p>
     <tr>
         <th>ID</th>
         <th>NOMBRE</th>
@@ -11,14 +12,19 @@
         <td>{{row.getId}}</td>
         <td>{{row.getTitulo}}</td>
         <td>{{row.getFecha_creacion | date("d/m/Y")}}</td>
+        <td><a href="/UD4/Ejercicio2-Sintocar/public/index.php/delete/{{row.getId}}">{X}</a></td>
+        <td><a href="/UD4/Ejercicio2-Sintocar/public/index.php/update/{{row.getId}}">{U}</a></td>
+
     </tr>
     {% endfor %}
-    <div>
+   
+</table>
+ <div>
     {% for page in 1..totalPages %}
         <a href='http://localhost/UD4/Ejercicio2-Sintocar/public/index.php/lista/{{ page }}'>{{ page }}</a>
     {% endfor %}
-</div>
-</table>
+    </div>
+    <br>
 {% endblock content %}
 
 

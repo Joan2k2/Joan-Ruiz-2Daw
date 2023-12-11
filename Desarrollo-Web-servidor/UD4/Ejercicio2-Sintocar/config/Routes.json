@@ -8,11 +8,11 @@
         "action": "listado"
     },
     "/add":{
-        "controller": "AddController",
+        "controller": "CrudController",
         "action": "add"
     },
     "/delete":{
-        "controller": "DelController",
+        "controller": "CrudController",
         "action": "del"
     },
     "/update":{

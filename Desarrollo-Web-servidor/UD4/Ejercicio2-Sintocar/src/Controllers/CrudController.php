@@ -15,24 +15,44 @@ class CrudController extends AbstractController{
     {
       // Obtener la instancia del EntityManager
       $em = (new EntityManager())->get();
-      // Obtener el repositorio de Tasks
-      $tasksRepository = $em->getRepository(Tarea::class);
+      // Obtener el repositorio de tarea
+      $tareaRepository = $em->getRepository(Tarea::class);
       // Número de tareas por página
-      $tasksPerPage = 5;
+      $tareaPerPage = 5;
       // Calcular el desplazamiento
-      $offset = ($page - 1) * $tasksPerPage;
+      $offset = ($page - 1) * $tareaPerPage;
       // Contar el total de tareas
-      $totalTasks = count($tasksRepository->findAll());
+      $totaltarea = count($tareaRepository->findAll());
       // Calcular el total de páginas
-      $totalPages = ceil($totalTasks / $tasksPerPage);
+      $totalPages = ceil($totaltarea / $tareaPerPage);
       // Obtener las tareas paginadas
-      $tasks = $tasksRepository->findBy([], null, $tasksPerPage, $offset);
+      $tarea = $tareaRepository->findBy([], null, $tareaPerPage, $offset);
       // Renderizar la plantilla con los resultados y la paginación
       $this->render("list.html.twig", [
-          "resultados" => $tasks,
+          "resultados" => $tarea,
           "currentPage" => $page,
           "totalPages" => $totalPages
       ]);
+    }
+
+    public function add()
+    {
+      // Obtener la instancia del EntityManager
+      $em = (new EntityManager())->get();
+      // Obtener el repositorio de tarea
+      $tareaDatos = $em->getClassMetadata(Tarea::class);
+      $tarea = new TareaRepository($em,$tareaDatos);
+      $tarea->add();
+      
+    }
+
+    public function del(){
+      $em = (new EntityManager())->get();
+      // Obtener el repositorio de tarea
+      $tareaDatos = $em->getClassMetadata(Tarea::class);
+      $tarea = new TareaRepository($em,$tareaDatos);
+      $tarea->del($tareaDatos);
+
     }
 
 }

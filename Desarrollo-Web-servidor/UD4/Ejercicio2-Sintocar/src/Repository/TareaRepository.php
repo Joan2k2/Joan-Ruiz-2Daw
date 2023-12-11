@@ -18,8 +18,10 @@ public function add()
    
    $em = (new EntityManager())->get();
    $nuevo = new Tarea();
-   $nuevo->setTitulo("nuevaTarea");
+   $nuevo->setTitulo($_POST["titulo"]);
+   $nuevo->setDescripcion($_POST["descripcion"]);
    $nuevo->setFecha_creacion(new \DateTime('2021-10-24'));
+   $nuevo->setFecha_vencimiento(new \DateTime('2021-10-24'));
    $em->persist($nuevo);
    echo("he estado en add");
    $em->flush();
