@@ -19,9 +19,14 @@ class Tarea
     /** @ORM\Column(type="string", length="16") */
     private $titulo;
 
+    /** @ORM\Column(type="string", length="16") */
+    private $descripcion;
+
     /** @ORM\Column(type="datetime") */
     private $fecha_creacion;
 
+    /** @ORM\Column(type="datetime") */
+    private $fecha_vencimiento;
 
     /**
      * Get the value of id
@@ -79,6 +84,46 @@ class Tarea
     public function setFecha_creacion($fecha_creacion)
     {
         $this->fecha_creacion = $fecha_creacion;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of descripcion
+     */ 
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * Set the value of descripcion
+     *
+     * @return  self
+     */ 
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of fecha_vencimiento
+     */ 
+    public function getFecha_vencimiento()
+    {
+        return $this->fecha_vencimiento;
+    }
+
+    /**
+     * Set the value of fecha_vencimiento
+     *
+     * @return  self
+     */ 
+    public function setFecha_vencimiento($fecha_vencimiento)
+    {
+        $this->fecha_vencimiento = $fecha_vencimiento;
 
         return $this;
     }

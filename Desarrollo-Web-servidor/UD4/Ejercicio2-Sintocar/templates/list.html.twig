@@ -13,5 +13,12 @@
         <td>{{row.getFecha_creacion | date("d/m/Y")}}</td>
     </tr>
     {% endfor %}
+    <div>
+    {% for page in 1..totalPages %}
+        <a href='http://localhost/UD4/Ejercicio2-Sintocar/public/index.php/lista/{{ page }}'>{{ page }}</a>
+    {% endfor %}
+</div>
 </table>
 {% endblock content %}
+
+

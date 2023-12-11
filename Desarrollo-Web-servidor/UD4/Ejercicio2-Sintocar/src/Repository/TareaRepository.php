@@ -11,13 +11,7 @@ use Doctrine\ORM\EntityRepository;
 
 class TareaRepository extends EntityRepository 
 {
-    private $abs;
-
-
-    public function __construct(AbstractController $abs)
-    {
-        $this->abs = $abs;
-    }
+   
 
 public function add()
 {
@@ -29,44 +23,42 @@ public function add()
    $em->persist($nuevo);
    echo("he estado en add");
    $em->flush();
-}
-public function listado($page = null)
-{
-   
-   $em = (new EntityManager())->get();
-   echo"1";
-   $usersRepository = $em->getRepository(Tarea::class);
-   echo"2";
-   $this->abs->render("list.html.twig", [
-      "resultados" => $usersRepository->findAll()
-   ]);
+   header("Location: http://localhost/UD4/Ejercicio2-Sintocar/public/index.php/lista");
+   exit();
 }
 
-   // public function update($id)
-   // {
-   //    echo("he estado en update");
-   //    $em = (new EntityManager())->get();
 
-   //    $tareaRepository = $this->repo;
-   //    $tarea = $tareaRepository->find($id);
+   public function update($id)
+   {
+      echo("he estado en update");
+      $em = (new EntityManager())->get();
 
-   //    $tarea->setTitulo("Pepe");
-   //    $tarea->setFecha_creacion(new \DateTime('2021-10-22'));
+      $tareaRepository = $em->getRepository(Tarea::class);
+      $tarea = $tareaRepository->find($id);
 
-   //    $em->persist($tarea);
+      $tarea->setTitulo($_POST['titulo']);
+      $tarea->setDescripcion($_POST['descripcion']);
+      $tarea->setFecha_creacion(new \DateTime('2021-10-22'));
+      $tarea->setFecha_vencimiento(new \DateTime('2021-10-22'));
+      $em->persist($tarea);
       
-   //    $em->flush();
-   // }
-   // public function del($id)
-   // {
-   //    echo("he estado en delete");
-   //    $em = (new EntityManager())->get();
-   //    $tareaRepository = $this->repo;
-   //    $tarea = $tareaRepository->find($id);
-   //    if ($tarea) $em->remove($tarea);
+      $em->flush();
+      header("Location: http://localhost/UD4/Ejercicio2-Sintocar/public/index.php/lista");
+      exit();
+   }
+
+   public function del($id)
+   {
+      echo("he estado en delete");
+      $em = (new EntityManager())->get();
+      $tareaRepository = $em->getRepository(Tarea::class);
+      $tarea = $tareaRepository->find($id);
+      if ($tarea) $em->remove($tarea);
       
-   //    $em->flush();
-   // }
+      $em->flush();
+      header("Location: http://localhost/UD4/Ejercicio2-Sintocar/public/index.php/lista");
+      exit();
+   }
 
 
 }

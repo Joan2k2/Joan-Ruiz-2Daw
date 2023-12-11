@@ -1,10 +1,10 @@
 {
     "/":{
-        "controller": "ListController",
+        "controller": "CrudController",
         "action": "listado"
 
     },"/lista": {
-        "controller": "TareaRepository",
+        "controller": "CrudController",
         "action": "listado"
     },
     "/add":{
