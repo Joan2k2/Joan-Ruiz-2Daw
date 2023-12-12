@@ -18,7 +18,7 @@ public function add()
    
    $em = (new EntityManager())->get();
    $nuevo = new Tarea();
-   $nuevo->setTitulo($_POST["titulo"]);
+   $nuevo->setTitulo($_POST[" "]);
    $nuevo->setDescripcion($_POST["descripcion"]);
    $nuevo->setFecha_creacion(new \DateTime('2021-10-24'));
    $nuevo->setFecha_vencimiento(new \DateTime('2021-10-24'));

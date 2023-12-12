@@ -46,12 +46,22 @@ class CrudController extends AbstractController{
       
     }
 
-    public function del(){
+    public function del($id){
       $em = (new EntityManager())->get();
       // Obtener el repositorio de tarea
       $tareaDatos = $em->getClassMetadata(Tarea::class);
       $tarea = new TareaRepository($em,$tareaDatos);
-      $tarea->del($tareaDatos);
+      $tarea->del($id);
+
+    }
+
+    public function update($id){
+      $em = (new EntityManager())->get();
+      // Obtener el repositorio de tarea
+      $tareaDatos = $em->getClassMetadata(Tarea::class);
+      $tarea = new TareaRepository($em,$tareaDatos);
+      echo "hola";
+      $tarea->update($id);
 
     }
 

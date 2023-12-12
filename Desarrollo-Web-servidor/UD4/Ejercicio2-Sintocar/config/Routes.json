@@ -16,7 +16,7 @@
         "action": "del"
     },
     "/update":{
-        "controller": "UpdateController",
+        "controller": "CrudController",
         "action": "update"
     }
 
