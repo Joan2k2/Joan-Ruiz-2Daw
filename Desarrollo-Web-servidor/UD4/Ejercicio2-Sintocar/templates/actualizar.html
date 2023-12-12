@@ -8,13 +8,13 @@
 </head>
 <body>
     <h1>Actualización de Tarea</h1>
-    <form action="http://localhost/UD4/Ejercicio2-Sintocar/public/index.php/update" method="post">
+    <form action="http://localhost/UD4/Ejercicio2-Sintocar/public/index.php/updating/{{tarea.getId}}" method="post">
         <label for="titulo">Título: </label>
-        <input type="text" name="titulo" id="titulo">
+        <input type="text" name="titulo" id="titulo" value="{{tarea.getTitulo}}">
         <br>
         <br>
         <label for="descripcion">Descripción: </label>
-        <input type="text" name="descripcion" id="descripcion">
+        <input type="text" name="descripcion" id="descripcion" value="{{tarea.getDescripcion}}">
         <br>
         <br>
         <input type="submit" value="Insertar">

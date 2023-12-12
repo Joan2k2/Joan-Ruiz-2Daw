@@ -58,6 +58,18 @@ class CrudController extends AbstractController{
     public function update($id){
       $em = (new EntityManager())->get();
       // Obtener el repositorio de tarea
+      $tareaDatos = $em->getRepository(Tarea::class);
+      $tarea = $tareaDatos->find($id);
+      $this->render("actualizar.html", [
+        "tarea" => $tarea,
+       
+    ]);
+
+    }
+
+    public function updating($id){
+      $em = (new EntityManager())->get();
+      // Obtener el repositorio de tarea
       $tareaDatos = $em->getClassMetadata(Tarea::class);
       $tarea = new TareaRepository($em,$tareaDatos);
       echo "hola";

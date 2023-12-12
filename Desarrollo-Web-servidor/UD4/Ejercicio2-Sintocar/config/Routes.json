@@ -18,6 +18,11 @@
     "/update":{
         "controller": "CrudController",
         "action": "update"
+    },
+
+    "/updating":{
+        "controller": "CrudController",
+        "action": "updating"
     }
 
 }
