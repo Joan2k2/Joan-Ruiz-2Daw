@@ -33,6 +33,7 @@
       aside {
         background-color: #c00a0a;
         padding: 20px;
+        margin-bottom: 10px;
       }
 
       footer {
@@ -40,34 +41,38 @@
         color: #fff;
         padding: 20px;
       }
+      main{
+        background-color: #3b3e41;
+      }
     </style>
     <title>Layout con Bootstrap 5</title>
   </head>
   <body>
     <div class="container">
-      <div class="row">
-        <header class="col-12">
+      <header class="row">
+        <div class="col">
           <h1>Header - Col 12</h1>
-        </header>
-      </div>
+        </div>
+      </header>
+      
+        <section class="container row align-items-center">
+          <main class="col-md-8">
+            <p class="d-none d-md-block">8colum</p>
+            <p class="d-block d-md-none">12column</p>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab vero nisi possimus ducimus, obcaecati officia natus libero, blanditiis cumque incidunt ea quod eveniet officiis illum impedit! Minima aliquid in quibusdam!</p>
+          </main>
+          <aside class="col-md-4">
+            <h2>Aside - Col 4</h2>
+          </aside>
+        </section>
+        
 
-      <div class="row">
-        <main class="col-8">
-          <section >
-            <h2>Section - Col 8</h2>
-          </section>
-        </main>
-        <aside class="col-4">
-          <h2>Aside - Col 4</h2>
-        </aside>
-      </div>
+      <div class="container row justify-content-evenly">
+        <article class="col-12 col-md-4 col-lg-3">Article 1 - Col 4</article>
 
-      <div class="row justify-content-evenly">
-        <article class="col-3">Article 1 - Col 4</article>
+        <article class="col-12 col-md-4 col-lg-3">Article 2 - Col 4</article>
 
-        <article class="col-3">Article 2 - Col 4</article>
-
-        <article class="col-3">Article 3 - Col 4</article>
+        <article class="col-12 col-md-4 col-lg-3">Article 3 - Col 4</article>
       </div>
       <div class="row">
         <footer class="text-center py-3 mt-4">
