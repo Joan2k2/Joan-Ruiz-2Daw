@@ -1,0 +1,28 @@
+{
+    "/":{
+        "controller": "CrudController",
+        "action": "base"
+
+    },"/clientes": {
+        "controller": "CrudController",
+        "action": "listado"
+    },
+    "/add":{
+        "controller": "CrudController",
+        "action": "add"
+    },
+    "/delete":{
+        "controller": "CrudController",
+        "action": "del"
+    },
+    "/update":{
+        "controller": "CrudController",
+        "action": "update"
+    },
+
+    "/updating":{
+        "controller": "CrudController",
+        "action": "updating"
+    }
+
+}

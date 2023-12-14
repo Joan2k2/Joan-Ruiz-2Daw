@@ -1,0 +1,7 @@
+{
+    "server": "mysql",
+    "user": "root",
+    "password": "root",
+    "dbname": "empresa",
+    "driver" : "pdo_mysql"
+}
