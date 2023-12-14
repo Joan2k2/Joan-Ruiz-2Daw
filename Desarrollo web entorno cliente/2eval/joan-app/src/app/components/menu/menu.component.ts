@@ -1,22 +1,20 @@
 import { Component } from '@angular/core';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [],
+  imports: [NgClass],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 })
 export class MenuComponent {
- 
-  public onClick(): void {
+  
+  public test:boolean=false;
+
+  public showMenu(): void {
     
-    isMenuVisible: boolean = true;
-
-    toggleMenuClass(): void {
-      this.isMenuVisible = !this.isMenuVisible;
-    }
-
+    this.test=!this.test;
 
     }
 

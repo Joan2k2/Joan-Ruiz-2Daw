@@ -29,5 +29,20 @@ export class ArticleComponent {
   
       
       }
+      public textHover(event:MouseEvent): void {
+        console.log(event);
+        const p: HTMLImageElement = <HTMLImageElement>event.target;
+        
+          p.style.color="yellow";
+          
+        }
+        public textHoverOut(event:MouseEvent): void {
+          console.log(event);
+          const p: HTMLImageElement = <HTMLImageElement>event.target;
+          
+         
+          p.style.color="black";
+          
+          }
 
 }

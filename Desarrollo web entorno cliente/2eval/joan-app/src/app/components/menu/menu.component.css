@@ -2,7 +2,7 @@
     display: block; /* Muestra el menú cuando la clase 'menu' está presente */
   }
   
-  .menu.hidden {
+  .menuHidden {
     display: none; /* Oculta el menú cuando la clase 'hidden' está presente */
   }
   

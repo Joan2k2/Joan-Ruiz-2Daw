@@ -1,8 +1,8 @@
 <menu>
 
  
-    <h1 (click)="onClick(<div class ="menu"></h1>)">Edificio</h1>
-    <div [class.menu]="isMenuVisible">
+    <h1 (click)="showMenu()">Edificio</h1>
+    <div [ngClass]="test ? 'menu' : 'menuHidden'">
         <p><a href="textos/otra_pagina.html">Hemisferic</a></p>
         <p><a href="textos/otra_pagina.html">Museo de las Ciencias</a></p>
         <p><a href="textos/otra_pagina.html">Oceanografic</a></p>
