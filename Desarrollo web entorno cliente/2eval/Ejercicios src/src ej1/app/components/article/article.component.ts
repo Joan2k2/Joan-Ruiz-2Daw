@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 })
 export class ArticleComponent {
 
-
+     miImagen:HTMLImageElement = document.getElementsByTagName('img')[0] as HTMLImageElement;
    public imageHover(event:MouseEvent): void {
     console.log(event);
     const ima: HTMLImageElement = <HTMLImageElement>event.target;
