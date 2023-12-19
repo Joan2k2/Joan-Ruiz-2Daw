@@ -1,9 +1,28 @@
-header{
+.headerNormal{
     width: 1000px;
     font-size: 30px;
     margin: auto;
-    background-color: cornflowerblue;
+    background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP._FQe7ttFXerdCINpjiYo_AHaE8%26pid%3DApi&f=1&ipt=d620acb51073f26fe6d8e3a014375e78def9bb9095fe0833f847c773cb32e1a9&ipo=images");
     padding: 20px;
     display: flex;
     flex-direction: row-reverse;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: aliceblue;
+}
+
+.headerFocus{
+    width: 1000px;
+    font-size: 30px;
+    margin: auto;
+    background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP._FQe7ttFXerdCINpjiYo_AHaE8%26pid%3DApi&f=1&ipt=d620acb51073f26fe6d8e3a014375e78def9bb9095fe0833f847c773cb32e1a9&ipo=images");
+    padding: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: aliceblue;
+    opacity: 0.2;
 }

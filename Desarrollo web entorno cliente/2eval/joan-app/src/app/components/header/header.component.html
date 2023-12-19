@@ -1,1 +1,1 @@
-<header>La ciudad de las Artes y de las Ciencias</header>
+<header (dblclick)="changeText()" (mouseover)="headerHover()" (mouseout)="headerHover()" [ngClass]="test ? 'headerFocus' : 'headerNormal'">{{title}}</header>
