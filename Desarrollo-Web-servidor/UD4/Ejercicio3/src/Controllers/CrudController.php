@@ -4,22 +4,47 @@ namespace App\Controllers;
 error_reporting(E_ALL);
 ini_set("display_errors",1);
 use App\Core\AbstractController;
-use App\Entity\Tarea;
+use App\Entity\Clients;
 use App\Core\EntityManager;
 use Doctrine\ORM\EntityRepository;
-use App\Repository\TareaRepository;
+use App\Repository\ClientsRepository;
 class CrudController extends AbstractController{
 
     public function base(){
       $this->render("index.html",[null]);
     }
 
-    public function listado($page=1)
+    public function listadoClients($page=1)
     {
       // Obtener la instancia del EntityManager
       $em = (new EntityManager())->get();
       // Obtener el repositorio de tarea
-      $tareaRepository = $em->getRepository(Tarea::class);
+      $clientsRepository = $em->getRepository(Clients::class);
+      // Número de tareas por página
+      $ClientsPerPage = 5;
+      // Calcular el desplazamiento
+      $offset = ($page - 1) * $ClientsPerPage;
+      // Contar el total de tareas
+      $totalClients = count($clientsRepository->findAll());
+      // Calcular el total de páginas
+      $totalPages = ceil($totalClients / $ClientsPerPage);
+      // Obtener las tareas paginadas
+      $Clients = $clientsRepository->findBy([], null, $ClientsPerPage, $offset);
+      // Renderizar la plantilla con los resultados y la paginación
+      $this->render("list.html.twig", [
+          "resultados" => $Clients,
+          "currentPage" => $page,
+          "totalPages" => $totalPages,
+          "type" => "clientes"
+      ]);
+    }
+
+    public function listadoEmpleados($page=1)
+    {
+      // Obtener la instancia del EntityManager
+      $em = (new EntityManager())->get();
+      // Obtener el repositorio de tarea
+      $tareaRepository = $em->getRepository(Clients::class);
       // Número de tareas por página
       $tareaPerPage = 5;
       // Calcular el desplazamiento
@@ -31,7 +56,7 @@ class CrudController extends AbstractController{
       // Obtener las tareas paginadas
       $tarea = $tareaRepository->findBy([], null, $tareaPerPage, $offset);
       // Renderizar la plantilla con los resultados y la paginación
-      $this->render("actualizar.html.twig", [
+      $this->render("list.html.twig", [
           // "resultados" => $tarea,
           // "currentPage" => $page,
           // "totalPages" => $totalPages
@@ -43,17 +68,17 @@ class CrudController extends AbstractController{
       // Obtener la instancia del EntityManager
       $em = (new EntityManager())->get();
       // Obtener el repositorio de tarea
-      $tareaDatos = $em->getClassMetadata(Tarea::class);
-      $tarea = new TareaRepository($em,$tareaDatos);
-      $tarea->add();
+      $tareaDatos = $em->getClassMetadata(Clients::class);
+      $Clients = new ClientsRepository($em,$tareaDatos);
+      $Clients->add();
       
     }
 
     public function del($id){
       $em = (new EntityManager())->get();
       // Obtener el repositorio de tarea
-      $tareaDatos = $em->getClassMetadata(Tarea::class);
-      $tarea = new TareaRepository($em,$tareaDatos);
+      $tareaDatos = $em->getClassMetadata(Clients::class);
+      $tarea = new ClientsRepository($em,$tareaDatos);
       $tarea->del($id);
 
     }
@@ -61,7 +86,7 @@ class CrudController extends AbstractController{
     public function update($id){
       $em = (new EntityManager())->get();
       // Obtener el repositorio de tarea
-      $tareaDatos = $em->getRepository(Tarea::class);
+      $tareaDatos = $em->getRepository(Clients::class);
       $tarea = $tareaDatos->find($id);
       $this->render("form.html", [
         "tarea" => $tarea,
@@ -73,12 +98,23 @@ class CrudController extends AbstractController{
     public function updating($id){
       $em = (new EntityManager())->get();
       // Obtener el repositorio de tarea
-      $tareaDatos = $em->getClassMetadata(Tarea::class);
-      $tarea = new TareaRepository($em,$tareaDatos);
+      $tareaDatos = $em->getClassMetadata(Clients::class);
+      $tarea = new ClientsRepository($em,$tareaDatos);
       echo "hola";
       $tarea->update($id);
 
     }
+
+    public function detail($id){
+
+      $em = (new EntityManager())->get();
+      $clientesRepository = $em->getRepository(Clients::class);
+      $cliente = $clientesRepository->find($id);
+
+      $this->render("detail.html", [
+         "resultados" => $cliente]);
+        
+   } 
 
 }
 

@@ -5,7 +5,10 @@
 
     },"/clientes": {
         "controller": "CrudController",
-        "action": "listado"
+        "action": "listadoClients"
+    },"/detail": {
+        "controller": "CrudController",
+        "action": "detail"
     },
     "/add":{
         "controller": "CrudController",
