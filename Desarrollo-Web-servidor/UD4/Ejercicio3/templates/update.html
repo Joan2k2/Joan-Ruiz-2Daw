@@ -37,83 +37,78 @@
 	<div id="page">
 		<div id="content">
 			<div id="form_container">
-				<form method="post" action="http://localhost/UD4/Ejercicio3/public/index.php/add">
+				<form method="post" action="http://localhost/UD4/Ejercicio3/public/index.php/updating/{{clientes.getCliente}}">
 					<div>
-						<h2>New Client</h2>
-					</div>
-
-					<label for="clienteCod">Client Code</label>
-					<div>
-						<input id="clienteCod" name="clienteCod" type="number" size="5" value="" />
+						<h2>Update Client</h2>
 					</div>
 
 					<label for="nombre">Name</label>
 					<div>
-						<input id="nombre" name="nombre" type="text" maxlength="45" size="45" value="" />
+						<input id="nombre" name="nombre" type="text" maxlength="45" size="45" value="{{clientes.getNombre}}" />
 					</div>
 
 					<label for="direc">Address</label>
 					<div>
-						<input id="direc" name="direc" type="text" maxlength="40" size="40" value="" />
+						<input id="direc" name="direc" type="text" maxlength="40" size="40" value="{{clientes.getDireccion}}" />
 					</div>
 
 					<label for="ciudad">City</label>
 					<div>
-						<input id="ciudad" name="ciudad" type="text" maxlength="30" size="30" value="" />
+						<input id="ciudad" name="ciudad" type="text" maxlength="30" size="30" value="{{clientes.getCiudad}}" />
 					</div>
 
 					<label for="estado">State</label>
 					<div>
-						<input id="estado" name="estado" type="text" maxlength="2" size="2" value="" />
+						<input id="estado" name="estado" type="text" maxlength="2" size="2" value="{{clientes.getEstado}}" />
 					</div>
 
 					<label for="codPostal">ZIP Code</label>
 					<div>
-						<input id="codPostal" name="codPostal" type="text" maxlength="9" size="9" value="" />
+						<input id="codPostal" name="codPostal" type="text" maxlength="9" size="9" value="{{clientes.getCodigo}}" />
 					</div>
 
 					<label for="area">Area</label>
 					<div>
-						<input id="area" name="area" type="number" maxlength="5" size="5" value="" />
+						<input id="area" name="area" type="number" maxlength="5" size="5" value="{{clientes.getArea}}" />
 					</div>
 
 					<label for="telefono">Telephone</label>
 					<div>
-						<input id="telefono" name="telefono" type="text" maxlength="9" size="9" value="" />
+						<input id="telefono" name="telefono" type="text" maxlength="9" size="9" value="{{clientes.getTelefono}}" />
 					</div>
 
 					<label for="reprCod">Contact</label>
 					<div>
-						<select id="reprCod" name="reprCod">
-							<option value="7369">S?NCHEZ</option>
-							<option value="7499">ARROYO</option>
-							<option value="7521">SALA</option>
-							<option value="7566">JIM?NEZ</option>
-							<option value="7654">MART?N</option>
-							<option value="7698">NEGRO</option>
-							<option value="7782">CEREZO</option>
-							<option value="7788">GIL</option>
-							<option value="7839">REY</option>
-							<option value="7844">TOVAR</option>
-							<option value="7876">ALONSO</option>
-							<option value="7900">JIMENO</option>
-							<option value="7902">FERN?NDEZ</option>
-							<option value="7934">MU?OZ</option>
+						<select name="reprCod">
+							<option value="7369" {{clientes.getReprCod() == 7369 ? 'selected' : ''}}>S?NCHEZ</option>
+							<option value="7499" {{clientes.getReprCod() == 7499 ? 'selected' : ''}}>ARROYO</option>
+							<option value="7521" {{clientes.getReprCod() == 7521 ? 'selected' : ''}}>SALA</option>
+							<option value="7566" {{clientes.getReprCod() == 7566 ? 'selected' : ''}}>JIM?NEZ</option>
+							<option value="7654" {{clientes.getReprCod() == 7654 ? 'selected' : ''}}>MART?N</option>
+							<option value="7698" {{clientes.getReprCod() == 7698 ? 'selected' : ''}}>NEGRO</option>
+							<option value="7782" {{clientes.getReprCod() == 7782 ? 'selected' : ''}}>CEREZO</option>
+							<option value="7788" {{clientes.getReprCod() == 7788 ? 'selected' : ''}}>GIL</option>
+							<option value="7839" {{clientes.getReprCod() == 7839 ? 'selected' : ''}}>REY</option>
+							<option value="7844" {{clientes.getReprCod() == 7844 ? 'selected' : ''}}>TOVAR</option>
+							<option value="7876" {{clientes.getReprCod() == 7876 ? 'selected' : ''}}>ALONSO</option>
+							<option value="7900" {{clientes.getReprCod() == 7900 ? 'selected' : ''}}>JIMENO</option>
+							<option value="7902" {{clientes.getReprCod() == 7902 ? 'selected' : ''}}>FERN?NDEZ</option>
+							<option value="7934" {{clientes.getReprCod() == 7934 ? 'selected' : ''}}>MU?OZ</option>
 						</select>
-					</div>
+					</div> 
 
 					<label for="limiteCredito">Credit Limit</label>
 					<div>
 						<input id="limiteCredito" name="limiteCredito" type="number" max="9999999.99" min="0" step=".01"
-							value="" />
+							value="{{clientes.getLimite}}" />
 					</div>
 
 					<label for="observaciones">Comments</label>
 					<div>
-						<textarea id="observaciones" name="observaciones" cols="50" rows="5"></textarea>
+						<textarea id="observaciones" name="observaciones" cols="50" rows="5">{{clientes.getObservaciones}}</textarea>
 					</div>
 
-					<input type="submit" name="submit" value="Insertar" />
+					<input type="submit" name="submit" value="Update" />
 				</form>
 
 			</div>

@@ -2,18 +2,18 @@
 
 namespace App\Entity;
 
-use App\Repository\ClienteRepository;
+use App\Repository\EmpRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ClienteRepository::class)
+ * @ORM\Entity(repositoryClass=EmpRepository::class)
  * @ORM\Table(name="EMP") 
  */
 class Emp
 {
     /**
      * @ORM\Id
-     * @ORM\Column(type="smallint" , length="5")
+     * @ORM\Column(type="integer" , length="5")
      * @ORM\GeneratedValue
      */
     private $EMP_NO;
@@ -24,7 +24,7 @@ class Emp
     /** @ORM\Column(type="string", length="10") */
     private $OFICIO;
 
-    /** @ORM\Column(type="smallint", length="5") */
+    /** @ORM\Column(type="integer", length="5") */
     private $JEFE;
 
     /** @ORM\Column(type="datetime") */
@@ -36,7 +36,7 @@ class Emp
     /** @ORM\Column(type="integer", length="10") */
     private $COMISION;
 
-    /** @ORM\Column(type="tinyint", length="3") */
+    /** @ORM\Column(type="integer", length="3") */
     private $DEPT_NO;
 
     public function getEmp()

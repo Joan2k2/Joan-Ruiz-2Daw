@@ -6,26 +6,33 @@
     },"/clientes": {
         "controller": "CrudController",
         "action": "listadoClients"
+    },"/empleados": {
+        "controller": "CrudController",
+        "action": "listadoEmpleados"
     },"/detail": {
         "controller": "CrudController",
-        "action": "detail"
+        "action": "detailClient"
     },
     "/add":{
         "controller": "CrudController",
-        "action": "add"
+        "action": "addClient"
     },
-    "/delete":{
+    "/deleteClient":{
         "controller": "CrudController",
-        "action": "del"
+        "action": "delClient"
+    },
+    "/deleteEmp":{
+        "controller": "CrudController",
+        "action": "delEmp"
     },
     "/update":{
         "controller": "CrudController",
-        "action": "update"
+        "action": "updateClient"
     },
 
     "/updating":{
         "controller": "CrudController",
-        "action": "updating"
+        "action": "updatingClient"
     }
 
 }

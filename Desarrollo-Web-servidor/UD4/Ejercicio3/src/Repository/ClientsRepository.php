@@ -62,62 +62,73 @@ class ClientsRepository extends EntityRepository
     //  *
     //  * @param int $id Identificador único de la tarea a actualizar.
     //  */
-    // public function update($id)
-    // {
-    //     // Imprime un mensaje (se podría quitar en producción)
-    //     echo("he estado en update");
+    public function update($id)
+    {
+        // Imprime un mensaje (se podría quitar en producción)
+        echo("he estado en update");
 
-    //     // Obtiene la instancia del EntityManager
-    //     $em = (new EntityManager())->get();
+        // Obtiene la instancia del EntityManager
+        $em = (new EntityManager())->get();
 
-    //     // Obtiene la tarea existente mediante su identificador
-    //     $tareaRepository = $em->getRepository(Tarea::class);
-    //     $tarea = $tareaRepository->find($id);
+        // Obtiene la tarea existente mediante su identificador
+        $clientRepository = $em->getRepository(Clients::class);
+        $client = $clientRepository->find($id);
 
-    //     // Actualiza los atributos de la tarea desde los datos del formulario ($_POST)
-    //     $tarea->setTitulo($_POST['titulo']);
-    //     $tarea->setDescripcion($_POST['descripcion']);
-    //     $tarea->setFecha_creacion(new \DateTime('2021-10-22'));
-    //     $tarea->setFecha_vencimiento(new \DateTime('2021-10-22'));
+        // Actualiza los atributos de la tarea desde los datos del formulario ($_POST)
 
-    //     // Persiste la tarea actualizada en la base de datos
-    //     $em->persist($tarea);
+            $client->setNombre($_POST["nombre"]);
+            $client->setDireccion($_POST["direc"]);
+            $client->setCiduad($_POST["ciudad"]);
+            $client->setEstado($_POST["estado"]);
+            $client->setCodigo($_POST["codPostal"]);
+            $client->setArea($_POST["area"]);
+            $client->setTelefono($_POST["telefono"]);
+            $client->setReprCod($_POST["reprCod"]);
+            $client->setLimite($_POST["limiteCredito"]);
+            $client->setObserbaciones($_POST["observaciones"]);
 
-    //     // Aplica los cambios en la base de datos
-    //     $em->flush();
+        // Persiste la tarea actualizada en la base de datos
+        $em->persist($client);
 
-    //     // Redirecciona a la lista de tareas
-    //     header("Location: http://localhost/UD4/Ejercicio2-Sintocar/public/index.php/lista");
-    //     exit();
-    // }
+        // Aplica los cambios en la base de datos
+        $em->flush();
+
+        // Redirecciona a la lista de tareas
+        header("Location: http://localhost/UD4/Ejercicio3/public/index.php/clientes");
+        exit();
+    }
 
     // /**
     //  * Elimina una tarea de la base de datos.
     //  *
     //  * @param int $id Identificador único de la tarea a eliminar.
     //  */
-    // public function del($id)
-    // {
-    //     // Imprime un mensaje (se podría quitar en producción)
-    //     echo("he estado en delete");
+    public function del($id)
+    {
+        // Imprime un mensaje (se podría quitar en producción)
+        echo("he estado en delete");
 
-    //     // Obtiene la instancia del EntityManager
-    //     $em = (new EntityManager())->get();
+        // Obtiene la instancia del EntityManager
+        $em = (new EntityManager())->get();
 
-    //     // Obtiene la tarea existente mediante su identificador
-    //     $tareaRepository = $em->getRepository(Tarea::class);
-    //     $tarea = $tareaRepository->find($id);
+        // Obtiene la tarea existente mediante su identificador
+        $clientsRepository = $em->getRepository(Clients::class);
+        $clients = $clientsRepository->find($id);
 
-    //     // Si la tarea existe, la elimina de la base de datos
-    //     if ($tarea) {
-    //         $em->remove($tarea);
-    //     }
+        
+        // Si la tarea existe, la elimina de la base de datos
 
-    //     // Aplica los cambios en la base de datos
-    //     $em->flush();
+        if ($clients) {
+            $em->remove($clients);
+        }else{
+            echo"no se ha eliminado";
+        }
 
-    //     // Redirecciona a la lista de tareas
-    //     header("Location: http://localhost/UD4/Ejercicio2-Sintocar/public/index.php/lista");
-    //     exit();
-    // }
+        // Aplica los cambios en la base de datos
+        $em->flush();
+
+        // Redirecciona a la lista de tareas
+        header("Location: http://localhost/UD4/Ejercicio3/public/index.php/clientes");
+        exit();
+    }
 }
