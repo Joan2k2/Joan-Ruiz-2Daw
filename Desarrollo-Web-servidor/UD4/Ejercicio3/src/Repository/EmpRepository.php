@@ -48,4 +48,43 @@ class EmpRepository extends EntityRepository
         header("Location: http://localhost/UD4/Ejercicio3/public/index.php/empleados");
         exit();
     }
+     /**
+     * Agrega una nueva tarea a la base de datos.
+     */
+    public function add()
+{
+    try {
+        // Obtiene la instancia del EntityManager
+        $em = (new EntityManager())->get();
+
+        // Crea una nueva instancia de la entidad Tarea
+        $nuevo = new Emp();
+
+        // Configura los atributos de la tarea desde los datos del formulario ($_POST)
+        $nuevo->setEMP_NO($_POST["EMP_NO"]);
+        $nuevo->setApellidos($_POST["apellidos"]);
+        $nuevo->setOficio($_POST["oficio"]);
+        $nuevo->setJefe($_POST["jefe"]);
+        $nuevo->setFECHA_ALTA(new \DateTime($_POST["fechaAlta"])); // Ajustar según el formato de fecha esperado
+        $nuevo->setSalario($_POST["salario"]);
+        $nuevo->setComision($_POST["comision"]);
+        $nuevo->setDept_no($_POST["deptNo"]);
+
+        // Persiste la nueva tarea en la base de datos
+        $em->persist($nuevo);
+
+        // Imprime un mensaje (se podría quitar en producción)
+        echo ("he estado en add");
+
+        // Aplica los cambios en la base de datos
+        $em->flush();
+    } catch (\Exception $e) {
+        echo "Error al persistir: " . $e->getMessage();
+    }
+
+    // Redirecciona a la lista de tareas
+    header("Location: http://localhost/UD4/Ejercicio3/public/index.php/empleados");
+    exit();
+}
+
 }

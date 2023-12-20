@@ -14,7 +14,6 @@ class Emp
     /**
      * @ORM\Id
      * @ORM\Column(type="integer" , length="5")
-     * @ORM\GeneratedValue
      */
     private $EMP_NO;
 
@@ -130,6 +129,18 @@ class Emp
     public function setDept_no($DEPT_NO)
     {
         $this->DEPT_NO = $DEPT_NO;
+
+        return $this;
+    }
+
+    /**
+     * Set the value of EMP_NO
+     *
+     * @return  self
+     */ 
+    public function setEMP_NO($EMP_NO)
+    {
+        $this->EMP_NO = $EMP_NO;
 
         return $this;
     }

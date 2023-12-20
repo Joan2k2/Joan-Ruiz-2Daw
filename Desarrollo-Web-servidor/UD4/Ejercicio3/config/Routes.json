@@ -17,6 +17,10 @@
         "controller": "CrudController",
         "action": "addClient"
     },
+    "/addEmp":{
+        "controller": "CrudController",
+        "action": "addEmp"
+    },
     "/deleteClient":{
         "controller": "CrudController",
         "action": "delClient"

@@ -77,6 +77,17 @@ class CrudController extends AbstractController{
       
     }
 
+    public function addEmp()
+    {
+      // Obtener la instancia del EntityManager
+      $em = (new EntityManager())->get();
+      // Obtener el repositorio de tarea
+      $empDatos = $em->getClassMetadata(Emp::class);
+      $emp = new EmpRepository($em,$empDatos);
+      $emp->add();
+      
+    }
+
     public function delClient($id){
       $em = (new EntityManager())->get();
       // Obtener el repositorio de tarea
