@@ -1,0 +1,8 @@
+<div class="banner">
+    @if(hovered){
+        <h2 (mouseover)="banerHover($event)" (mouseout)="banerHoverOut($event)">Memoria</h2>
+    }@else {
+        <h1 (mouseover)="banerHover($event)" (mouseout)="banerHoverOut($event)">Memoria</h1>
+    }
+    
+</div>
