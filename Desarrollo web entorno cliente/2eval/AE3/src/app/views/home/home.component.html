@@ -1,7 +1,7 @@
 <div class="journal">
-  <div [ngStyle]="imgVisibility ? {'display': 'none'} : {'display': ''}" class="first photo">
+  <div #firstset [ngStyle]="imgVisibility ? {'display': 'none'} : {'display': ''}" class="first photo">
     <div>
-      <div #firstset [ngClass]="clicked ? 'image-container' : 'image-container2'"  >
+      <div  [ngClass]="clicked ? 'image-container' : 'image-container2'"  >
         <img  (click)="imageClicked(0)"
           src="https://cdn.vox-cdn.com/thumbor/qvJ_PVw2Ppnemy8hxFU2U3RojK0=/1400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/23165626/memory2final.jpg"
         />
@@ -28,8 +28,8 @@
   <!-- ocultar -->
 
   <div>
-    <div  [ngStyle]="imgVisibility ? {'display': ''} : {'display': 'none'}" class="first photo">
-      <div [ngClass]="clicked ? 'image-container' : 'image-container2'" #secondset >
+    <div #secondset [ngStyle]="imgVisibility ? {'display': ''} : {'display': 'none'}" class="first photo">
+      <div [ngClass]="clicked ? 'image-container' : 'image-container2'"  >
         <img (click)="imageClicked(6)"
           src="https://conductscience.com/maze/wp-content/uploads/2019/10/Diseases-and-conditions-that-affect-short-term-memory.png"
         />
@@ -53,8 +53,8 @@
     </div>
   </div>
   <div>
-    <span class="quote">¿Qué es la memoria?</span>
-    <p>
+    <span [ngStyle]="showVisibilityIn ? {'display': 'none'} : {'display': ''}" class="quote">¿Qué es la memoria?</span>
+    <p [ngStyle]="showVisibilityIn ? {'display': 'none'} : {'display': ''}">
       <span class="first-letter">C</span>
       uando nos referimos a la memoria, no hablamos de un órgano concreto, sino
       de diversas estructuras cerebrales que intervienen en complejos procesos
@@ -62,17 +62,17 @@
       información. Si bien intervienen complejos circuitos neuronales, en
       términos generales, la memoria se desenvuelve de la siguiente manera:
     </p>
-    <p>
+    <p [ngStyle]="showVisibilityIn ? {'display': 'none'} : {'display': ''}">
       Una primera fase de codificación. Aquí se hace una primera lectura de la
       información que luego será almacenada. La concentración, la atención y la
       motivación de la persona son aspectos claves en la selección de lo que se
       almacenará.
     </p>
-    <p>
+    <p [ngStyle]="showVisibilityIn ? {'display': 'none'} : {'display': ''}">
       El almacenamiento es la segunda fase y se refiere a la retención de la
       información.
     </p>
-    <p>
+    <p [ngStyle]="showVisibilityIn ? {'display': 'none'} : {'display': ''}">
       Una tercera fase es la de recuperación, que se refiere a la posibilidad de
       disponer de dicha información cuando la precisamos.
     </p>
@@ -80,75 +80,94 @@
 
 
     <!-- ocultar -->
-    <span class="quote">Existen seis tipos de memoria</span>
-    <p><span class="first-letter">1 </span>Memoria corto plazo</p>
-    <p>
-      Esta memoria tiene una capacidad limitada. En general, puede retener como
-      máximo 7 ítems de manera simultánea. También el tiempo de retención de la
-      información es breve, con un máximo de 20 segundos. Aquí la atención y la
-      concentración son claves, ya que si estamos distraídos, la capacidad de la
-      memoria de corto plazo se ve reducida. Además, suele mencionarse la
-      memoria de trabajo aquí. Implica el manejo y la organización de la
-      información para el logro de un objetivo concreto.
-    </p>
-
-
-
-    <p><span class="first-letter">2 </span>Memoria largo plazo</p>
-    <p>
-      La memoria de largo plazo es más estable y duradera. Dentro de ella, como
-      ya adelantamos, se ha propuesto una subclasificación, donde encontramos la
-      de tipo declarativa y la procedimental.
-    </p>
-
-    <p><span class="first-letter">3 </span>Memoria declarativa</p>
-    <p>
-      Como parte de la memoria de largo plazo, se refiere al contenido de lo que
-      se almacena. La memoria episódica nos permite recordar hechos concretos
-      referidos a nuestra propia biografía y que están vinculados a un tiempo y
-      un lugar determinado. En ella se alojan sucesos que identificamos como
-      personales.
-    </p>
-    <p>
-      Por otro lado, la memoria semántica nos permite recordar en términos más
-      generales y está vinculada a nuestra comprensión del mundo. También se
-      aloja aquí el significado de conceptos y el vocabulario.
-    </p>
-
-
-    <p><span class="first-letter">4 </span>Memoria procedimental</p>
-    <p>
-      Esta otra parte de la memoria a largo plazo se refiere al cómo (el paso a
-      paso de una receta, por ejemplo). Permite recuperar información sobre
-      habilidades motoras.
-    </p>
-
-
-    <p>
-      En este caso, cuando la información se consolida, aparece en automático,
-      como por inercia. No es necesario repasar el procedimiento una y otra vez.
-    </p>
-
-
-    <p><span class="first-letter">5 </span>Memoria sensorial</p>
-    <p>
-      Respecto al formato de la información, la memoria sensorial es aquella que
-      registra o almacena la información considerando los sentidos. Nos
-      acordamos del olor de la torta de la abuela o del tacto suave de nuestra
-      mascota, por ejemplo.
-    </p>
-
-
-    <p><span class="first-letter">6 </span>Memoria verbal</p>
-    <p>
-      La memoria verbal se refiere a la información almacenada en formato de
-      palabras, ya sean escritas o verbales.
-    </p>
+    <span [ngStyle]="memoryTypes ? {'display': ''} : {'display': 'none'}" class="quote">Existen seis tipos de memoria</span>
+    
+    @switch (imgCliked) {
+      @case (0) {
+          <p>
+              <span class="first-letter">1 </span>Memoria corto plazo
+          </p>
+          <p>
+              Esta memoria tiene una capacidad limitada. En general, puede retener como
+              máximo 7 ítems de manera simultánea. También el tiempo de retención de la
+              información es breve, con un máximo de 20 segundos. Aquí la atención y la
+              concentración son claves, ya que si estamos distraídos, la capacidad de la
+              memoria de corto plazo se ve reducida. Además, suele mencionarse la
+              memoria de trabajo aquí. Implica el manejo y la organización de la
+              información para el logro de un objetivo concreto.
+          </p>
+      }
+      @case (1) {
+          <p>
+              <span class="first-letter">2 </span>Memoria largo plazo
+          </p>
+          <p>
+              La memoria de largo plazo es más estable y duradera. Dentro de ella, como
+              ya adelantamos, se ha propuesto una subclasificación, donde encontramos la
+              de tipo declarativa y la procedimental.
+          </p>
+      }
+      @case (2) {
+          <p>
+              <span class="first-letter">3 </span>Memoria declarativa
+          </p>
+          <p>
+              Como parte de la memoria de largo plazo, se refiere al contenido de lo que
+              se almacena. La memoria episódica nos permite recordar hechos concretos
+              referidos a nuestra propia biografía y que están vinculados a un tiempo y
+              un lugar determinado. En ella se alojan sucesos que identificamos como
+              personales.
+          </p>
+          <p>
+              Por otro lado, la memoria semántica nos permite recordar en términos más
+              generales y está vinculada a nuestra comprensión del mundo. También se
+              aloja aquí el significado de conceptos y el vocabulario.
+          </p>
+      } 
+      @case (3) {
+          <p>
+              <span class="first-letter">4 </span>Memoria procedimental
+          </p>
+          <p>
+              Esta otra parte de la memoria a largo plazo se refiere al cómo (el paso a
+              paso de una receta, por ejemplo). Permite recuperar información sobre
+              habilidades motoras.
+          </p>
+          <p>
+              En este caso, cuando la información se consolida, aparece en automático,
+              como por inercia. No es necesario repasar el procedimiento una y otra vez.
+          </p>
+      }
+      @case (4) {
+          <p>
+              <span class="first-letter">5 </span>Memoria sensorial
+          </p>
+          <p>
+              Respecto al formato de la información, la memoria sensorial es aquella que
+              registra o almacena la información considerando los sentidos. Nos
+              acordamos del olor de la torta de la abuela o del tacto suave de nuestra
+              mascota, por ejemplo.
+          </p>
+      }
+      @case (5) {
+          <p>
+              <span class="first-letter">6 </span>Memoria verbal
+          </p>
+          <p>
+              La memoria verbal se refiere a la información almacenada en formato de
+              palabras, ya sean escritas o verbales.
+          </p>
+      }
+      @case (999) {
+        
+    }
+  }
+  
     
 
 <!-- separacion le das 2 imagen -->
-    <span class="quote">Consejos para mejorar la memoria</span>
-    <p>
+    <span [ngStyle]="showVisibility ? {'display': ''} : {'display': 'none'}" class="quote">Consejos para mejorar la memoria</span>
+    <p [ngStyle]="showVisibility ? {'display': ''} : {'display': 'none'}">
       <span class="first-letter">B</span>
       uen descanso: durante el sueño se llevan a cabo diferentes procesos que
       implican la consolidación de los recuerdos y el aprendizaje, así como la
@@ -156,7 +175,7 @@
     </p>
 
 
-    <p>
+    <p [ngStyle]="showVisibility ? {'display': ''} : {'display': 'none'}">
       <span class="first-letter">E</span>
       stado emocional: es una influencia respecto de aquellas cosas a las que
       les prestamos atención, lo que recordamos y lo que olvidamos. Por ejemplo,
@@ -165,7 +184,7 @@
     </p>
 
 
-    <p>
+    <p [ngStyle]="showVisibility ? {'display': ''} : {'display': 'none'}">
       <span class="first-letter">D</span>
       isminuir la cantidad de fuentes de estimulación: si queremos retener
       cierta información, lo mejor es que tratemos de capturarla en detalle,
@@ -174,7 +193,7 @@
     </p>
 
 
-    <p>
+    <p [ngStyle]="showVisibility ? {'display': ''} : {'display': 'none'}">
       <span class="first-letter">J</span>
       ugar: existen distintas propuestas lúdicas que permiten fortalecer la
       memoria, al combinar distintas acciones como completar palabras, preguntas
@@ -183,7 +202,7 @@
 
 
 
-    <p>
+    <p [ngStyle]="showVisibility ? {'display': ''} : {'display': 'none'}">
       <span class="first-letter">C</span>
       uidar la alimentación: el buen funcionamiento de la memoria también tiene
       su correlato en la dieta que llevamos: Por eso, el tipo de alimentación es
