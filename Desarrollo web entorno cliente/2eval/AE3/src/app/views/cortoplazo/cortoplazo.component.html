@@ -1,1 +1,39 @@
-<p>cortoplazo works!</p>
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <div class="journal">
+    <div class="first photo">
+        <div>
+            <div style="height: 500px">
+              <div style="float: left; clear: none; position: absolute; top: 100%;">
+                <button (click)="previous()">Previous</button>
+                <button (click)="next()">Next</button>
+              </div>
+              <div style="display: flex; justify-content: left; align-items: center;">
+                <h1 id="box-four" [ngStyle] ="{display : imgMoved ? 'none' : ''}" > {{titles[index]}} </h1>
+                <div id="box-zero"></div>
+                <div style="display: flex; justify-content: left; align-items: center;">
+                  <div id="box-one" [ngStyle]="{'transition': 'all 2s ease 0s', 'left': imgMoved ? '25%' : '0%', 'background-image': 'url(' + firstImgs[index] +')'}">
+                  </div>
+                </div>
+                <div style="display: flex; justify-content: left; align-items: center;">
+                  <div id="box-two" [ngStyle]="{'transition': 'all 2s ease 0s', 'left': imgMoved ? '50%' : '0%', 'background-image': 'url(' + secondImgs[index] +')'}">
+                  </div>
+                </div>
+                <div style="display: flex; justify-content: left; align-items: center;">
+                  <div id="box-three" [ngStyle]="{'transition': 'all 2s ease 0s', 'left': imgMoved ? '75%' : '0%', 'background-image': 'url(' + thirdImgs[index] +')'}">
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+
+</body>
+
+</html>
