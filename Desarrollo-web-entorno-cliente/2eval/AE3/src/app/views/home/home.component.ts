@@ -80,6 +80,10 @@ export class HomeComponent implements AfterViewInit {
         this.captionSpan1.textContent="Memoria verbal";
         this.captionSpan2.textContent="Memoria verbal";
         break;
+      case 999:
+        this.captionSpan1.textContent="Memoria ";
+        this.captionSpan2.textContent="Link";
+        break;
     }
     
     if (this.clikeds === 2) {
@@ -95,6 +99,7 @@ export class HomeComponent implements AfterViewInit {
         }
       });
     } else if (this.clikeds > 2) {
+      this.imgCliked=999;
       this.showVisibilityIn=false;
       this.showVisibility=false;
       this.memoryTypes=false;
@@ -104,6 +109,8 @@ export class HomeComponent implements AfterViewInit {
         image.style.display = '';
       });
       this.clikeds = 0;
+      this.captionSpan1.textContent="Memoria ";
+        this.captionSpan2.textContent="Link";
     }
     
   }

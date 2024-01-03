@@ -40,27 +40,37 @@ export class CortoplazoComponent {
 
   public next() {
     this.cliks++;
-    if(this.cliks===5){
+    if(this.cliks===6){
       this.cliks=0;
+      this.imgMoved=false;
     }
     switch (this.cliks) {
       case 0:
-        console.log("Caso 0");
+        this.index=0;
+        this.imgMoved=false;
         break;
       case 1:
         console.log("Caso 1");
+        this.imgMoved=true;
+        this.index=1;
         break;
       case 2:
         console.log("Caso 2");
+        this.imgMoved=false;
         break;
       case 3:
         console.log("Caso 3");
+        this.imgMoved=true;
+        this.index=2;
         break;
       case 4:
         console.log("Caso 4");
+        this.imgMoved=false;
         break;
       case 5:
         console.log("Caso 5");
+        this.imgMoved=true;
+        this.index=0;
         break;
       default:
         console.log("Número fuera de rango");
@@ -70,27 +80,39 @@ export class CortoplazoComponent {
   }
   public previous() {
     if(this.cliks===0){
-      
+      this.index=0;
+      this.imgMoved=false;
     }else{
       this.cliks--;
       switch (this.cliks) {
         case 0:
-          console.log("Caso 0");
+          this.index=0;
+          this.imgMoved=false;
           break;
         case 1:
           console.log("Caso 1");
+          this.imgMoved=true;
+          this.index=1;
           break;
         case 2:
           console.log("Caso 2");
+          this.imgMoved=false;
+          this.index=1;
           break;
         case 3:
           console.log("Caso 3");
+          this.imgMoved=true;
+          this.index=2;
           break;
         case 4:
           console.log("Caso 4");
+          this.imgMoved=false;
+          this.index=2;
           break;
         case 5:
           console.log("Caso 5");
+          this.imgMoved=true;
+          this.index=0;
           break;
         default:
           console.log("Número fuera de rango");
