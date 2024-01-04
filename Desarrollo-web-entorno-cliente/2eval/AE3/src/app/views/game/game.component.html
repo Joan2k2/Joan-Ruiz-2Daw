@@ -1,1 +1,76 @@
-<p>juego works!</p>
+<!DOCTYPE html>
+<html>
+
+<body>
+
+  <!-- Journal -->
+  <div class="container">
+    <div class="div">
+      <h1 (click)="startGame()">Let's play!</h1>
+      <table style="margin-left:auto;margin-right:auto; ">
+        @switch (games) {
+          @case (1) {
+            <tr>
+              <td (click)="changeColors(0)" class="activity" [ngStyle]="{'background-color': gameStarted ? firstLvl[0] : ''}"></td>
+              <td (click)="changeColors(1)" class="activity" [ngStyle]="{'background-color': gameStarted ? firstLvl[1] : ''}"></td>
+            </tr>
+            <tr>
+              <td (click)="changeColors(2)" class="activity" [ngStyle]="{'background-color': gameStarted ? firstLvl[2] : ''}"></td>
+              <td (click)="changeColors(3)" class="activity" [ngStyle]="{'background-color': gameStarted ? firstLvl[3] : ''}"></td>
+           </tr>
+          }
+          @case (2) {
+            <tr>
+              <td (click)="changeColors(0)" class="activity" [ngStyle]="{'background-color': gameStarted ? secondLvl[0] : ''}"></td>
+              <td (click)="changeColors(1)" class="activity" [ngStyle]="{'background-color': gameStarted ? secondLvl[1] : ''}"></td>
+              <td (click)="changeColors(2)" class="activity" [ngStyle]="{'background-color': gameStarted ? secondLvl[2] : ''}"></td>
+            </tr>
+            <tr>
+              <td (click)="changeColors(3)" class="activity" [ngStyle]="{'background-color': gameStarted ? secondLvl[3] : ''}"></td>
+              <td (click)="changeColors(4)" class="activity" [ngStyle]="{'background-color': gameStarted ? secondLvl[4] : ''}"></td>
+              <td (click)="changeColors(5)" class="activity" [ngStyle]="{'background-color': gameStarted ? secondLvl[5] : ''}"></td>
+            </tr>
+            <tr>
+              <td (click)="changeColors(6)" class="activity" [ngStyle]="{'background-color': gameStarted ? secondLvl[6] : ''}"></td>
+              <td (click)="changeColors(7)" class="activity" [ngStyle]="{'background-color': gameStarted ? secondLvl[7] : ''}"></td>
+              <td (click)="changeColors(8)" class="activity" [ngStyle]="{'background-color': gameStarted ? secondLvl[8] : ''}"></td>
+            </tr>
+          }
+          @case (3) {
+            <tr>
+              <td (click)="changeColors(0)" class="activity" [ngStyle]="{'background-color': gameStarted ? thirdLvl[0] : ''}"></td>
+              <td (click)="changeColors(1)" class="activity" [ngStyle]="{'background-color': gameStarted ? thirdLvl[1] : ''}"></td>
+              <td (click)="changeColors(2)" class="activity" [ngStyle]="{'background-color': gameStarted ? thirdLvl[2] : ''}"></td>
+              <td (click)="changeColors(3)" class="activity" [ngStyle]="{'background-color': gameStarted ? thirdLvl[3] : ''}"></td>
+            </tr>
+            <tr>
+              <td (click)="changeColors(4)" class="activity" [ngStyle]="{'background-color': gameStarted ? thirdLvl[4] : ''}"></td>
+              <td (click)="changeColors(5)" class="activity" [ngStyle]="{'background-color': gameStarted ? thirdLvl[5] : ''}"></td>
+              <td (click)="changeColors(6)" class="activity" [ngStyle]="{'background-color': gameStarted ? thirdLvl[6] : ''}"></td>
+              <td (click)="changeColors(7)" class="activity" [ngStyle]="{'background-color': gameStarted ? thirdLvl[7] : ''}"></td>
+            </tr>
+            <tr>
+              <td (click)="changeColors(8)" class="activity" [ngStyle]="{'background-color': gameStarted ? thirdLvl[8] : ''}"></td>
+              <td (click)="changeColors(9)" class="activity" [ngStyle]="{'background-color': gameStarted ? thirdLvl[9] : ''}"></td>
+              <td (click)="changeColors(10)" class="activity" [ngStyle]="{'background-color': gameStarted ? thirdLvl[10] : ''}"></td>
+              <td (click)="changeColors(11)" class="activity" [ngStyle]="{'background-color': gameStarted ? thirdLvl[11] : ''}"></td>
+            </tr>
+            <tr>
+              <td (click)="changeColors(12)" class="activity" [ngStyle]="{'background-color': gameStarted ? thirdLvl[12] : ''}"></td>
+              <td (click)="changeColors(13)" class="activity" [ngStyle]="{'background-color': gameStarted ? thirdLvl[13] : ''}"></td>
+              <td (click)="changeColors(14)" class="activity" [ngStyle]="{'background-color': gameStarted ? thirdLvl[14] : ''}"></td>
+              <td (click)="changeColors(15)" class="activity" [ngStyle]="{'background-color': gameStarted ? thirdLvl[15] : ''}"></td>
+            </tr>
+          }
+          }
+       
+      
+      </table>
+      <h1>check!</h1>
+    </div>
+      <h1>Game over!</h1>
+  </div>
+  
+</body>
+
+</html>
