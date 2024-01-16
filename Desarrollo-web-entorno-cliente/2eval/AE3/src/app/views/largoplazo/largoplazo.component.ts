@@ -9,7 +9,7 @@ import { interval, Subscription } from 'rxjs';
 })
 export class LargoplazoComponent implements OnInit, OnDestroy {
 
-  imagenes: string[] = ['https://cdn.psychologytoday.com/sites/default/files/styles/article-inline-half/public/field_blog_entry_images/1369847707_4085_memory-1.jpg?itok=aZRKeJXR', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTF8a2YKUyrUrEEkYxECnP4zI3LXpfEhhEZhg&usqp=CAU', 'https://easyscienceforkids.com/wp-content/uploads/2018/04/Memory-facts-18-4-1-758x635.jpg'];
+  images: string[] = ['https://cdn.psychologytoday.com/sites/default/files/styles/article-inline-half/public/field_blog_entry_images/1369847707_4085_memory-1.jpg?itok=aZRKeJXR', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTF8a2YKUyrUrEEkYxECnP4zI3LXpfEhhEZhg&usqp=CAU', 'https://easyscienceforkids.com/wp-content/uploads/2018/04/Memory-facts-18-4-1-758x635.jpg'];
   indiceActual: number = 0;
   intervaloCambio: Subscription = new Subscription();
 
@@ -35,15 +35,15 @@ export class LargoplazoComponent implements OnInit, OnDestroy {
   }
 
   mostrarImagen() {
-    console.log('Imagen actual:', this.imagenes[this.indiceActual]);
+    console.log('Imagen actual:', this.images[this.indiceActual]);
   }
 
   siguienteImagen() {
-    this.indiceActual = (this.indiceActual + 1) % this.imagenes.length;
+    this.indiceActual = (this.indiceActual + 1) % this.images.length;
   }
 
   anteriorImagen() {
-    this.indiceActual = (this.indiceActual - 1 + this.imagenes.length) % this.imagenes.length;
+    this.indiceActual = (this.indiceActual - 1 + this.images.length) % this.images.length;
   }
 
 }

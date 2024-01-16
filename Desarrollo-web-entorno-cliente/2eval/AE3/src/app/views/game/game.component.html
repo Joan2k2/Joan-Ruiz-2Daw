@@ -7,7 +7,7 @@
   <div class="container">
     <div class="div">
       <h1 [ngStyle]="{'display': youWin ? '' : 'none'}" (click)="startGame()">You Win!</h1>
-      <h1 [ngStyle]="{'display': youWin ? 'none' : ''}" (click)="startGame()">Let's play!</h1>
+      <h1 [ngStyle]="{'display': youWin ? 'none' : ''}" [ngStyle]="{'display': gameOver ? 'none' : ''}" [ngStyle]="{'display': gameStarted ? 'none' : ''}"(click)="startGame()">Let's play!</h1>
       <table style="margin-left:auto;margin-right:auto; ">
         @switch (games) {
           @case (1) {
@@ -67,7 +67,7 @@
        
       
       </table>
-      <h1 (click)="checkResults()" [ngStyle]="{'display': gameStarted ? '' : 'none'}" [ngStyle]="{'display': youWin ? 'none' : ''}">check!</h1>
+      <h1 (click)="checkResults()" [ngStyle]="{'display': gameStarted ? '' : 'none'}" >check!</h1>
     </div>
       <h1 [ngStyle]="{'display': gameOver ? '' : 'none'}" (click)="startGame()">Game over!</h1>
   </div>

@@ -13,24 +13,24 @@ export class GameComponent {
   gameStarted: boolean = false;
   youWin: boolean = false;
   gameOver: boolean = false;
-  tiempoCambio: number = 100; // 0.1 segundos
-  tiempoEsperaAntesDeIniciar: number = 3000; // 3 segundos
-  tiempoEsperaDespuesDeIniciar: number = 2000; // 2 segundos
   firstNumber: number=999;
   secondNumber: number=999;
   games: number=1;
+  fails: number=0;
+  arrayGodSet: number=0;
   firstLvl = ["red","yellow", "green", "purple"];
   secondLvl = ["red", "yellow", "green", "purple", "blue", "violet", "orange", "grey", "black"];
   thirdLvl = ["red", "yellow", "green", "purple", "blue", "violet", "orange", "grey", "black","silver", "fuchsia", "lime", "navy", "aqua", "chartreuse", "cornflowerblue"];
   arrayGod=[""];
   startGame() {
     this.firstgame();
+    this.gameOver=false;
     
   }
   firstgame(){
     this.shuffle(this.firstLvl);
     this.gameStarted = true;
-
+    this.games=1;
     this.randomColor(this.firstLvl);
       // Esperar 2 segundos antes de que el usuario pueda intentar recordar
       setTimeout(() => {
@@ -42,7 +42,7 @@ export class GameComponent {
   secondgame(){
     this.shuffle(this.secondLvl);
     this.gameStarted = true;
-
+    this.games=2;
     this.randomColor(this.secondLvl);
       // Esperar 2 segundos antes de que el usuario pueda intentar recordar
       setTimeout(() => {
@@ -54,7 +54,7 @@ export class GameComponent {
   thirdgame(){
     this.shuffle(this.thirdLvl);
     this.gameStarted = true;
-
+    this.games=3;
     this.randomColor(this.thirdLvl);
       // Esperar 2 segundos antes de que el usuario pueda intentar recordar
       setTimeout(() => {
@@ -65,15 +65,27 @@ export class GameComponent {
   }
 
 randomColor(array:string[]): void {
+  console.log("el arraygodset es "+this.arrayGodSet);
   const intervalo = setInterval(() => {
     this.shuffle(array);
-  }, this.tiempoCambio);
+  }, 100);
 
   // Detener el intervalo después de 3 segundos
   setTimeout(() => {
+    
     clearInterval(intervalo);
     // this.arrayGod=[];
-    this.arrayGod=array;
+    if(this.arrayGodSet===1){
+      this.arrayGodSet=0;
+    }else{
+      this.arrayGod=[...array];
+      this.arrayGodSet++;
+      console.log("se seteo el arraygod");
+    }
+    
+    
+
+    console.log("el arroy god ahora es " + this.arrayGod);
   }, 3000);
 }
 changeColors(index: number){
@@ -81,11 +93,9 @@ changeColors(index: number){
 
   if(this.firstNumber===999){
     this.firstNumber=index;
-    console.log(this.firstNumber + "El primero");
 
   }else if(this.secondNumber===999){
     this.secondNumber=index;
-    console.log(this.secondNumber + "El segundo");
 
     switch (this.games) {
       case 1:
@@ -127,25 +137,35 @@ changeColors(index: number){
     }
 
   }
-  console.log(this.firstNumber);
-  console.log(this.secondNumber);
+
 
 }
 checkResults(){
-  console.log("comprobando");
-  console.log(this.games);
-  console.log(this.firstLvl);
-  console.log(this.arrayGod);
+
   let won=0;
   switch (this.games) {
     case 1:
       
       for (let i = 0; i < this.firstLvl.length; i++) {
         if (this.firstLvl[i] === this.arrayGod[i]) {
-          console.log("ok "+ i);
          won++;
+        }else{
+          this.fails++;
+          if(this.fails != 3){
+          alert("Has fallado, solo te quedan " + (3-this.fails) + " intentos");
+          break;
+          }
+
         }
-        if(won===4){
+
+        if(this.fails===3){
+          this.gameOver=true;
+          this.gameStarted=false;
+          this.games=0;
+          break;
+        }
+
+        if(won===this.firstLvl.length){
           this.games=2;
           won=0;
           this.secondgame();
@@ -155,10 +175,23 @@ checkResults(){
     case 2:
       for (let i = 0; i < this.secondLvl.length; i++) {
         if (this.secondLvl[i] === this.arrayGod[i]) {
-          console.log("ok "+ i);
           won++;
+        }else{
+          this.fails++;
+          if(this.fails != 3){
+          alert("Has fallado, solo te quedan " + (3-this.fails) + " intentos");
+          break;
+          }
         }
-        if(won===4){
+
+        if(this.fails===3){
+          this.gameOver=true;
+          this.gameStarted=false;
+          this.games=0;
+          break;
+        }
+
+        if(won===this.secondLvl.length){
           this.games=3;
           won=0;
           this.thirdgame();
@@ -168,26 +201,35 @@ checkResults(){
     case 3:
       for (let i = 0; i < this.thirdLvl.length; i++) {
         if (this.thirdLvl[i] === this.arrayGod[i]) {
-          console.log("ok "+ i);
           won++;
+        }else{
+          this.fails++;
+          if(this.fails != 3){
+          alert("Has fallado, solo te quedan " + (3-this.fails) + " intentos");
+          break;
+          }
         }
-        if(won===4){
+
+        if(this.fails===3){
+          this.gameOver=true;
+          this.gameStarted=false;
+          this.games=0;
+          break;
+        }
+
+        if(won===this.thirdLvl.length){
           won=0;
           console.log("you won");
           this.youWin=true;
           this.gameStarted=false;
+          this.games=0;
         }
       }
       break;
 
   }
 
-  
-
-  
-
 }
-
 
 shuffle(array:string[]){
 
@@ -198,6 +240,6 @@ shuffle(array:string[]){
 }
 
 
-
-
 }
+
+
