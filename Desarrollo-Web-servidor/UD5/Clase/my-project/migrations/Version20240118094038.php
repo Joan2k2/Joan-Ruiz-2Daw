@@ -25,7 +25,7 @@ final class Version20240118094038 extends AbstractMigration
         $this->addSql('ALTER TABLE emp ADD CONSTRAINT FK_310BB40FB89AE546 FOREIGN KEY (dept_no_id) REFERENCES dept (DEPT_NO)');
         $this->addSql('CREATE INDEX IDX_310BB40FB89AE546 ON emp (dept_no_id)');
     }
-
+//faltan x lineas para poder migrar a bdd
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
