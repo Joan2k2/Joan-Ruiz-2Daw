@@ -11,7 +11,7 @@ class CLIENTE
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(name:"CLIENTE_COD")]
     private ?int $id = null;
 
     #[ORM\Column(length: 45)]
@@ -40,6 +40,12 @@ class CLIENTE
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $OBSERVACIONES = null;
+
+    #[ORM\ManyToOne(inversedBy: 'CLIENTE_COD')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?EMP $REPR_COD = null;
+
+    
 
     public function getId(): ?int
     {
@@ -153,4 +159,18 @@ class CLIENTE
 
         return $this;
     }
+
+    public function getREPRCOD(): ?EMP
+    {
+        return $this->REPR_COD;
+    }
+
+    public function setREPRCOD(?EMP $REPR_COD): static
+    {
+        $this->REPR_COD = $REPR_COD;
+
+        return $this;
+    }
+
+    
 }

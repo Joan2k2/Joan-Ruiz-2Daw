@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\DEPTRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -11,11 +13,8 @@ class DEPT
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(name:"DEPT_NO")]
     private ?int $id = null;
-
-    #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $DEPT_NO = null;
 
     #[ORM\Column(length: 14)]
     private ?string $DNOMBRE = null;
@@ -26,21 +25,17 @@ class DEPT
     #[ORM\Column(length: 20, nullable: true)]
     private ?string $color = null;
 
+    #[ORM\OneToMany(mappedBy: 'DEPT_NO', targetEntity: EMP::class, orphanRemoval: true)]
+    private Collection $EMP_NO;
+
+    public function __construct()
+    {
+        $this->EMP_NO = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getDEPTNO(): ?int
-    {
-        return $this->DEPT_NO;
-    }
-
-    public function setDEPTNO(int $DEPT_NO): static
-    {
-        $this->DEPT_NO = $DEPT_NO;
-
-        return $this;
     }
 
     public function getDNOMBRE(): ?string
@@ -75,6 +70,36 @@ class DEPT
     public function setColor(?string $color): static
     {
         $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, EMP>
+     */
+    public function getEMPNO(): Collection
+    {
+        return $this->EMP_NO;
+    }
+
+    public function addEMPNO(EMP $eMPNO): static
+    {
+        if (!$this->EMP_NO->contains($eMPNO)) {
+            $this->EMP_NO->add($eMPNO);
+            $eMPNO->setDEPTNO($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEMPNO(EMP $eMPNO): static
+    {
+        if ($this->EMP_NO->removeElement($eMPNO)) {
+            // set the owning side to null (unless already changed)
+            if ($eMPNO->getDEPTNO() === $this) {
+                $eMPNO->setDEPTNO(null);
+            }
+        }
 
         return $this;
     }
