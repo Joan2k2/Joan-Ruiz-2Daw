@@ -1,1 +1,11 @@
-<p>articles works!</p>
+
+  <div class="article">
+    <div class="photo" (click)="clicked()" [ngStyle]="{'background-image': 'url(' + ima + ')'}"></div>
+    <div class="card-footer">
+      <div>
+        <h2 class="card-title">{{title}}</h2>
+        <h3 class="card-text">{{sentence}}</h3>
+      </div>
+    </div>
+  </div>
+
