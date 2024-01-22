@@ -1,14 +1,19 @@
 import { Component,Output, EventEmitter } from '@angular/core';
 import { ArticlesComponent } from '../../components/articles/articles.component';
+import { ModalComponent } from '../../components/modal/modal.component';
+import { NgClass } from '@angular/common';
+
 
 @Component({
   selector: 'app-vegetables',
   standalone: true,
-  imports: [ArticlesComponent],
+  imports: [ArticlesComponent,ModalComponent,NgClass],
   templateUrl: './vegetables.component.html',
   styleUrl: './vegetables.component.css'
 })
 export class VegetablesComponent {
+  parentData: Array<any>=[];
+  public modal:string="modal show-modal";
   
    products = [
     {
@@ -32,7 +37,11 @@ export class VegetablesComponent {
       sentence: "Cebolla dulce"
     }
   ];
-
   
-
+  handleData(data: { theTitle: string, theImage: string,theModal:boolean }) {
+    // Lógica para manejar la información recibida
+    console.log('Título:', data.theTitle);
+    console.log('Imagen:', data.theImage);
+    console.log('Modal:', data.theModal);
+  }
 }

@@ -13,13 +13,19 @@ export class ArticlesComponent {
   @Input() ima="Hello";
   @Input() title="World";
   @Input() sentence="si";
+
+  @Output() theData = new EventEmitter<{ theTitle: string, theImage: string,theModal:boolean }>();
   @Output() theTitle = new EventEmitter<string>();
   @Output() theImage = new EventEmitter<string>();
+  @Output() theModal = new EventEmitter<boolean>();
 
   public clicked(){
-    this.theTitle.emit(this.title);
-    this.theImage.emit(this.ima);
     
+  this.theData.emit({
+    theTitle: this.title,
+    theImage: this.ima,
+    theModal: true
+  });
   }
   
 }
