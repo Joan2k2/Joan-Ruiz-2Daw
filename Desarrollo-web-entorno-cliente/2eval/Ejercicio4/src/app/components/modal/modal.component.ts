@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component,EventEmitter,Input,Output } from '@angular/core';
 import { NgStyle,NgClass } from '@angular/common';
 
 @Component({
@@ -11,8 +11,16 @@ import { NgStyle,NgClass } from '@angular/common';
 export class ModalComponent {
   @Input() theTitle = "";
   @Input() theImage ="";
-  // @Input() theModal ="";
+  @Input() theModal :boolean=false;
+
+  @Output() closed=new EventEmitter<boolean>();
 
 
-  
+  public onClose(){
+
+  this.closed.emit(false);
+  this.theModal=false;
+    
+  }
+
 }

@@ -15,9 +15,7 @@ export class ArticlesComponent {
   @Input() sentence="si";
 
   @Output() theData = new EventEmitter<{ theTitle: string, theImage: string,theModal:boolean }>();
-  @Output() theTitle = new EventEmitter<string>();
-  @Output() theImage = new EventEmitter<string>();
-  @Output() theModal = new EventEmitter<boolean>();
+ 
 
   public clicked(){
     
@@ -25,7 +23,12 @@ export class ArticlesComponent {
     theTitle: this.title,
     theImage: this.ima,
     theModal: true
+    
   });
+  console.log(this.ima);
+  console.log(this.title);
+  console.log(this.sentence);
+  console.log(this.theData);
   }
   
 }

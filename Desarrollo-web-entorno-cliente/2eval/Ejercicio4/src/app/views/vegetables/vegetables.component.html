@@ -2,16 +2,12 @@
     <section>
         <div class="grid">
             @for(item of products;track item){
-                <app-articles  [title]="item.title" [ima]="item.ima" [sentence]="item.sentence"> </app-articles>
+                <app-articles (theData)="onClick($event)" [title]="item.title" [ima]="item.ima" [sentence]="item.sentence"> </app-articles>
             }
             
-            <!-- @if () {
-
-            } -->
-            
-            <app-modal [ngClass] =' modal' ></app-modal>
-            
-            
+     
+            <app-modal (closed)="onClosed()"[theImage]="image" [theTitle]="title" [theModal]="modal"></app-modal>
+                        
         </div>
     </section>
 </main>
