@@ -47,7 +47,7 @@ class Clients
 
     /** @ORM\Column(type="text") */
     private $OBSERVACIONES;
-
+ 
     public function getCliente()
     {
         return $this->CLIENTE_COD;

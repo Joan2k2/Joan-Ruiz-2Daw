@@ -13,12 +13,12 @@ export class ModalComponent {
   @Input() theImage ="";
   @Input() theModal :boolean=false;
 
-  @Output() closed=new EventEmitter<boolean>();
+  
 
 
   public onClose(){
 
-  this.closed.emit(false);
+  
   this.theModal=false;
     
   }
