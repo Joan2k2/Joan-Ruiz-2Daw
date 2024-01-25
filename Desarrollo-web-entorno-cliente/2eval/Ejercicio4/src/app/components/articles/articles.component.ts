@@ -14,7 +14,7 @@ export class ArticlesComponent {
   @Input() title="World";
   @Input() sentence="si";
 
-  @Output() theData = new EventEmitter<{ theTitle: string, theImage: string,theModal:boolean }>();
+  @Output() theData = new EventEmitter<{ theTitle: string, theImage: string }>();
  
 
   public clicked(){
@@ -22,7 +22,7 @@ export class ArticlesComponent {
   this.theData.emit({
     theTitle: this.title,
     theImage: this.ima,
-    theModal: true
+    
     
   });
   console.log(this.ima);

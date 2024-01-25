@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\CLIENTE;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Core\EntityManager;
 
@@ -21,12 +22,18 @@ class CLIENTERepository extends ServiceEntityRepository
   /**
      * Agrega una nueva tarea a la base de datos.
      */
+
+
+
+     private $em;
+     public function __construct(EntityManagerInterface $em){
+        $this->em=$em;
+     }
     
     public function add()
     {
         try {
             // Obtiene la instancia del EntityManager
-            $em = (new EntityManager())->get();
 
             // Crea una nueva instancia de la entidad Tarea
             $nuevo = new CLIENTE();
@@ -44,13 +51,13 @@ class CLIENTERepository extends ServiceEntityRepository
             $nuevo->setOBSERVACIONES($_POST["observaciones"]);
 
             // Persiste la nueva tarea en la base de datos
-            $em->persist($nuevo);
+            $this->em->persist($nuevo);
 
             // Imprime un mensaje (se podría quitar en producción)
             echo ("he estado en add");
 
             // Aplica los cambios en la base de datos
-            $em->flush();
+            $this->em->flush();
         } catch (\Exception $e) {
             echo "Error al persistir: " . $e->getMessage();
         }
@@ -70,11 +77,8 @@ class CLIENTERepository extends ServiceEntityRepository
         // Imprime un mensaje (se podría quitar en producción)
         echo("he estado en update");
 
-        // Obtiene la instancia del EntityManager
-        $em = (new EntityManager())->get();
-
         // Obtiene la tarea existente mediante su identificador
-        $clientRepository = $em->getRepository(CLIENTE::class);
+        $clientRepository = $this->em->getRepository(CLIENTE::class);
         $client = $clientRepository->find($id);
 
         // Actualiza los atributos de la tarea desde los datos del formulario ($_POST)
@@ -91,10 +95,10 @@ class CLIENTERepository extends ServiceEntityRepository
             $client->setObserbaciones($_POST["observaciones"]);
 
         // Persiste la tarea actualizada en la base de datos
-        $em->persist($client);
+        $this->em->persist($client);
 
         // Aplica los cambios en la base de datos
-        $em->flush();
+        $this->em->flush();
 
         // Redirecciona a la lista de tareas
         header("Location: http://localhost/UD4/Ejercicio3/public/index.php/clientes");
@@ -112,23 +116,23 @@ class CLIENTERepository extends ServiceEntityRepository
         echo("he estado en delete");
 
         // Obtiene la instancia del EntityManager
-        $em = (new EntityManager())->get();
+        $this->em = (new EntityManager())->get();
 
         // Obtiene la tarea existente mediante su identificador
-        $CLIENTERepository = $em->getRepository(CLIENTE::class);
+        $CLIENTERepository = $this->em->getRepository(CLIENTE::class);
         $CLIENTE = $CLIENTERepository->find($id);
 
         
         // Si la tarea existe, la elimina de la base de datos
 
         if ($CLIENTE) {
-            $em->remove($CLIENTE);
+            $this->em->remove($CLIENTE);
         }else{
             echo"no se ha eliminado";
         }
 
         // Aplica los cambios en la base de datos
-        $em->flush();
+        $this->em->flush();
 
         // Redirecciona a la lista de tareas
         header("Location: http://localhost/UD4/Ejercicio3/public/index.php/clientes");

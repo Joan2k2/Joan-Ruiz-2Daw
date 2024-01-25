@@ -6,7 +6,7 @@
             }
             
      
-            <app-modal (closed)="onClosed()"[theImage]="image" [theTitle]="title" [theModal]="modal"></app-modal>
+            <app-modal (closed)="onClosed($event)" [theImage]="image" [theTitle]="title" [modal]="modal"></app-modal>
                         
         </div>
     </section>

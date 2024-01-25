@@ -6,6 +6,7 @@ use App\Entity\EMP;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Core\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * @extends ServiceEntityRepository<EMP>
@@ -17,6 +18,11 @@ use App\Core\EntityManager;
  */
 class EMPeRepository extends ServiceEntityRepository
 {
+
+    private $em;
+     public function __construct(EntityManagerInterface $em){
+        $this->em=$em;
+     }
  // /**
     //  * Elimina una tarea de la base de datos.
     //  *
@@ -28,23 +34,23 @@ class EMPeRepository extends ServiceEntityRepository
         echo("he estado en delete");
 
         // Obtiene la instancia del EntityManager
-        $em = (new EntityManager())->get();
+        
 
         // Obtiene la tarea existente mediante su identificador
-        $clientsRepository = $em->getRepository(Emp::class);
+        $clientsRepository = $this->em->getRepository(Emp::class);
         $clients = $clientsRepository->find($id);
 
         
         // Si la tarea existe, la elimina de la base de datos
 
         if ($clients) {
-            $em->remove($clients);
+            $this->em->remove($clients);
         }else{
             echo"no se ha eliminado";
         }
 
         // Aplica los cambios en la base de datos
-        $em->flush();
+        $this->em->flush();
 
         // Redirecciona a la lista de tareas
         header("Location: http://localhost/UD4/Ejercicio3/public/index.php/empleados");
@@ -57,7 +63,7 @@ class EMPeRepository extends ServiceEntityRepository
 {
     try {
         // Obtiene la instancia del EntityManager
-        $em = (new EntityManager())->get();
+        
 
         // Crea una nueva instancia de la entidad Tarea
         $nuevo = new Emp();
@@ -73,13 +79,13 @@ class EMPeRepository extends ServiceEntityRepository
         $nuevo->setDept_no($_POST["deptNo"]);
 
         // Persiste la nueva tarea en la base de datos
-        $em->persist($nuevo);
+        $this->em->persist($nuevo);
 
         // Imprime un mensaje (se podría quitar en producción)
         echo ("he estado en add");
 
         // Aplica los cambios en la base de datos
-        $em->flush();
+        $this->em->flush();
     } catch (\Exception $e) {
         echo "Error al persistir: " . $e->getMessage();
     }

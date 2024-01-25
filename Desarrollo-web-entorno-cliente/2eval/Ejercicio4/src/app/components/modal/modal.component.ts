@@ -11,15 +11,17 @@ import { NgStyle,NgClass } from '@angular/common';
 export class ModalComponent {
   @Input() theTitle = "";
   @Input() theImage ="";
-  @Input() theModal :boolean=false;
+  @Input() modal :string="modal";
+
+  @Output() closed =new EventEmitter<string>();
 
   
 
 
-  public onClose(){
+  public onClosed(){
 
   
-  this.theModal=false;
+  this.closed.emit("modal");
     
   }
 

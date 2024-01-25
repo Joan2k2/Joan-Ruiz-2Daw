@@ -3,13 +3,15 @@
 namespace App\Controllers;
 error_reporting(E_ALL);
 ini_set("display_errors",1);
-use App\Core\AbstractController;
-use App\Entity\Clients;
-use App\Entity\Emp;
-use App\Core\EntityManager;
-use Doctrine\ORM\EntityRepository;
-use App\Repository\ClientsRepository;
-use App\Repository\EmpRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+    use App\Entity\CLIENTE;
+    use App\Entity\EMP;
+    use App\Entity\DEPT;
+    use App\Core\EntityManager;
+    use Doctrine\ORM\EntityRepository;
+    use APP\Repository\CLIENTERepository;
+    use APP\Repository\EMPeRepository;
+    use Doctrine\Persistence\ManagerRegistry;
 class CrudController extends AbstractController{
 
     public function base(){
@@ -21,7 +23,7 @@ class CrudController extends AbstractController{
       // Obtener la instancia del EntityManager
       $em = (new EntityManager())->get();
       // Obtener el repositorio de tarea
-      $clientsRepository = $em->getRepository(Clients::class);
+      $clientsRepository = $em->getRepository(CLIENTE::class);
       // Número de tareas por página
       $ClientsPerPage = 5;
       // Calcular el desplazamiento
@@ -47,6 +49,9 @@ class CrudController extends AbstractController{
       $em = (new EntityManager())->get();
       // Obtener el repositorio de tarea
       $empRepository = $em->getRepository(Emp::class);
+
+
+      
       // Número de tareas por página
       $empPerPage = 5;
       // Calcular el desplazamiento
@@ -71,8 +76,8 @@ class CrudController extends AbstractController{
       // Obtener la instancia del EntityManager
       $em = (new EntityManager())->get();
       // Obtener el repositorio de tarea
-      $clientsDatos = $em->getClassMetadata(Clients::class);
-      $Clients = new ClientsRepository($em,$clientsDatos);
+      $clientsDatos = $em->getClassMetadata(CLIENTE::class);
+      $Clients = new CLIENTERepository($em,$clientsDatos);
       $Clients->add();
       
     }
@@ -83,7 +88,7 @@ class CrudController extends AbstractController{
       $em = (new EntityManager())->get();
       // Obtener el repositorio de tarea
       $empDatos = $em->getClassMetadata(Emp::class);
-      $emp = new EmpRepository($em,$empDatos);
+      $emp = new EMPeRepository($em,$empDatos);
       $emp->add();
       
     }
@@ -91,8 +96,8 @@ class CrudController extends AbstractController{
     public function delClient($id){
       $em = (new EntityManager())->get();
       // Obtener el repositorio de tarea
-      $clientsDatos = $em->getClassMetadata(Clients::class);
-      $Clients = new ClientsRepository($em,$clientsDatos);
+      $clientsDatos = $em->getClassMetadata(CLIENTE::class);
+      $Clients = new CLIENTERepository($em,$clientsDatos);
       $Clients->del($id);
 
     }
@@ -100,7 +105,7 @@ class CrudController extends AbstractController{
       $em = (new EntityManager())->get();
       // Obtener el repositorio de tarea
       $empDatos = $em->getClassMetadata(Emp::class);
-      $emp = new EmpRepository($em,$empDatos);
+      $emp = new EMPeRepository($em,$empDatos);
       $emp->del($id);
 
     }
@@ -108,7 +113,7 @@ class CrudController extends AbstractController{
     public function updateClient($id){
       $em = (new EntityManager())->get();
       // Obtener el repositorio de tarea
-      $clientsDatos = $em->getRepository(Clients::class);
+      $clientsDatos = $em->getRepository(CLIENTE::class);
       $Clients = $clientsDatos->find($id);
       $this->render("update.html", [
         "clientes" => $Clients,
@@ -120,8 +125,8 @@ class CrudController extends AbstractController{
     public function updatingClient($id){
       $em = (new EntityManager())->get();
       // Obtener el repositorio de tarea
-      $clientsDatos = $em->getClassMetadata(Clients::class);
-      $Clients = new ClientsRepository($em,$clientsDatos);
+      $clientsDatos = $em->getClassMetadata(CLIENTE::class);
+      $Clients = new CLIENTERepository($em,$clientsDatos);
       echo "hola";
       $Clients->update($id);
 
@@ -130,7 +135,7 @@ class CrudController extends AbstractController{
     public function detailClient($id){
 
       $em = (new EntityManager())->get();
-      $clientesRepository = $em->getRepository(Clients::class);
+      $clientesRepository = $em->getRepository(CLIENTE::class);
       $cliente = $clientesRepository->find($id);
       $a=$cliente->getReprCod();
       if($a==null){

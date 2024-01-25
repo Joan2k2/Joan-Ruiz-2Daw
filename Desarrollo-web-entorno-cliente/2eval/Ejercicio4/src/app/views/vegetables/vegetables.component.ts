@@ -14,9 +14,9 @@ import { NgClass } from '@angular/common';
 export class VegetablesComponent {
 
   //tener variables de info a pasar al modal img modal y title
-  public image:string="modal show-modal";
-  public title:string="modal show-modal";
-  public modal:boolean=false;
+  public image:string="ima";
+  public title:string="title";
+  public modal:string="modal";
   // public modal:string="modal show-modal";
   
    products = [
@@ -42,15 +42,15 @@ export class VegetablesComponent {
     }
   ];
   
-  onClick(data: { theTitle: string, theImage: string,theModal:boolean }) {
+  onClick(data: { theTitle: string, theImage: string }) {
     // Lógica para manejar la información recibida
     this.title= data.theTitle;
     this.image = data.theImage;
-    this.modal = data.theModal;
+    this.modal = "modal show-modal";
   }
-  onClosed() {
+  onClosed(modal:string) {
     // Lógica para manejar la información recibida
     
-    this.modal = false;
+    this.modal = "modal";
   }
 }

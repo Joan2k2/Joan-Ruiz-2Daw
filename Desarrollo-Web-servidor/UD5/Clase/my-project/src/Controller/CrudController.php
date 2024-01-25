@@ -12,9 +12,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use APP\Repository\CLIENTERepository;
     use APP\Repository\EMPeRepository;
     use Doctrine\Persistence\ManagerRegistry;
+
 class CrudController extends AbstractController{
 
-    public function base(){
+      public function base(){
       $this->render("index.html",[null]);
     }
 
@@ -77,7 +78,7 @@ class CrudController extends AbstractController{
       $em = (new EntityManager())->get();
       // Obtener el repositorio de tarea
       $clientsDatos = $em->getClassMetadata(CLIENTE::class);
-      $Clients = new CLIENTERepository($em,$clientsDatos);
+      $Clients = new CLIENTERepository($clientsDatos);
       $Clients->add();
       
     }
@@ -88,7 +89,7 @@ class CrudController extends AbstractController{
       $em = (new EntityManager())->get();
       // Obtener el repositorio de tarea
       $empDatos = $em->getClassMetadata(Emp::class);
-      $emp = new EMPeRepository($em,$empDatos);
+      $emp = new EMPeRepository($empDatos);
       $emp->add();
       
     }
@@ -97,7 +98,7 @@ class CrudController extends AbstractController{
       $em = (new EntityManager())->get();
       // Obtener el repositorio de tarea
       $clientsDatos = $em->getClassMetadata(CLIENTE::class);
-      $Clients = new CLIENTERepository($em,$clientsDatos);
+      $Clients = new CLIENTERepository($clientsDatos);
       $Clients->del($id);
 
     }
@@ -105,7 +106,7 @@ class CrudController extends AbstractController{
       $em = (new EntityManager())->get();
       // Obtener el repositorio de tarea
       $empDatos = $em->getClassMetadata(Emp::class);
-      $emp = new EMPeRepository($em,$empDatos);
+      $emp = new EMPeRepository($empDatos);
       $emp->del($id);
 
     }
@@ -126,7 +127,7 @@ class CrudController extends AbstractController{
       $em = (new EntityManager())->get();
       // Obtener el repositorio de tarea
       $clientsDatos = $em->getClassMetadata(CLIENTE::class);
-      $Clients = new CLIENTERepository($em,$clientsDatos);
+      $Clients = new CLIENTERepository($clientsDatos);
       echo "hola";
       $Clients->update($id);
 

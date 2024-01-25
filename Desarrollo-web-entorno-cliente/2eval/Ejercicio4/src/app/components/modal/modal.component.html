@@ -1,6 +1,6 @@
-<div [ngClass]="theModal ? 'show-modla' : 'modal'">
+<div [ngClass]="modal">
     <div class="modal-content" [ngStyle]="{'background-image': 'url(' + theImage + ')'}">
-        <span class="close-button" (click)="onClose()">×</span>
+        <span class="close-button" (click)="onClosed()">×</span>
         <h1>{{theTitle}}</h1>
     </div>
 </div>
