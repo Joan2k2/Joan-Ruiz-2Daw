@@ -106,7 +106,12 @@ rum Curabitur pretium.</p>
         <td>{{resultados.getDirec}}</td>
         <td>{{resultados.getCiudad}}</td>
         <td>{{resultados.getEstado}}</td>
-        <td>{{resultados.getReprCod}}</td>
+        {% if resultados.getReprCod is not null %}
+            <td>{{ resultados.getReprCod.getApellidos }}</td>
+        {% else %}
+            <td>No hay representante asignado</td>
+        {% endif %}
+        
     </tr>
 
 </table>

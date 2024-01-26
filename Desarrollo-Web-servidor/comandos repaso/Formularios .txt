@@ -1,0 +1,2 @@
+1-Instalar comando para tener formulario (composer require form validator)
+2-Luego la alias con la clase que vas a trabajar, si quieres hacer algo en clientes lo relacioans con clientes
