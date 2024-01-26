@@ -2,96 +2,47 @@
 
 namespace App\Repository;
 
-use App\Entity\EMP;
+use App\Entity\Emp;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use App\Core\EntityManager;
-use Doctrine\ORM\EntityManagerInterface;
 
 /**
- * @extends ServiceEntityRepository<EMP>
+ * @extends ServiceEntityRepository<Emp>
  *
- * @method EMP|null find($id, $lockMode = null, $lockVersion = null)
- * @method EMP|null findOneBy(array $criteria, array $orderBy = null)
- * @method EMP[]    findAll()
- * @method EMP[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Emp|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Emp|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Emp[]    findAll()
+ * @method Emp[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class EMPeRepository extends ServiceEntityRepository
+class EmpRepository extends ServiceEntityRepository
 {
-
-    private $em;
-     public function __construct(EntityManagerInterface $em){
-        $this->em=$em;
-     }
- // /**
-    //  * Elimina una tarea de la base de datos.
-    //  *
-    //  * @param int $id Identificador único de la tarea a eliminar.
-    //  */
-    public function del($id)
+    public function __construct(ManagerRegistry $registry)
     {
-        // Imprime un mensaje (se podría quitar en producción)
-        echo("he estado en delete");
-
-        // Obtiene la instancia del EntityManager
-        
-
-        // Obtiene la tarea existente mediante su identificador
-        $clientsRepository = $this->em->getRepository(Emp::class);
-        $clients = $clientsRepository->find($id);
-
-        
-        // Si la tarea existe, la elimina de la base de datos
-
-        if ($clients) {
-            $this->em->remove($clients);
-        }else{
-            echo"no se ha eliminado";
-        }
-
-        // Aplica los cambios en la base de datos
-        $this->em->flush();
-
-        // Redirecciona a la lista de tareas
-        header("Location: http://localhost/UD4/Ejercicio3/public/index.php/empleados");
-        exit();
-    }
-     /**
-     * Agrega una nueva tarea a la base de datos.
-     */
-    public function add()
-{
-    try {
-        // Obtiene la instancia del EntityManager
-        
-
-        // Crea una nueva instancia de la entidad Tarea
-        $nuevo = new Emp();
-
-        // Configura los atributos de la tarea desde los datos del formulario ($_POST)
-        $nuevo->setEMP_NO($_POST["EMP_NO"]);
-        $nuevo->setApellidos($_POST["apellidos"]);
-        $nuevo->setOficio($_POST["oficio"]);
-        $nuevo->setJefe($_POST["jefe"]);
-        $nuevo->setFECHA_ALTA(new \DateTime($_POST["fechaAlta"])); // Ajustar según el formato de fecha esperado
-        $nuevo->setSalario($_POST["salario"]);
-        $nuevo->setComision($_POST["comision"]);
-        $nuevo->setDept_no($_POST["deptNo"]);
-
-        // Persiste la nueva tarea en la base de datos
-        $this->em->persist($nuevo);
-
-        // Imprime un mensaje (se podría quitar en producción)
-        echo ("he estado en add");
-
-        // Aplica los cambios en la base de datos
-        $this->em->flush();
-    } catch (\Exception $e) {
-        echo "Error al persistir: " . $e->getMessage();
+        parent::__construct($registry, Emp::class);
     }
 
-    // Redirecciona a la lista de tareas
-    header("Location: http://localhost/UD4/Ejercicio3/public/index.php/empleados");
-    exit();
-}
+//    /**
+//     * @return Emp[] Returns an array of Emp objects
+//     */
+//    public function findByExampleField($value): array
+//    {
+//        return $this->createQueryBuilder('e')
+//            ->andWhere('e.exampleField = :val')
+//            ->setParameter('val', $value)
+//            ->orderBy('e.id', 'ASC')
+//            ->setMaxResults(10)
+//            ->getQuery()
+//            ->getResult()
+//        ;
+//    }
+
+//    public function findOneBySomeField($value): ?Emp
+//    {
+//        return $this->createQueryBuilder('e')
+//            ->andWhere('e.exampleField = :val')
+//            ->setParameter('val', $value)
+//            ->getQuery()
+//            ->getOneOrNullResult()
+//        ;
+//    }
 }

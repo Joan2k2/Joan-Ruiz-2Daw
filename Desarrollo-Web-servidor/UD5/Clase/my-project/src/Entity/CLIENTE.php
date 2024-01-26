@@ -2,175 +2,171 @@
 
 namespace App\Entity;
 
-use App\Repository\CLIENTERepository;
+use App\Repository\ClienteRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: CLIENTERepository::class)]
-class CLIENTE
+#[ORM\Entity(repositoryClass: ClienteRepository::class)]
+class Cliente
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(name:"CLIENTE_COD")]
+    #[ORM\Column(name: "cliente_cod")]
     private ?int $id = null;
 
     #[ORM\Column(length: 45)]
-    private ?string $NOMBRE = null;
+    private ?string $nombre = null;
 
     #[ORM\Column(length: 40)]
-    private ?string $DIREC = null;
+    private ?string $direc = null;
 
     #[ORM\Column(length: 30)]
-    private ?string $CIUDAD = null;
+    private ?string $ciudad = null;
 
     #[ORM\Column(length: 2, nullable: true)]
-    private ?string $ESTADO = null;
+    private ?string $estado = null;
 
     #[ORM\Column(length: 9)]
-    private ?string $COD_POSTAL = null;
+    private ?string $cod_postal = null;
 
     #[ORM\Column(type: Types::SMALLINT, nullable: true)]
-    private ?int $AREA = null;
+    private ?int $area = null;
 
     #[ORM\Column(length: 9, nullable: true)]
-    private ?string $TELEFONO = null;
+    private ?string $telefono = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 9, scale: 2, nullable: true)]
-    private ?string $LIMITE_CREDITO = null;
+    private ?string $limite_credito = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $OBSERVACIONES = null;
+    private ?string $observaciones = null;
 
-    #[ORM\ManyToOne(inversedBy: 'CLIENTE_COD')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?EMP $REPR_COD = null;
-
-    
+    #[ORM\ManyToOne(inversedBy: 'clientes')]
+    #[ORM\JoinColumn(name:"repr_cod", referencedColumnName:"emp_no")]
+    private ?Emp $repr_cod = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getNOMBRE(): ?string
+    public function getNombre(): ?string
     {
-        return $this->NOMBRE;
+        return $this->nombre;
     }
 
-    public function setNOMBRE(string $NOMBRE): static
+    public function setNombre(string $nombre): static
     {
-        $this->NOMBRE = $NOMBRE;
+        $this->nombre = $nombre;
 
         return $this;
     }
 
-    public function getDIREC(): ?string
+    public function getDirec(): ?string
     {
-        return $this->DIREC;
+        return $this->direc;
     }
 
-    public function setDIREC(string $DIREC): static
+    public function setDirec(string $direc): static
     {
-        $this->DIREC = $DIREC;
+        $this->direc = $direc;
 
         return $this;
     }
 
-    public function getCIUDAD(): ?string
+    public function getCiudad(): ?string
     {
-        return $this->CIUDAD;
+        return $this->ciudad;
     }
 
-    public function setCIUDAD(string $CIUDAD): static
+    public function setCiudad(string $ciudad): static
     {
-        $this->CIUDAD = $CIUDAD;
+        $this->ciudad = $ciudad;
 
         return $this;
     }
 
-    public function getESTADO(): ?string
+    public function getEstado(): ?string
     {
-        return $this->ESTADO;
+        return $this->estado;
     }
 
-    public function setESTADO(?string $ESTADO): static
+    public function setEstado(?string $estado): static
     {
-        $this->ESTADO = $ESTADO;
+        $this->estado = $estado;
 
         return $this;
     }
 
-    public function getCODPOSTAL(): ?string
+    public function getCodPostal(): ?string
     {
-        return $this->COD_POSTAL;
+        return $this->cod_postal;
     }
 
-    public function setCODPOSTAL(string $COD_POSTAL): static
+    public function setCodPostal(string $cod_postal): static
     {
-        $this->COD_POSTAL = $COD_POSTAL;
+        $this->cod_postal = $cod_postal;
 
         return $this;
     }
 
-    public function getAREA(): ?int
+    public function getArea(): ?int
     {
-        return $this->AREA;
+        return $this->area;
     }
 
-    public function setAREA(?int $AREA): static
+    public function setArea(?int $area): static
     {
-        $this->AREA = $AREA;
+        $this->area = $area;
 
         return $this;
     }
 
-    public function getTELEFONO(): ?string
+    public function getTelefono(): ?string
     {
-        return $this->TELEFONO;
+        return $this->telefono;
     }
 
-    public function setTELEFONO(?string $TELEFONO): static
+    public function setTelefono(?string $telefono): static
     {
-        $this->TELEFONO = $TELEFONO;
+        $this->telefono = $telefono;
 
         return $this;
     }
 
-    public function getLIMITECREDITO(): ?string
+    public function getLimiteCredito(): ?string
     {
-        return $this->LIMITE_CREDITO;
+        return $this->limite_credito;
     }
 
-    public function setLIMITECREDITO(?string $LIMITE_CREDITO): static
+    public function setLimiteCredito(?string $limite_credito): static
     {
-        $this->LIMITE_CREDITO = $LIMITE_CREDITO;
+        $this->limite_credito = $limite_credito;
 
         return $this;
     }
 
-    public function getOBSERVACIONES(): ?string
+    public function getObservaciones(): ?string
     {
-        return $this->OBSERVACIONES;
+        return $this->observaciones;
     }
 
-    public function setOBSERVACIONES(?string $OBSERVACIONES): static
+    public function setObservaciones(?string $observaciones): static
     {
-        $this->OBSERVACIONES = $OBSERVACIONES;
+        $this->observaciones = $observaciones;
 
         return $this;
     }
 
-    public function getREPRCOD(): ?EMP
+    public function getReprCod(): ?Emp
     {
-        return $this->REPR_COD;
+        return $this->repr_cod;
     }
 
-    public function setREPRCOD(?EMP $REPR_COD): static
+    public function setReprCod(?Emp $repr_cod): static
     {
-        $this->REPR_COD = $REPR_COD;
+        $this->repr_cod = $repr_cod;
 
         return $this;
     }
-
-    
 }
