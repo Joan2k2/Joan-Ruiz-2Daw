@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Repository\EmpRepository;
+use App\Repository\EMPRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

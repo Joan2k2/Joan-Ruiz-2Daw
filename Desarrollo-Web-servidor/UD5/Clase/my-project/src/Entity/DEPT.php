@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\DeptRepository;
+use App\Repository\DEPTRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: DeptRepository::class)]
+#[ORM\Entity(repositoryClass: DEPTRepository::class)]
 class Dept
 {
     #[ORM\Id]

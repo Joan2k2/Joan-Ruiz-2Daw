@@ -9,7 +9,7 @@ use App\Entity\Emp;
 use App\Core\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use App\Repository\ClientsRepository;
-use App\Repository\EmpRepository;
+use App\Repository\EMPRepository;
 class CrudControllers extends AbstractController{
 
     public function base(){
@@ -83,7 +83,7 @@ class CrudControllers extends AbstractController{
       $em = (new EntityManager())->get();
       // Obtener el repositorio de tarea
       $empDatos = $em->getClassMetadata(Emp::class);
-      $emp = new EmpRepository($em,$empDatos);
+      $emp = new EMPRepository($em,$empDatos);
       $emp->add();
       
     }
@@ -100,7 +100,7 @@ class CrudControllers extends AbstractController{
       $em = (new EntityManager())->get();
       // Obtener el repositorio de tarea
       $empDatos = $em->getClassMetadata(Emp::class);
-      $emp = new EmpRepository($em,$empDatos);
+      $emp = new EMPRepository($em,$empDatos);
       $emp->del($id);
 
     }

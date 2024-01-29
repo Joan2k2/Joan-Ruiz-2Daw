@@ -13,7 +13,7 @@ ini_set("display_errors", 1);
 
 use Doctrine\ORM\EntityRepository;
 
-class EmpRepository extends EntityRepository
+class EMPRepository extends EntityRepository
 {
      // /**
     //  * Elimina una tarea de la base de datos.
