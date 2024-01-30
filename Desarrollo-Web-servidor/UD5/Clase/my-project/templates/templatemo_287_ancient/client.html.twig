@@ -17,8 +17,14 @@ function clearText(field)
 
 </head>
 <body>
-
-<div id="templatemo_wrapper">
+<a href="{{app.user? 'logout':'login'}}">
+        {{app.user? 'logout':'login'}}
+            </a>
+            {% if app.user %}
+                <li>
+                    <a href="{{ path('app_logout') }}">Cerrar sesion</a>
+                    <strong>{{ app.user.userIdentifier}}</stong>
+                    <div id="templatemo_wrapper">
 
 	<span class="bg_top"></span>
     <span class="bg_bottom"></span>
@@ -175,5 +181,15 @@ rum Curabitur pretium.</p>
 Ancient Template 
 http://www.templatemo.com/preview/templatemo_287_ancient 
 -->
+                </li>
+            {% else %}
+                <li>
+                    <a href="{{ path('app_login') }}">login</a>
+                </li>
+                <li>
+                    <a href="{{ path('app_register') }}">register</a>
+                </li>
+                {% endif %}
+
 </body>
 </html>

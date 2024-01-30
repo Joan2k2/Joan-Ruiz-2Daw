@@ -13,8 +13,24 @@
     <body>
         {% block body %}
         
-        {{form(form)}}
-
+        
+<a href="{{app.user? 'logout':'login'}}">
+        {{app.user? 'logout':'login'}}
+            </a>
+            {% if app.user %}
+                <li>
+                    <a href="{{ path('app_logout') }}">Cerrar sesion</a>
+                    {{form(form)}}
+                    <strong>{{ app.user.userIdentifier}}</stong>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{{ path('app_login') }}">login</a>
+                </li>
+                <li>
+                    <a href="{{ path('app_register') }}">register</a>
+                </li>
+                {% endif %}
         {% endblock %}
     </body>
 </html>
