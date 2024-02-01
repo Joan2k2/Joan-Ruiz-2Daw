@@ -1,11 +1,22 @@
 body {
   background-color: #212529;
-  
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
 }
 
+main {
+  flex: 1;
+}
+.jumbPr{
+  border: 2px solid #ffb7c5 ;
+  background-color: #2e3236 !important;
+}
 .navbar-light .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 183, 197, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
+
 .navbar-light .navbar-toggler {
   border: 1px solid #ffb7c5;
 }
@@ -16,33 +27,60 @@ body {
   border: 2px solid #ffb7c5;
   color: #fff;
   transition: transform 0.3s ease-in-out;
-  
 }
-
 
 .btn-custom {
   border: 1px solid #ffb7c5;
   color: #ffb7c5;
   align-items: center;
+  width: 110px;
 }
 
 .btn-custom:focus {
-    outline: none;
-    box-shadow: none;
-    
+  outline: none;
+  box-shadow: none;
+}
 
-  }
 .btn-custom:hover {
-  background-color: #ff8fa0; /* Cambiar el tono del color en hover */
+  background-color: #ff8fa0;
   color: #fff;
-  border-color: #ff8fa0; /* Puedes ajustar este color según tus preferencias */
-}
-.card:hover{
-    transform: scale(1.02);
-
-}
-.card-img-top{
-    height: 250px;
+  border-color: #ff8fa0;
 }
 
+.card:hover {
+  transform: scale(1.02);
+}
 
+.card-img-top {
+  height: 250px;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #f8f9fa; /* Cambia esto según el color que desees para el fondo del pie de página */
+  margin-top: auto;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  
+}
+footer p{
+  color: #212529;
+}
+#jumbo{
+
+            background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.conceptseating.com%2Fwp-content%2Fuploads%2F2021%2F01%2FMarket-Programming-Banner.jpg&f=1&nofb=1&ipt=00e4f95862b93d4bfd7d2e895f2d902de39f1d8fc4ed1a4b31c966c58170e9bb&ipo=images');
+            height: 300px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+          
+}
+p,h2{
+  color: #fff;
+}
+.p-4 .shadow-4 .rounded-3 img{
+height: 100px;
+}
