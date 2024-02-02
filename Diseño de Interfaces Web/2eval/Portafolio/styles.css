@@ -58,16 +58,15 @@ main {
 footer {
   text-align: center;
   padding: 10px;
-  background-color: #f8f9fa; /* Cambia esto según el color que desees para el fondo del pie de página */
+  background-color: #4e555c; /* Cambia esto según el color que desees para el fondo del pie de página */
   margin-top: auto;
   width: 100%;
   position: relative;
   bottom: 0;
   
 }
-footer p{
-  color: #212529;
-}
+
+
 #jumbo{
 
             background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.conceptseating.com%2Fwp-content%2Fuploads%2F2021%2F01%2FMarket-Programming-Banner.jpg&f=1&nofb=1&ipt=00e4f95862b93d4bfd7d2e895f2d902de39f1d8fc4ed1a4b31c966c58170e9bb&ipo=images');
