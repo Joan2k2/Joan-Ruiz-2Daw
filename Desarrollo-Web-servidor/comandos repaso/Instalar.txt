@@ -1,0 +1,2 @@
+Instalar bundle
+docker run --rm --interactive --tty  --volume .:/app composer require symfony/security-bundle

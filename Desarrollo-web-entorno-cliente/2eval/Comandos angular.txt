@@ -1,0 +1,5 @@
+• npm install -g @angular/cli
+• ng new my-app
+• ng serve -> lanza la aplicación.
+• ng generate component components/nombre_componente
+• ng generate component views/nombre_view

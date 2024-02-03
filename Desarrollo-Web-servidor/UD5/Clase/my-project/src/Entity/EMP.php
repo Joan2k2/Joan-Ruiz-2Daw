@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\EMPRepository;
+use App\Repository\EmpRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: EMPRepository::class)]
+#[ORM\Entity(repositoryClass: EmpRepository::class)]
 class Emp
 {
     #[ORM\Id]

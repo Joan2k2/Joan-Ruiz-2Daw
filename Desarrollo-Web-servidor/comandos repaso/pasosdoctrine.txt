@@ -1,0 +1,15 @@
+IMPORTANTE: HACER TODO ESTO EN EL DIRECTORIO /my-proyect
+- .env: mysql://root:root@172.23.0.2:3306/(sustituir por el nombre de tu db)?serverVersion=mariadb-11.2.2
+- Crear el contenedor con el composer: docker run --rm --interactive --tty --volume .:/app composer init
+- Añadir Twig: docker run --rm --interactive --tty --volume .:/app composer require twig
+- Añadir Doctrine: docker run --rm --interactive --tty --volume .:/app composer require symfony/orm-pack
+- En el .env creado en symfony sustituimos el postgresql (comentarla) por la linea de DATABASE_URL en nuestro .env.
+- Instalar Make PHP: docker run --rm --interactive --tty --volume .:/app composer require --dev symfony/maker-bundle
+- Crear una entidad: php bin/console make:entity
+- Crear migracion: php bin/console make:migration
+- Migrar los datos a la base de datos: php bin/console doctrine:migrations:migrate
+- Crear Controller: php bin/console make:controller ___Controller (sustituir ___ por nombre de tu tabla)
+- Instalar Form en symfony: docker run --rm --interactive --tty --volume .:/app composer require symfony/form
+- Crear un formulario: php bin/console make:form
+- Crear una relacion entre dos tablas: php bin/console make:entity,
+entidad debe tener mismo nombre que otra tabla.

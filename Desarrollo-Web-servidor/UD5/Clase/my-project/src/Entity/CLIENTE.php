@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\CLIENTERepository;
+use App\Repository\ClienteRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: CLIENTERepository::class)]
+#[ORM\Entity(repositoryClass: ClienteRepository::class)]
 class Cliente
 {
     #[ORM\Id]
