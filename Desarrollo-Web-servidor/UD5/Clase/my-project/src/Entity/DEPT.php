@@ -27,13 +27,9 @@ class Dept
     #[ORM\OneToMany(mappedBy: 'dept_no', targetEntity: Emp::class)]
     private Collection $emps;
 
-    #[ORM\OneToMany(mappedBy: 'dept_no', targetEntity: Producto::class)]
-    private Collection $productos;
-
     public function __construct()
     {
         $this->emps = new ArrayCollection();
-        $this->productos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -101,36 +97,6 @@ class Dept
             // set the owning side to null (unless already changed)
             if ($emp->getDeptNo() === $this) {
                 $emp->setDeptNo(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Producto>
-     */
-    public function getProductos(): Collection
-    {
-        return $this->productos;
-    }
-
-    public function addProducto(Producto $producto): static
-    {
-        if (!$this->productos->contains($producto)) {
-            $this->productos->add($producto);
-            $producto->setDeptNo($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProducto(Producto $producto): static
-    {
-        if ($this->productos->removeElement($producto)) {
-            // set the owning side to null (unless already changed)
-            if ($producto->getDeptNo() === $this) {
-                $producto->setDeptNo(null);
             }
         }
 

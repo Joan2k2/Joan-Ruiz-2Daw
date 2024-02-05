@@ -29,15 +29,28 @@ class ClienteController extends AbstractController
     }
 
 //muestra todos los clientes
-#[Route('/clients', name: 'all_clients')]
-public function show(EntityManagerInterface $entityManager): Response
+#[Route('/clients/{page}', name: 'all_clients')]
+public function show(EntityManagerInterface $entityManager,$page=1)
 {
-    $client = $entityManager->getRepository(Cliente::class)->findAll();
-    
+    $clientRepository = $this->em->getRepository(CLIENTE::class);
 
-     return $this->render('templatemo_287_ancient/client.html.twig', [
-         'resultados' => $client,
-     ]);
+        $tareasPaginas = 5;
+
+        $offset = ($page - 1) * $tareasPaginas;
+       
+
+        $totalTask = count($clientRepository->findAll());
+
+        $totalPages = ceil($totalTask / $tareasPaginas);
+        
+
+        $tarea = $clientRepository->findBy([], null, $tareasPaginas, $offset);
+
+        return $this->render('templatemo_287_ancient/client.html.twig', [
+            'resultados' => $tarea,
+            "currentPage" => $page,
+          "totalPages" => $totalPages
+        ]);
 
   
 }

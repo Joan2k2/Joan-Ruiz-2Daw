@@ -117,6 +117,11 @@ rum Curabitur pretium.</p>
     </tr>
     {% endfor %}
 </table>
+<div>
+                {% for page in 1..totalPages %}
+                    <a href='http://localhost:8000/clients/{{page}}'>{{ page }}</a>
+                {% endfor %}
+            </div>
         
         <div id="content">
         	<div class="cbox_fws">
