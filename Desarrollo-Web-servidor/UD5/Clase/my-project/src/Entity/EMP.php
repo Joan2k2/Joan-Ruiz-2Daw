@@ -41,9 +41,13 @@ class Emp
     #[ORM\OneToMany(mappedBy: 'repr_cod', targetEntity: Cliente::class)]
     private Collection $clientes;
 
+    #[ORM\OneToMany(mappedBy: 'emp', targetEntity: PAGOSJoan::class)]
+    private Collection $pAGOSJoans;
+
     public function __construct()
     {
         $this->clientes = new ArrayCollection();
+        $this->pAGOSJoans = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -159,6 +163,36 @@ class Emp
             // set the owning side to null (unless already changed)
             if ($cliente->getReprCod() === $this) {
                 $cliente->setReprCod(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, PAGOSJoan>
+     */
+    public function getPAGOSJoans(): Collection
+    {
+        return $this->pAGOSJoans;
+    }
+
+    public function addPAGOSJoan(PAGOSJoan $pAGOSJoan): static
+    {
+        if (!$this->pAGOSJoans->contains($pAGOSJoan)) {
+            $this->pAGOSJoans->add($pAGOSJoan);
+            $pAGOSJoan->setEmp($this);
+        }
+
+        return $this;
+    }
+
+    public function removePAGOSJoan(PAGOSJoan $pAGOSJoan): static
+    {
+        if ($this->pAGOSJoans->removeElement($pAGOSJoan)) {
+            // set the owning side to null (unless already changed)
+            if ($pAGOSJoan->getEmp() === $this) {
+                $pAGOSJoan->setEmp(null);
             }
         }
 
