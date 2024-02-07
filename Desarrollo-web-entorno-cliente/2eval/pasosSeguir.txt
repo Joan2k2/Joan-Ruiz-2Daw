@@ -1,0 +1,9 @@
+1 app.routes copiar memigo
+2 app.config copiar memigo
+3 app.config importar componentes
+4 generar componentes vistas servicios e interfaces
+5 poner lo de la plantilla
+
+programar
+primero clases hijos imputs y outpts si hace falta [variable nombre hijo]=""
+luego padre etc
