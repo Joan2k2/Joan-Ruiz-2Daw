@@ -5,14 +5,9 @@
 
             <div class="grid">
 
-                <!-- Componente Card -->
-                <div class="card">
-                    <div class="photo">
-                        <div class="title">Meme</div>
-                    </div>
-                </div>
+                <app-card [meme]="meme" [titleMeme]="titlememe"></app-card>
             </div>
-            <button>Anterior</button><button>Siguiente</button>
+            <button (click)="memeback()">Anterior</button><button (click)="nextmeme()">Siguiente</button>
         </section>
 
     </div>

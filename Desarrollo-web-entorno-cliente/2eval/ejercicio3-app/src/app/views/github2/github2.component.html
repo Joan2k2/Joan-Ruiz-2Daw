@@ -6,23 +6,24 @@
             <h2>Menu</h2>
             <nav>
                 <ul>
-                    <li><a>Ver perfiles</a></li>
+                    <li><a (click)="onClick()">Ver perfiles</a></li>
                 </ul>
             </nav>
         </div>
-        <article>
-            <h1>Perfil 1</h1>
-
+        <div class="content">
+            @for(user of usersarray; track user; let i=$index){
+                <h1>Perfil {{i}}</h1>
+                <img src="{{user.avatar_url}}" (click)="onClickIma(user.avatar_url,user.login)" >
+                <h1>{{user.login}}</h1>
+                <h2>{{user.id}}</h2>
+            }
             
-        </article>
-    </div>
 
-    <div class="modal">
-        <div class="modal-content">
-            <span class="close-button">×</span>
-            <h1>Titulo</h1>
+            <app-modal (outmodal)="onClose($event)" [username]="username" [modal]="modal" [ima]="ima"></app-modal>
         </div>
     </div>
+
+   
 
     
 

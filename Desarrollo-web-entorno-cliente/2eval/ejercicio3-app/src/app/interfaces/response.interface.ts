@@ -1,3 +1,5 @@
+//creas las interfaces generadas con quicktype son dos porque dentro de items hay un apartado de items que es un array
+// y tiene el resto, por eso hay que poner .items de 0 o lo que quieras para sacar la información
 export interface GitHubItems {
     total_count:        number;
     incomplete_results: boolean;
@@ -25,4 +27,23 @@ export interface GithubUserInfo {
     site_admin:          boolean;
     score:               number;
   }
+
+  export interface Welcome {
+    success: boolean;
+    data:    Data;
+}
+
+export interface Data {
+    memes: Meme[];
+}
+
+export interface Meme {
+    id:        string;
+    name:      string;
+    url:       string;
+    width:     number;
+    height:    number;
+    box_count: number;
+    captions:  number;
+}
   

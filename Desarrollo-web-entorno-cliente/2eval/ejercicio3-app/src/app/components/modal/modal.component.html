@@ -1,1 +1,6 @@
-<p>modal works!</p>
+<div [ngClass]="modal">
+    <div class="modal-content" [ngStyle]="{'backgroundImage': 'url('+ ima+')'}">
+        <span class="close-button" (click)="onClose()">×</span>
+        <h1>{{username}}</h1>
+    </div>
+</div>

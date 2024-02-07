@@ -6,24 +6,14 @@
 
             <div class="grid">
 
-                <!-- Componente Card -->
-                <div class="card">
-                    <div class="photo">
-                        <div class="title">Meme</div>
-                    </div>
-                </div>
+                <app-card  (open)="openModal($event)" [meme]="meme" [titleMeme]="titlememe"></app-card>
             </div>
-            <button>Anterior</button><button>Siguiente</button>
+            <button (click)="memeback()">Anterior</button><button (click)="nextmeme()">Siguiente</button>
         </section>
 
     </div>
 
-    <div class="modal">
-        <div class="modal-content">
-            <span class="close-button">×</span>
-            <h1>Titulo</h1>
-        </div>
-    </div>
+    <app-modal (outmodal)="onClose($event)" [ima]="meme" [username]="titlememe" [modal]="modal"></app-modal>>
 
 
 
