@@ -1,0 +1,23 @@
+<div class="question" id="question-1">
+    <h4>Ejercicio 1</h4>
+    <form method="post" [formGroup]="reactiveForm">
+        <div class="answer-bank">
+            <div class="answer">
+                <select name="finish" id="finish">
+                    <option value="">- Búsqueda por: -</option>
+                    <option value="capitulo" formControlName="cap">Capítulo</option>
+                    <option value="personaje" formControlName="perso">Personaje</option>
+                </select>
+            </div>
+            <div class="answer">
+                <input type="text" name="name" id="name" value="nombre" placeholder="nombre" formControlName="name" />
+            </div>
+            <div class="answer">
+                <input type="submit" value="Enviar" class="primary" (click)="onSubmit()" />
+            </div>
+        </div>
+    </form>
+    <p>Personaje:</p>
+
+    <p>Capítulo: </p>
+</div>
