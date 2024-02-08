@@ -1,0 +1,27 @@
+<div id="page">
+
+    <section>
+        <div class="content">
+            <div class="grid">
+                @for (item of arrayNba; track item;let i=$index) {
+
+
+                    <app-card [numberNbaP]="item.id" [photoNbaP]="photo" [nameNbaP]="item.first_name" [lastNameNbaP]="item.last_name" (modal)="openModal($event)"></app-card>
+                }
+                
+
+
+            </div>
+
+            <div id='render-more'>
+              <button (click)="back()">ANTERIORES</button>
+              <button (click)="next()">SIGUIENTES</button>
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+<app-modal [id]="nbaId" [name]="name" [modal]="modal" [photo]="photo" (close)="closeModal($event)"></app-modal>

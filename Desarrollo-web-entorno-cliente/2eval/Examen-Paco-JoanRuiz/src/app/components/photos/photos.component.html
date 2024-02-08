@@ -1,0 +1,19 @@
+<div class="container-view-three">
+    <div class="photos-view-three">
+        <!-- hacer for -->
+        <div>
+            @for (item of imagesArray; track item;let i =$index;) {
+                
+
+                <img src={{item}} (click)="zoom(item,i)"
+                style="width: 19%;">
+                
+            }
+            
+            @if(zoomed!=0){
+                <img src={{imageclicked}} style="width: 100%;" (click)="openModal()">
+            }
+            
+        </div>
+    </div>
+</div>

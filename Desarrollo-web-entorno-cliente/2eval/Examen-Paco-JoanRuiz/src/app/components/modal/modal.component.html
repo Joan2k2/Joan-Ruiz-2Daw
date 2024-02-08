@@ -1,0 +1,17 @@
+<div [ngClass]="modal">
+    <div class="modal-content">
+        <span class="close-button" (click)="closeModal()">×</span>
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <img src={{photo}}
+                        alt="" />
+                </div>
+                <div class="card-body">
+                    <span class="tag">{{name}}</span>
+                    <h4>{{stats}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
